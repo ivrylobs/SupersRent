@@ -42,7 +42,10 @@
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u9B-Mf-xxL" userLabel="GroupTable">
                                 <rect key="frame" x="0.0" y="50" width="375" height="617"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" name="Absolute White"/>
+                                <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <color key="sectionIndexColor" name="Absolute White"/>
+                                <color key="sectionIndexBackgroundColor" name="BlackGray"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupCell" id="XfJ-F6-wfF">
                                         <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
@@ -136,11 +139,13 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="62" translatesAutoresizingMaskIntoConstraints="NO" id="sW1-Ma-HNK">
                                 <rect key="frame" x="8" y="206.5" width="359" height="254"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="UserName" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TAi-ry-n95">
+                                    <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="UserName" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="TAi-ry-n95">
                                         <rect key="frame" x="8" y="0.0" width="343" height="50"/>
+                                        <color key="backgroundColor" name="Absolute White"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="D7z-IM-CYy"/>
                                         </constraints>
+                                        <color key="textColor" name="BlackGray"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="username"/>
                                         <userDefinedRuntimeAttributes>
@@ -149,11 +154,13 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="Password" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vbU-0O-cch">
+                                    <textField opaque="NO" contentMode="scaleToFill" restorationIdentifier="Password" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vbU-0O-cch">
                                         <rect key="frame" x="8" y="112" width="343" height="50"/>
+                                        <color key="backgroundColor" name="Absolute White"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Hbn-xF-sx8"/>
                                         </constraints>
+                                        <color key="textColor" name="BlackGray"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="password"/>
                                         <userDefinedRuntimeAttributes>
@@ -839,11 +846,13 @@
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ค้นหาสถานที่" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="DMI-p4-jXz">
                                 <rect key="frame" x="10" y="45" width="320" height="35"/>
+                                <color key="backgroundColor" name="Absolute White"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="vXM-bd-e5d"/>
                                 </constraints>
+                                <color key="textColor" name="BlackGray"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" textContentType="address-level1+2"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เลือกสถานที่" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNd-R6-RCX">
                                 <rect key="frame" x="142" y="5" width="91" height="30"/>
@@ -873,7 +882,7 @@
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A80-5R-zjX">
                                 <rect key="frame" x="0.0" y="90" width="375" height="577"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" name="Absolute White"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" id="Zy9-AD-LCf">
                                         <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
@@ -927,6 +936,9 @@
         <image name="percent" catalog="system" width="64" height="58"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
         <image name="sum" catalog="system" width="42" height="64"/>
+        <namedColor name="Absolute White">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="BlackGray">
             <color red="0.22352941176470589" green="0.24313725490196078" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -947,6 +959,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="M88-hM-aoe"/>
+        <segue reference="16N-1a-9XU"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -12,6 +12,7 @@
 		036C407B2394C6C300534D1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 036C40792394C6C300534D1C /* Main.storyboard */; };
 		036C407D2394C6C700534D1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 036C407C2394C6C700534D1C /* Assets.xcassets */; };
 		036C40802394C6C700534D1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 036C407E2394C6C700534D1C /* LaunchScreen.storyboard */; };
+		217EEE14515B82C3AA6A7D8D /* Pods_SupersRent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 193D79657883CBB6FD68AE95 /* Pods_SupersRent.framework */; };
 		9E18BE0D23A007A800E85188 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E18BE0C23A007A800E85188 /* LoginController.swift */; };
 		9E3476F0239BA09100C94CFE /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3476EF239BA09100C94CFE /* DataModel.swift */; };
 		9E60671423A3AC59007AD5B9 /* SummaryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60671223A3AC59007AD5B9 /* SummaryItemCell.swift */; };
@@ -52,8 +53,7 @@
 		03872A1B2394CBF000441D88 /* OmiseSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OmiseSDK.framework; path = Carthage/Build/iOS/OmiseSDK.framework; sourceTree = "<group>"; };
 		03872A1C2394CBF000441D88 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		03872A1D2394CBF000441D88 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		5D04B2EB83074444431BCA20 /* Pods-SupersRent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRent.debug.xcconfig"; path = "Target Support Files/Pods-SupersRent/Pods-SupersRent.debug.xcconfig"; sourceTree = "<group>"; };
-		851CAF6944D1CDB38FA06206 /* Pods-SupersRent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRent.release.xcconfig"; path = "Target Support Files/Pods-SupersRent/Pods-SupersRent.release.xcconfig"; sourceTree = "<group>"; };
+		193D79657883CBB6FD68AE95 /* Pods_SupersRent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SupersRent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E18BE0C23A007A800E85188 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		9E3476EF239BA09100C94CFE /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		9E60671223A3AC59007AD5B9 /* SummaryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryItemCell.swift; sourceTree = "<group>"; };
@@ -80,6 +80,8 @@
 		9EC1570C239BE5910013F3E9 /* OrderPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPayment.swift; sourceTree = "<group>"; };
 		9EC1570E239CFFC10013F3E9 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		9EC1570F239CFFC10013F3E9 /* ProductItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductItemCell.xib; sourceTree = "<group>"; };
+		BC0CB11E9544D75E477C6AA5 /* Pods-SupersRent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRent.release.xcconfig"; path = "Target Support Files/Pods-SupersRent/Pods-SupersRent.release.xcconfig"; sourceTree = "<group>"; };
+		FF11613C093705D7D7F45F1F /* Pods-SupersRent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRent.debug.xcconfig"; path = "Target Support Files/Pods-SupersRent/Pods-SupersRent.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9EC15712239D84580013F3E9 /* OmiseSDK.framework in Frameworks */,
+				217EEE14515B82C3AA6A7D8D /* Pods_SupersRent.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,8 +181,8 @@
 		BE38558516FE4FC13CF18C4B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5D04B2EB83074444431BCA20 /* Pods-SupersRent.debug.xcconfig */,
-				851CAF6944D1CDB38FA06206 /* Pods-SupersRent.release.xcconfig */,
+				FF11613C093705D7D7F45F1F /* Pods-SupersRent.debug.xcconfig */,
+				BC0CB11E9544D75E477C6AA5 /* Pods-SupersRent.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				03872A1D2394CBF000441D88 /* Alamofire.framework */,
 				03872A1B2394CBF000441D88 /* OmiseSDK.framework */,
 				03872A1C2394CBF000441D88 /* SwiftyJSON.framework */,
+				193D79657883CBB6FD68AE95 /* Pods_SupersRent.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -201,12 +205,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 036C40842394C6C700534D1C /* Build configuration list for PBXNativeTarget "SupersRent" */;
 			buildPhases = (
-				B59E40110F8E0FCA429562C8 /* [CP] Check Pods Manifest.lock */,
+				79A398E1123B744D8959D091 /* [CP] Check Pods Manifest.lock */,
 				036C406C2394C6C300534D1C /* Sources */,
 				036C406D2394C6C300534D1C /* Frameworks */,
 				036C406E2394C6C300534D1C /* Resources */,
 				9E8643762395138700AC3D50 /* Carthage Frameworks */,
-				53A17D34B69048C1BDEADF9B /* [CP] Embed Pods Frameworks */,
+				0DFA9B014A6303DB49946C76 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -270,7 +274,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		53A17D34B69048C1BDEADF9B /* [CP] Embed Pods Frameworks */ = {
+		0DFA9B014A6303DB49946C76 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -285,6 +289,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SupersRent/Pods-SupersRent-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		79A398E1123B744D8959D091 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SupersRent-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9E8643762395138700AC3D50 /* Carthage Frameworks */ = {
@@ -306,28 +332,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
-		};
-		B59E40110F8E0FCA429562C8 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SupersRent-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -499,7 +503,7 @@
 		};
 		036C40852394C6C700534D1C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D04B2EB83074444431BCA20 /* Pods-SupersRent.debug.xcconfig */;
+			baseConfigurationReference = FF11613C093705D7D7F45F1F /* Pods-SupersRent.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -525,7 +529,7 @@
 		};
 		036C40862394C6C700534D1C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 851CAF6944D1CDB38FA06206 /* Pods-SupersRent.release.xcconfig */;
+			baseConfigurationReference = BC0CB11E9544D75E477C6AA5 /* Pods-SupersRent.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";

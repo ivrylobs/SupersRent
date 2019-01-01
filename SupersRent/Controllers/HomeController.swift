@@ -22,8 +22,6 @@ class HomeController: UIViewController {
     var searchLocation: LocationModel?
     var searchDate: DateModel?
     
-    
-    
     //Button object.
     @IBOutlet weak var groupButton: UIButton!
     @IBOutlet weak var locationButton: UIButton!
@@ -121,7 +119,7 @@ class HomeController: UIViewController {
             self.performSegue(withIdentifier: NameConstant.SegueID.dateID, sender: self)
         case NameConstant.ButtonID.searchID :
             if self.searchGroup == nil || self.searchLocation == nil || self.searchDate == nil {
-                self.showAlertFill()
+                self.showAlertForSearchParameters()
             } else {
                 self.getProductData.getProduct()
             }
@@ -150,7 +148,7 @@ class HomeController: UIViewController {
         
     }
     
-    func showAlertFill() {
+    func showAlertForSearchParameters() {
         // create the alert
         let alert = UIAlertController(title: "ข้อมูลไม่ครบ", message: "กรุณากรอกข้อมูลให้ครบ", preferredStyle: UIAlertController.Style.alert)
         
