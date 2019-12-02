@@ -1,0 +1,10 @@
+{
+  "commitish" : "v3.3.0",
+  "iOS" : [
+    {
+      "name" : "OmiseSDK",
+      "hash" : "cf8a296a2471a7b25590a51d01a7b0055dafd995ff2e07f32a81bcf076e00cd4",
+      "swiftToolchainVersion" : "5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)"
+    }
+  ]
+}

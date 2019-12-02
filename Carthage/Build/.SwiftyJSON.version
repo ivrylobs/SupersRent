@@ -1,0 +1,10 @@
+{
+  "commitish" : "5.0.0",
+  "iOS" : [
+    {
+      "name" : "SwiftyJSON",
+      "hash" : "06555ea2d148a2fd535d33da92ae05f989e72f3b4d9c963198a9cc4137654b91",
+      "swiftToolchainVersion" : "5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)"
+    }
+  ]
+}
