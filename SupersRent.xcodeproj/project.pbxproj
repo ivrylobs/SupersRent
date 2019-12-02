@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		036C407B2394C6C300534D1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 036C40792394C6C300534D1C /* Main.storyboard */; };
 		036C407D2394C6C700534D1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 036C407C2394C6C700534D1C /* Assets.xcassets */; };
 		036C40802394C6C700534D1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 036C407E2394C6C700534D1C /* LaunchScreen.storyboard */; };
+		03872A272394D1E900441D88 /* OmiseSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03872A1B2394CBF000441D88 /* OmiseSDK.framework */; };
 		5CC1BCFA9E19C53D7EB37A86 /* Pods_SupersRent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EF9171D5F6F29739614D4A8 /* Pods_SupersRent.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,9 @@
 		036C407C2394C6C700534D1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		036C407F2394C6C700534D1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		036C40812394C6C700534D1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		03872A1B2394CBF000441D88 /* OmiseSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OmiseSDK.framework; path = Carthage/Build/iOS/OmiseSDK.framework; sourceTree = "<group>"; };
+		03872A1C2394CBF000441D88 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		03872A1D2394CBF000441D88 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		6EF9171D5F6F29739614D4A8 /* Pods_SupersRent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SupersRent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		951A436F420A58D8B75CD584 /* Pods-SupersRent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRent.debug.xcconfig"; path = "Target Support Files/Pods-SupersRent/Pods-SupersRent.debug.xcconfig"; sourceTree = "<group>"; };
 		B5EE96E87E1B805A066146F6 /* Pods-SupersRent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRent.release.xcconfig"; path = "Target Support Files/Pods-SupersRent/Pods-SupersRent.release.xcconfig"; sourceTree = "<group>"; };
@@ -36,6 +40,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CC1BCFA9E19C53D7EB37A86 /* Pods_SupersRent.framework in Frameworks */,
+				03872A272394D1E900441D88 /* OmiseSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,13 +70,37 @@
 			children = (
 				036C40732394C6C300534D1C /* AppDelegate.swift */,
 				036C40752394C6C300534D1C /* SceneDelegate.swift */,
-				036C40772394C6C300534D1C /* ViewController.swift */,
-				036C40792394C6C300534D1C /* Main.storyboard */,
+				03872A2C2394D24700441D88 /* Model */,
+				03872A2A2394D23800441D88 /* Controller */,
+				03872A2B2394D23E00441D88 /* View */,
 				036C407C2394C6C700534D1C /* Assets.xcassets */,
 				036C407E2394C6C700534D1C /* LaunchScreen.storyboard */,
 				036C40812394C6C700534D1C /* Info.plist */,
 			);
 			path = SupersRent;
+			sourceTree = "<group>";
+		};
+		03872A2A2394D23800441D88 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				036C40772394C6C300534D1C /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		03872A2B2394D23E00441D88 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				036C40792394C6C300534D1C /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		03872A2C2394D24700441D88 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		BE38558516FE4FC13CF18C4B /* Pods */ = {
@@ -80,13 +109,15 @@
 				951A436F420A58D8B75CD584 /* Pods-SupersRent.debug.xcconfig */,
 				B5EE96E87E1B805A066146F6 /* Pods-SupersRent.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
 		DD68A53C16A0B60644228ADD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03872A1D2394CBF000441D88 /* Alamofire.framework */,
+				03872A1B2394CBF000441D88 /* OmiseSDK.framework */,
+				03872A1C2394CBF000441D88 /* SwiftyJSON.framework */,
 				6EF9171D5F6F29739614D4A8 /* Pods_SupersRent.framework */,
 			);
 			name = Frameworks;
@@ -104,6 +135,7 @@
 				036C406D2394C6C300534D1C /* Frameworks */,
 				036C406E2394C6C300534D1C /* Resources */,
 				648C8B515B5B341D95A6AAE2 /* [CP] Embed Pods Frameworks */,
+				03872A262394CDB200441D88 /* Carthage Framework */,
 			);
 			buildRules = (
 			);
@@ -161,6 +193,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		03872A262394CDB200441D88 /* Carthage Framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/OmiseSDK.framework",
+			);
+			name = "Carthage Framework";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/OmiseSDK.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
 		648C8B515B5B341D95A6AAE2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -355,7 +407,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SupersRent/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -363,7 +420,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.banraomaibab.SupersRent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -373,7 +430,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SupersRent/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -381,7 +443,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.banraomaibab.SupersRent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
+import OmiseSDK
 
 class ViewController: UIViewController {
 
