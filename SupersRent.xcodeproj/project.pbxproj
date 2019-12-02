@@ -74,7 +74,6 @@
 				03872A2A2394D23800441D88 /* Controller */,
 				03872A2B2394D23E00441D88 /* View */,
 				036C407C2394C6C700534D1C /* Assets.xcassets */,
-				036C407E2394C6C700534D1C /* LaunchScreen.storyboard */,
 				036C40812394C6C700534D1C /* Info.plist */,
 			);
 			path = SupersRent;
@@ -91,6 +90,7 @@
 		03872A2B2394D23E00441D88 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				036C407E2394C6C700534D1C /* LaunchScreen.storyboard */,
 				036C40792394C6C300534D1C /* Main.storyboard */,
 			);
 			path = View;
@@ -135,7 +135,7 @@
 				036C406D2394C6C300534D1C /* Frameworks */,
 				036C406E2394C6C300534D1C /* Resources */,
 				648C8B515B5B341D95A6AAE2 /* [CP] Embed Pods Frameworks */,
-				03872A262394CDB200441D88 /* Carthage Framework */,
+				9E8643762395138700AC3D50 /* Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -193,26 +193,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		03872A262394CDB200441D88 /* Carthage Framework */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/OmiseSDK.framework",
-			);
-			name = "Carthage Framework";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/OmiseSDK.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
-		};
 		648C8B515B5B341D95A6AAE2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -229,6 +209,26 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SupersRent/Pods-SupersRent-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		9E8643762395138700AC3D50 /* Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/OmiseSDK.framework",
+			);
+			name = "Carthage Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/OmiseSDK.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
 		};
 		9EF05F3A39E42CD371F93AE0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
