@@ -15,6 +15,11 @@
 		036C40802394C6C700534D1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 036C407E2394C6C700534D1C /* LaunchScreen.storyboard */; };
 		03872A272394D1E900441D88 /* OmiseSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03872A1B2394CBF000441D88 /* OmiseSDK.framework */; };
 		5CC1BCFA9E19C53D7EB37A86 /* Pods_SupersRent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EF9171D5F6F29739614D4A8 /* Pods_SupersRent.framework */; };
+		9E8643782396ECE700AC3D50 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8643772396ECE700AC3D50 /* HomeController.swift */; };
+		9EA05A012398CB740056CEF3 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA05A002398CB740056CEF3 /* ColorExtension.swift */; };
+		9EA05A032398D1B70056CEF3 /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA05A022398D1B70056CEF3 /* CategoryController.swift */; };
+		9EA05A052398D1D70056CEF3 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA05A042398D1D70056CEF3 /* LocationController.swift */; };
+		9EA05A072398D78D0056CEF3 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA05A062398D78D0056CEF3 /* CategoryModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +36,11 @@
 		03872A1D2394CBF000441D88 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		6EF9171D5F6F29739614D4A8 /* Pods_SupersRent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SupersRent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		951A436F420A58D8B75CD584 /* Pods-SupersRent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRent.debug.xcconfig"; path = "Target Support Files/Pods-SupersRent/Pods-SupersRent.debug.xcconfig"; sourceTree = "<group>"; };
+		9E8643772396ECE700AC3D50 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		9EA05A002398CB740056CEF3 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		9EA05A022398D1B70056CEF3 /* CategoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
+		9EA05A042398D1D70056CEF3 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
+		9EA05A062398D78D0056CEF3 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
 		B5EE96E87E1B805A066146F6 /* Pods-SupersRent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRent.release.xcconfig"; path = "Target Support Files/Pods-SupersRent/Pods-SupersRent.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,37 +80,42 @@
 			children = (
 				036C40732394C6C300534D1C /* AppDelegate.swift */,
 				036C40752394C6C300534D1C /* SceneDelegate.swift */,
-				03872A2C2394D24700441D88 /* Model */,
-				03872A2A2394D23800441D88 /* Controller */,
-				03872A2B2394D23E00441D88 /* View */,
+				9EA059FF2398CB620056CEF3 /* Models */,
+				03872A2A2394D23800441D88 /* Controllers */,
+				03872A2B2394D23E00441D88 /* Views */,
 				036C407C2394C6C700534D1C /* Assets.xcassets */,
 				036C40812394C6C700534D1C /* Info.plist */,
 			);
 			path = SupersRent;
 			sourceTree = "<group>";
 		};
-		03872A2A2394D23800441D88 /* Controller */ = {
+		03872A2A2394D23800441D88 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				036C40772394C6C300534D1C /* ViewController.swift */,
+				9E8643772396ECE700AC3D50 /* HomeController.swift */,
+				9EA05A022398D1B70056CEF3 /* CategoryController.swift */,
+				9EA05A042398D1D70056CEF3 /* LocationController.swift */,
 			);
-			path = Controller;
+			path = Controllers;
 			sourceTree = "<group>";
 		};
-		03872A2B2394D23E00441D88 /* View */ = {
+		03872A2B2394D23E00441D88 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				036C407E2394C6C700534D1C /* LaunchScreen.storyboard */,
 				036C40792394C6C300534D1C /* Main.storyboard */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		03872A2C2394D24700441D88 /* Model */ = {
+		9EA059FF2398CB620056CEF3 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9EA05A002398CB740056CEF3 /* ColorExtension.swift */,
+				9EA05A062398D78D0056CEF3 /* CategoryModel.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		BE38558516FE4FC13CF18C4B /* Pods */ = {
@@ -259,9 +274,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E8643782396ECE700AC3D50 /* HomeController.swift in Sources */,
 				036C40782394C6C300534D1C /* ViewController.swift in Sources */,
 				036C40742394C6C300534D1C /* AppDelegate.swift in Sources */,
 				036C40762394C6C300534D1C /* SceneDelegate.swift in Sources */,
+				9EA05A032398D1B70056CEF3 /* CategoryController.swift in Sources */,
+				9EA05A072398D78D0056CEF3 /* CategoryModel.swift in Sources */,
+				9EA05A012398CB740056CEF3 /* ColorExtension.swift in Sources */,
+				9EA05A052398D1D70056CEF3 /* LocationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -407,12 +427,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T5JZFM877C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = SupersRent/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -420,7 +441,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.banraomaibab.SupersRent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -430,12 +451,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = T5JZFM877C;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = SupersRent/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -443,7 +465,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.banraomaibab.SupersRent;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
