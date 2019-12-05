@@ -1,5 +1,5 @@
 //
-//  CategoryModel.swift
+//  ProductData.swift
 //  SupersRent
 //
 //  Created by ivrylobs on 5/12/2562 BE.
@@ -7,5 +7,3 @@
 //
 
 import Foundation
-
-

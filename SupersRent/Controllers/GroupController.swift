@@ -6,13 +6,16 @@
 //  Copyright © 2562 banraomaibab. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import SwiftUI
 
-class CategoryController: UIViewController {
+class GroupController: UIViewController {
+    
+    var rowData: [GroupModel]?
     
     @IBOutlet weak var CategoryTable: UITableView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,29 +24,35 @@ class CategoryController: UIViewController {
     }
 }
 
-
-extension CategoryController: UITableViewDataSource {
+extension GroupController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return rowData?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.CategoryTable.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
-        cell.textLabel?.text = "Hello this is cell \(indexPath.row)"
+        let rowLabel = rowData!
+        cell.textLabel?.text = "\(rowLabel[indexPath.row].groupName)"
         return cell
     }
-    
-    
 }
 
-extension CategoryController: UITableViewDelegate {
+extension GroupController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         print(indexPath.row)
+        
+        if let presenter = presentingViewController as? HomeController {
+            presenter.CategoryButton.titleLabel?.text = self.CategoryTable.cellForRow(at: indexPath)?.textLabel?.text
+        }
+        
         dismiss(animated: true, completion: nil)
     }
 }
 
-struct CategoryViewContainer: UIViewControllerRepresentable {
+
+struct CategoryViewContainer: UIViewControllerRepresentable { 
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<CategoryViewContainer>) -> UIViewController {
         return UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "Category")
@@ -56,6 +65,6 @@ struct CategoryViewContainer: UIViewControllerRepresentable {
 
 struct CategoryController_Previews: PreviewProvider {
     static var previews: some View {
-        CategoryViewContainer()
+        CategoryViewContainer().previewDevice(PreviewDevice(rawValue: "iPhone 8"))
     }
 }
