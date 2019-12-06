@@ -1,11 +1,3 @@
-//
-//  CategoryViewController.swift
-//  SupersRent
-//
-//  Created by ivrylobs on 5/12/2562 BE.
-//  Copyright © 2562 banraomaibab. All rights reserved.
-//
-
 import UIKit
 import SwiftUI
 
@@ -13,12 +5,14 @@ class GroupController: UIViewController {
     
     var rowData: [GroupModel]?
     
-    @IBOutlet weak var CategoryTable: UITableView!
+    @IBOutlet weak var groupTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.CategoryTable.dataSource = self
-        self.CategoryTable.delegate = self
+        
+        self.groupTable.dataSource = self
+        self.groupTable.delegate = self
+        
     }
     
     @IBAction func BackToHome(_ sender: UIButton) {
@@ -32,7 +26,7 @@ extension GroupController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.CategoryTable.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
+        let cell = self.groupTable.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath)
         let rowLabel = rowData!
         cell.textLabel?.text = "\(rowLabel[indexPath.row].groupName)"
         return cell
@@ -44,7 +38,7 @@ extension GroupController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let presenter = presentingViewController as? HomeController {
-            presenter.CategoryButton.setTitle(self.CategoryTable.cellForRow(at: indexPath)?.textLabel?.text!, for: .normal)
+            presenter.groupButton.setTitle(self.groupTable.cellForRow(at: indexPath)?.textLabel?.text!, for: .normal)
         }
         
         dismiss(animated: true, completion: nil)

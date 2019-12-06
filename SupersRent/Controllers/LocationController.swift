@@ -1,11 +1,3 @@
-//
-//  LocationController.swift
-//  SupersRent
-//
-//  Created by ivrylobs on 5/12/2562 BE.
-//  Copyright © 2562 banraomaibab. All rights reserved.
-//
-
 import UIKit
 import SwiftUI
 
@@ -19,6 +11,7 @@ class LocationController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.LocationTable.delegate = self
         self.LocationTable.dataSource = self
         self.searchTextField.delegate = self
@@ -53,11 +46,10 @@ class LocationController: UIViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let presenter = presentingViewController as? HomeController {
-            presenter.LocationButton.setTitle(self.LocationTable.cellForRow(at: indexPath)?.textLabel?.text! , for: .normal)
+            presenter.locationButton.setTitle(self.LocationTable.cellForRow(at: indexPath)?.textLabel?.text! , for: .normal)
         }
         dismiss(animated: true, completion: nil)
     }
-    
     
 }
 

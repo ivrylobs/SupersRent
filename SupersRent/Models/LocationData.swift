@@ -23,8 +23,8 @@ struct GetLocationData {
                 var locationData: [LocationModel] = []
                 for json in jsonData.arrayValue {
                     for district in json["district"].arrayValue {
-                        //print("\(json["name"].stringValue) -> \(district["name"].stringValue)")
-                        locationData.append(LocationModel(provinceName: json["name"].stringValue, districtName: district["name"].stringValue))
+                        locationData.append(LocationModel(provinceName: json["name"].stringValue,
+                                                          districtName: district["name"].stringValue))
                     }
                 }
                 self.delegate?.didGetLocationData(locationData: locationData)
