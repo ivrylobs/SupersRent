@@ -35,7 +35,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1210" y="1269"/>
+            <point key="canvasLocation" x="-913" y="1119"/>
         </scene>
         <!--Home-->
         <scene sceneID="KpX-fX-hm0">
@@ -45,96 +45,148 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="tVv-U4-ygj">
-                                <rect key="frame" x="56" y="335" width="263" height="34"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSR-Aq-EYW">
+                                <rect key="frame" x="15" y="543" width="345" height="40"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="hBc-7d-fou"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="ค้นหา">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="17" translatesAutoresizingMaskIntoConstraints="NO" id="7O4-xh-zpp">
+                                <rect key="frame" x="15" y="329" width="345" height="154"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list.bullet" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3WU-7Q-0Sw">
-                                        <rect key="frame" x="0.0" y="3" width="35" height="28"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="35" id="Kfu-aR-vGL"/>
-                                        </constraints>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zkg-kV-NPN">
-                                        <rect key="frame" x="43" y="0.0" width="220" height="34"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="CategoryButton"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="SXG-dE-2yK"/>
-                                        </constraints>
-                                        <state key="normal" title="รายการสินค้า">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="goToCategory:" destination="bPD-SC-RAR" eventType="touchUpInside" id="gRo-xo-Wyn"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="wFG-Ur-hC6">
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="40"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list.bullet" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3WU-7Q-0Sw">
+                                                <rect key="frame" x="0.0" y="4.3333333333333304" width="40" height="31.666666666666668"/>
+                                                <color key="backgroundColor" name="BlackGrey"/>
+                                                <color key="tintColor" name="White"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="1bx-0Q-wxc"/>
+                                                    <constraint firstAttribute="height" constant="40" id="CvX-7m-pGZ"/>
+                                                </constraints>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small" weight="medium"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zkg-kV-NPN">
+                                                <rect key="frame" x="43" y="0.0" width="302" height="40"/>
+                                                <color key="backgroundColor" name="White"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="CategoryButton"/>
+                                                <color key="tintColor" name="BlackGrey"/>
+                                                <state key="normal" title="รายการสินค้า">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="goToCategory:" destination="bPD-SC-RAR" eventType="touchUpInside" id="gRo-xo-Wyn"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="44A-R3-DFF">
+                                        <rect key="frame" x="0.0" y="57" width="345" height="40"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="N2b-3A-Hc4">
+                                                <rect key="frame" x="0.0" y="2.6666666666666643" width="40" height="35"/>
+                                                <color key="backgroundColor" name="BlackGrey"/>
+                                                <color key="tintColor" name="White"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="yI2-Cr-Sbe"/>
+                                                    <constraint firstAttribute="width" constant="40" id="z5k-xl-7hL"/>
+                                                </constraints>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t07-rI-6oi">
+                                                <rect key="frame" x="43" y="0.0" width="302" height="40"/>
+                                                <color key="backgroundColor" name="White"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="LocationButton"/>
+                                                <state key="normal" title="สถานที่">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="goToCategory:" destination="bPD-SC-RAR" eventType="touchUpInside" id="ce4-2C-DSe"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="wRj-kG-baw">
+                                        <rect key="frame" x="0.0" y="114" width="345" height="40"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ckQ-ra-h3M">
+                                                <rect key="frame" x="0.0" y="3" width="40" height="34"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" name="White"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="9vc-dV-vXc"/>
+                                                    <constraint firstAttribute="height" constant="40" id="oxZ-O8-Ic6"/>
+                                                </constraints>
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
+                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LDL-6R-7h5">
+                                                <rect key="frame" x="43" y="0.0" width="302" height="40"/>
+                                                <color key="backgroundColor" name="White"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="DateButton"/>
+                                                <state key="normal" title="วันที่ต้องการเช่า">
+                                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="goToCategory:" destination="bPD-SC-RAR" eventType="touchUpInside" id="KDV-l4-0Oq"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3lw-jt-syh">
-                                <rect key="frame" x="56" y="389" width="263" height="34"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="360-1N-SHk">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="94"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="N2b-3A-Hc4">
-                                        <rect key="frame" x="0.0" y="1" width="35" height="32.666666666666671"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AkI-1n-YJO">
+                                        <rect key="frame" x="325" y="52" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="35" id="hwn-Wt-6DH"/>
+                                            <constraint firstAttribute="height" constant="40" id="Dy2-ru-XKG"/>
+                                            <constraint firstAttribute="width" constant="40" id="ljp-DQ-RjP"/>
                                         </constraints>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t07-rI-6oi">
-                                        <rect key="frame" x="43" y="0.0" width="220" height="34"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="LocationButton"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="biB-ep-tBl"/>
-                                        </constraints>
-                                        <state key="normal" title="สถานที่">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
+                                        <color key="tintColor" name="BlackGrey"/>
+                                        <state key="normal" image="person.fill" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="bold"/>
                                         </state>
-                                        <connections>
-                                            <action selector="goToCategory:" destination="bPD-SC-RAR" eventType="touchUpInside" id="ce4-2C-DSe"/>
-                                        </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SupersRent" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2a8-Bh-wND">
+                                        <rect key="frame" x="117.33333333333333" y="55.333333333333343" width="140.66666666666669" height="33.666666666666657"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Tez-mq-ZOa">
-                                <rect key="frame" x="56" y="443" width="263" height="34"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ckQ-ra-h3M">
-                                        <rect key="frame" x="0.0" y="1.6666666666666625" width="35" height="31.000000000000007"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="35" id="jpB-ek-bt8"/>
-                                        </constraints>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LDL-6R-7h5">
-                                        <rect key="frame" x="43" y="0.0" width="220" height="34"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="DateButton"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="220" id="MTb-Nm-sle"/>
-                                        </constraints>
-                                        <state key="normal" title="วันที่ต้องการเช่า">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="regular"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="goToCategory:" destination="bPD-SC-RAR" eventType="touchUpInside" id="KDV-l4-0Oq"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                                <color key="backgroundColor" name="SupersRent Yellow"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="AkI-1n-YJO" secondAttribute="trailing" constant="10" id="ECb-Ro-mKK"/>
+                                    <constraint firstAttribute="bottom" secondItem="AkI-1n-YJO" secondAttribute="bottom" constant="2" id="P5v-jp-ofz"/>
+                                    <constraint firstItem="2a8-Bh-wND" firstAttribute="centerX" secondItem="360-1N-SHk" secondAttribute="centerX" id="iw1-Zo-E0K"/>
+                                    <constraint firstAttribute="bottom" secondItem="2a8-Bh-wND" secondAttribute="bottom" constant="5" id="rNg-jE-sPj"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" name="BlackGrey"/>
                         <constraints>
-                            <constraint firstItem="3lw-jt-syh" firstAttribute="top" secondItem="tVv-U4-ygj" secondAttribute="bottom" constant="20" id="0fO-8c-4hi"/>
-                            <constraint firstItem="3lw-jt-syh" firstAttribute="centerX" secondItem="gdK-5Q-jPE" secondAttribute="centerX" id="MSF-8D-qM5"/>
-                            <constraint firstItem="Tez-mq-ZOa" firstAttribute="top" secondItem="3lw-jt-syh" secondAttribute="bottom" constant="20" id="RN9-jd-j26"/>
-                            <constraint firstItem="3lw-jt-syh" firstAttribute="centerY" secondItem="gdK-5Q-jPE" secondAttribute="centerY" id="Z8t-La-nGI"/>
-                            <constraint firstItem="tVv-U4-ygj" firstAttribute="centerX" secondItem="gdK-5Q-jPE" secondAttribute="centerX" id="c5p-Ex-lwb"/>
-                            <constraint firstItem="Tez-mq-ZOa" firstAttribute="centerX" secondItem="gdK-5Q-jPE" secondAttribute="centerX" id="vr3-g2-PW5"/>
+                            <constraint firstItem="WSR-Aq-EYW" firstAttribute="top" secondItem="7O4-xh-zpp" secondAttribute="bottom" constant="60" id="5hE-eV-GXf"/>
+                            <constraint firstItem="360-1N-SHk" firstAttribute="leading" secondItem="gdK-5Q-jPE" secondAttribute="leading" id="G9V-yz-3Tq"/>
+                            <constraint firstItem="aoU-KU-eN1" firstAttribute="trailing" secondItem="7O4-xh-zpp" secondAttribute="trailing" constant="15" id="Oxf-Na-j3M"/>
+                            <constraint firstItem="7O4-xh-zpp" firstAttribute="leading" secondItem="aoU-KU-eN1" secondAttribute="leading" constant="15" id="UBx-9i-s9K"/>
+                            <constraint firstAttribute="trailing" secondItem="360-1N-SHk" secondAttribute="trailing" id="UEK-RA-NFA"/>
+                            <constraint firstItem="WSR-Aq-EYW" firstAttribute="leading" secondItem="aoU-KU-eN1" secondAttribute="leading" constant="15" id="c7P-Tn-FLv"/>
+                            <constraint firstItem="7O4-xh-zpp" firstAttribute="centerY" secondItem="gdK-5Q-jPE" secondAttribute="centerY" id="cvL-Wh-HNt"/>
+                            <constraint firstItem="360-1N-SHk" firstAttribute="top" secondItem="gdK-5Q-jPE" secondAttribute="top" id="gir-Ia-hkL"/>
+                            <constraint firstItem="aoU-KU-eN1" firstAttribute="trailing" secondItem="WSR-Aq-EYW" secondAttribute="trailing" constant="15" id="hxS-nf-icO"/>
+                            <constraint firstItem="360-1N-SHk" firstAttribute="centerX" secondItem="gdK-5Q-jPE" secondAttribute="centerX" id="kE6-Rf-kIQ"/>
+                            <constraint firstItem="360-1N-SHk" firstAttribute="bottom" secondItem="aoU-KU-eN1" secondAttribute="top" constant="50" id="mMa-cD-AmD"/>
+                            <constraint firstItem="WSR-Aq-EYW" firstAttribute="centerX" secondItem="gdK-5Q-jPE" secondAttribute="centerX" id="n5y-oI-TEM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aoU-KU-eN1"/>
                     </view>
@@ -144,13 +196,14 @@
                         <outlet property="LocationButton" destination="t07-rI-6oi" id="Wqa-bl-LIx"/>
                         <outlet property="SuperView" destination="gdK-5Q-jPE" id="odM-jT-XGI"/>
                         <segue destination="xVw-0U-kE9" kind="presentation" identifier="GotoGroup" modalPresentationStyle="fullScreen" id="AcO-po-661"/>
-                        <segue destination="7I5-Hs-nKy" kind="presentation" identifier="GotoLocation" id="xM6-H3-ydl"/>
-                        <segue destination="UMQ-P1-y5L" kind="presentation" identifier="GotoDate" id="6Zw-lt-1uk"/>
+                        <segue destination="7I5-Hs-nKy" kind="presentation" identifier="GotoLocation" modalPresentationStyle="fullScreen" id="xM6-H3-ydl"/>
+                        <segue destination="UMQ-P1-y5L" kind="presentation" identifier="GotoDate" modalPresentationStyle="automatic" id="6Zw-lt-1uk"/>
+                        <segue destination="cob-hZ-XwP" kind="presentation" identifier="GotoSwiftUI" id="zqe-uU-xRQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2x-2H-3sv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2356" y="355"/>
+            <point key="canvasLocation" x="-1840.8" y="354.87256371814095"/>
         </scene>
         <!--Category-->
         <scene sceneID="bR8-4m-tVl">
@@ -160,23 +213,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u9B-Mf-xxL">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="u9B-Mf-xxL">
+                                <rect key="frame" x="0.0" y="93" width="375" height="719"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryCell" id="XfJ-F6-wfF">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XfJ-F6-wfF" id="fLE-AC-7Fn">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เลือกรายการสินค้า" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7p8-il-nSn">
+                                <rect key="frame" x="112.66666666666669" y="49" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="EeD-JL-JaO"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="UsH-cr-zgl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" name="BlackGrey"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CDK-I4-MHS">
+                                <rect key="frame" x="9.9999999999999964" y="49" width="58.666666666666657" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="0s5-pw-dQa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="tintColor" name="BlackGrey"/>
+                                <state key="normal" title=" กลับ" image="arrow.left" catalog="system">
+                                    <color key="titleColor" name="BlackGrey"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="bold"/>
+                                </state>
+                                <connections>
+                                    <action selector="BackToHome:" destination="xVw-0U-kE9" eventType="touchUpInside" id="1d0-cu-BY8"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="SupersRent Yellow"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="u9B-Mf-xxL" secondAttribute="bottom" id="CPS-V2-bhL"/>
+                            <constraint firstItem="7p8-il-nSn" firstAttribute="top" secondItem="PcR-hb-aH1" secondAttribute="top" constant="5" id="EBB-Uu-PLL"/>
+                            <constraint firstItem="u9B-Mf-xxL" firstAttribute="trailing" secondItem="PcR-hb-aH1" secondAttribute="trailing" id="Mnk-nm-prK"/>
+                            <constraint firstItem="u9B-Mf-xxL" firstAttribute="top" secondItem="7p8-il-nSn" secondAttribute="bottom" constant="14" id="RrW-z8-YT2"/>
+                            <constraint firstItem="7p8-il-nSn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CDK-I4-MHS" secondAttribute="trailing" constant="8" symbolic="YES" id="S8C-nK-J5R"/>
+                            <constraint firstItem="u9B-Mf-xxL" firstAttribute="leading" secondItem="PcR-hb-aH1" secondAttribute="leading" id="WxU-4N-Taa"/>
+                            <constraint firstItem="CDK-I4-MHS" firstAttribute="leading" secondItem="PcR-hb-aH1" secondAttribute="leading" constant="10" id="fer-c4-4Dc"/>
+                            <constraint firstItem="7p8-il-nSn" firstAttribute="centerX" secondItem="pBf-kC-N7V" secondAttribute="centerX" id="kIQ-4g-Odj"/>
+                            <constraint firstItem="CDK-I4-MHS" firstAttribute="top" secondItem="PcR-hb-aH1" secondAttribute="top" constant="5" id="nUr-7e-Pch"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PcR-hb-aH1"/>
                     </view>
                     <connections>
@@ -185,30 +273,100 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Ce-hb-3B5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-914" y="355"/>
+            <point key="canvasLocation" x="-916" y="354.67980295566502"/>
         </scene>
         <!--Location-->
         <scene sceneID="gOe-rY-AGs">
             <objects>
-                <viewController title="Location" id="7I5-Hs-nKy" sceneMemberID="viewController">
+                <viewController title="Location" id="7I5-Hs-nKy" customClass="LocationController" customModule="SupersRent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pQy-La-TLL">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A80-5R-zjX">
-                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zDF-Ck-zqd">
+                                <rect key="frame" x="335" y="90" width="30" height="32.666666666666671"/>
+                                <color key="tintColor" name="BlackGrey"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="5s6-4N-pA1"/>
+                                    <constraint firstAttribute="width" constant="30" id="LF7-PV-XgN"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ค้นหาสถานที่" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="DMI-p4-jXz">
+                                <rect key="frame" x="10" y="89" width="320" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="vXM-bd-e5d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="เลือกสถานที่" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNd-R6-RCX">
+                                <rect key="frame" x="142" y="49" width="91" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Trx-QR-2vH"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="c3g-5F-n2I"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="textColor" name="BlackGrey"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ozb-VI-fm3">
+                                <rect key="frame" x="9.9999999999999964" y="49" width="58.666666666666657" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="72j-2f-uXa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <color key="tintColor" name="BlackGrey"/>
+                                <state key="normal" title=" กลับ" image="arrow.left" catalog="system">
+                                    <color key="titleColor" name="BlackGrey"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="bold"/>
+                                </state>
+                                <connections>
+                                    <action selector="BackToHome:" destination="xVw-0U-kE9" eventType="touchUpInside" id="Bc8-26-GqG"/>
+                                    <action selector="BackToHomeButton:" destination="7I5-Hs-nKy" eventType="touchUpInside" id="jkY-Qp-XTz"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A80-5R-zjX">
+                                <rect key="frame" x="0.0" y="134" width="375" height="678"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" id="Zy9-AD-LCf">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zy9-AD-LCf" id="mpM-aH-fkg">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="SupersRent Yellow"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="A80-5R-zjX" secondAttribute="bottom" id="15n-OI-ZLH"/>
+                            <constraint firstItem="A80-5R-zjX" firstAttribute="leading" secondItem="oHv-tH-fY0" secondAttribute="leading" id="9bg-rK-kdK"/>
+                            <constraint firstItem="zDF-Ck-zqd" firstAttribute="leading" secondItem="DMI-p4-jXz" secondAttribute="trailing" constant="5" id="B8p-bQ-uJ2"/>
+                            <constraint firstItem="RNd-R6-RCX" firstAttribute="centerX" secondItem="pQy-La-TLL" secondAttribute="centerX" id="DfB-UA-xGG"/>
+                            <constraint firstItem="DMI-p4-jXz" firstAttribute="leading" secondItem="oHv-tH-fY0" secondAttribute="leading" constant="10" id="LH7-d5-u3j"/>
+                            <constraint firstItem="Ozb-VI-fm3" firstAttribute="leading" secondItem="oHv-tH-fY0" secondAttribute="leading" constant="10" id="LgN-fI-NdH"/>
+                            <constraint firstItem="DMI-p4-jXz" firstAttribute="top" secondItem="RNd-R6-RCX" secondAttribute="bottom" constant="10" id="NDc-bh-NJM"/>
+                            <constraint firstItem="oHv-tH-fY0" firstAttribute="trailing" secondItem="A80-5R-zjX" secondAttribute="trailing" id="Rxo-ob-nLT"/>
+                            <constraint firstItem="RNd-R6-RCX" firstAttribute="top" secondItem="oHv-tH-fY0" secondAttribute="top" constant="5" id="U7y-pK-SfA"/>
+                            <constraint firstItem="oHv-tH-fY0" firstAttribute="trailing" secondItem="zDF-Ck-zqd" secondAttribute="trailing" constant="10" id="Zkf-W9-mAJ"/>
+                            <constraint firstItem="zDF-Ck-zqd" firstAttribute="top" secondItem="RNd-R6-RCX" secondAttribute="bottom" constant="10" id="cuR-r6-fDl"/>
+                            <constraint firstItem="RNd-R6-RCX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Ozb-VI-fm3" secondAttribute="trailing" constant="8" symbolic="YES" id="hVy-ht-21f"/>
+                            <constraint firstItem="Ozb-VI-fm3" firstAttribute="top" secondItem="oHv-tH-fY0" secondAttribute="top" constant="5" id="p3y-lF-Lac"/>
+                            <constraint firstItem="A80-5R-zjX" firstAttribute="top" secondItem="DMI-p4-jXz" secondAttribute="bottom" constant="10" id="s5K-bZ-eYU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="oHv-tH-fY0"/>
                     </view>
-                    <navigationItem key="navigationItem" id="e3i-pI-8lX"/>
+                    <connections>
+                        <outlet property="LocationTable" destination="A80-5R-zjX" id="oVl-Qd-fn4"/>
+                        <outlet property="searchTextField" destination="DMI-p4-jXz" id="eBZ-Um-ok6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RO1-GW-eOM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-94" y="355"/>
+            <point key="canvasLocation" x="-96.799999999999997" y="353.20197044334975"/>
         </scene>
         <!--Profile-->
         <scene sceneID="hY0-Vr-PoR">
@@ -226,28 +384,45 @@
             </objects>
             <point key="canvasLocation" x="-913" y="-400"/>
         </scene>
-        <!--View Controller-->
+        <!--Date Controller-->
         <scene sceneID="SOt-gw-wMZ">
             <objects>
-                <viewController id="UMQ-P1-y5L" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="MUE-NR-atg">
+                <viewController id="UMQ-P1-y5L" customClass="DateController" customModule="SupersRent" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="b1P-Dh-jF8">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="Y9T-KZ-lLC"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" name="BlackGrey"/>
+                        <viewLayoutGuide key="safeArea" id="jOV-xl-ue9"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8dJ-a7-0L4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="670" y="355"/>
+            <point key="canvasLocation" x="669.60000000000002" y="354.67980295566502"/>
+        </scene>
+        <!--Hosting Controller-->
+        <scene sceneID="Afp-bY-fhc">
+            <objects>
+                <hostingController id="cob-hZ-XwP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eYF-Fl-gsk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2734" y="355"/>
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.left" catalog="system" width="64" height="48"/>
         <image name="calendar" catalog="system" width="64" height="52"/>
         <image name="list.bullet" catalog="system" width="64" height="44"/>
         <image name="location.fill" catalog="system" width="64" height="56"/>
+        <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+        <image name="person.fill" catalog="system" width="64" height="60"/>
         <namedColor name="BlackGrey">
             <color red="0.31372549019607843" green="0.31764705882352939" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SupersRent Yellow">
+            <color red="1" green="0.8784313725490196" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="White">
+            <color red="0.99215686274509807" green="1" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

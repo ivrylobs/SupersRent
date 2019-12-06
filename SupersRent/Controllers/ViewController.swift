@@ -53,6 +53,7 @@ class ViewController: UIViewController, CreditCardFormViewControllerDelegate{
 
 //MARK: Create Storyboard Container as View.
 
+@available(iOS 13.0, *)
 struct StoryBoardContainer: UIViewControllerRepresentable {
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<StoryBoardContainer>) -> UIViewController {
@@ -65,6 +66,7 @@ struct StoryBoardContainer: UIViewControllerRepresentable {
 
 //MARK: Previews Method of SwiftUI.
 
+@available(iOS 13.0.0, *)
 struct View_Previews: PreviewProvider {
     
     static var previews: some View {

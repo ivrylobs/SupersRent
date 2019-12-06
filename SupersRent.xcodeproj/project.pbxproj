@@ -16,6 +16,7 @@
 		03872A272394D1E900441D88 /* OmiseSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03872A1B2394CBF000441D88 /* OmiseSDK.framework */; };
 		5CC1BCFA9E19C53D7EB37A86 /* Pods_SupersRent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EF9171D5F6F29739614D4A8 /* Pods_SupersRent.framework */; };
 		9E8643782396ECE700AC3D50 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8643772396ECE700AC3D50 /* HomeController.swift */; };
+		9E92C3C6239A1A8F00691E96 /* DateController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E92C3C5239A1A8F00691E96 /* DateController.swift */; };
 		9EA05A012398CB740056CEF3 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA05A002398CB740056CEF3 /* ColorExtension.swift */; };
 		9EA05A032398D1B70056CEF3 /* GroupController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA05A022398D1B70056CEF3 /* GroupController.swift */; };
 		9EA05A052398D1D70056CEF3 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA05A042398D1D70056CEF3 /* LocationController.swift */; };
@@ -39,6 +40,7 @@
 		6EF9171D5F6F29739614D4A8 /* Pods_SupersRent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SupersRent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		951A436F420A58D8B75CD584 /* Pods-SupersRent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRent.debug.xcconfig"; path = "Target Support Files/Pods-SupersRent/Pods-SupersRent.debug.xcconfig"; sourceTree = "<group>"; };
 		9E8643772396ECE700AC3D50 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		9E92C3C5239A1A8F00691E96 /* DateController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateController.swift; sourceTree = "<group>"; };
 		9EA05A002398CB740056CEF3 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		9EA05A022398D1B70056CEF3 /* GroupController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupController.swift; sourceTree = "<group>"; };
 		9EA05A042398D1D70056CEF3 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				9E8643772396ECE700AC3D50 /* HomeController.swift */,
 				9EA05A022398D1B70056CEF3 /* GroupController.swift */,
 				9EA05A042398D1D70056CEF3 /* LocationController.swift */,
+				9E92C3C5239A1A8F00691E96 /* DateController.swift */,
 				036C40772394C6C300534D1C /* ViewController.swift */,
 			);
 			path = Controllers;
@@ -289,6 +292,7 @@
 				9EA05A032398D1B70056CEF3 /* GroupController.swift in Sources */,
 				9EA05A072398D78D0056CEF3 /* GroupData.swift in Sources */,
 				9EA05A012398CB740056CEF3 /* ColorExtension.swift in Sources */,
+				9E92C3C6239A1A8F00691E96 /* DateController.swift in Sources */,
 				9EA05A052398D1D70056CEF3 /* LocationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

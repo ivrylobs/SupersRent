@@ -1,21 +1,26 @@
 import SwiftUI
 import UIKit
 
-class HomeController: UIViewController , GetGroupDataDelegate{
+class HomeController: UIViewController {
     
     var groupData: [GroupModel] = []
+    var locationData: [LocationModel] = []
+    
+    var getGroupData = GetGroupData()
+    var getLocationData = GetLocationData()
     
     @IBOutlet weak var CategoryButton: UIButton!
     @IBOutlet weak var LocationButton: UIButton!
     @IBOutlet weak var DateButton: UIButton!
     @IBOutlet var SuperView: UIView!
     
-    var getGroupData = GetGroupData()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getGroupData.delegate = self
-        CategoryButton.titleLabel?.textAlignment = .center
+        
+        self.getGroupData.delegate = self
+        self.getLocationData.delegate = self
     }
     
     @IBAction func goToCategory(_ sender: UIButton) {
@@ -24,9 +29,11 @@ class HomeController: UIViewController , GetGroupDataDelegate{
         case "CategoryButton":
             self.getGroupData.getProductGroup()
         case "LocationButton":
-            performSegue(withIdentifier: "GotoLocation", sender: self)
+            self.getLocationData.getLocation()
         case "DateButton":
-            performSegue(withIdentifier: "GotoDate", sender: self)
+            let vc = UIHostingController(rootView: HostingSwiftUI())
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true, completion: nil)
         default:
             print("Not Match to any identifier")
         }
@@ -38,13 +45,18 @@ class HomeController: UIViewController , GetGroupDataDelegate{
             let destinationVC = segue.destination as! GroupController
             destinationVC.rowData = groupData
         case "GotoLocation":
-            print("Done")
+            let destinationVC = segue.destination as! LocationController
+            destinationVC.rowData = locationData
+            //print(self.locationData)
         case "GotoDate":
-            print("Done")
+            print("GotoDate")
         default:
             print("Not Match to any identifier")
         }
     }
+}
+
+extension HomeController: GetGroupDataDelegate, GetLocationDataDelegate {
     
     func didGetGroupData(groupData: [GroupModel]) {
         DispatchQueue.main.async {
@@ -53,9 +65,15 @@ class HomeController: UIViewController , GetGroupDataDelegate{
         }
     }
     
-    
+    func didGetLocationData(locationData: [LocationModel]) {
+        DispatchQueue.main.async {
+            self.locationData = locationData
+            self.performSegue(withIdentifier: "GotoLocation", sender: self)
+        }
+    }
 }
 
+@available(iOS 13.0, *)
 struct HomeViewContainer: UIViewControllerRepresentable {
     
     func makeUIViewController(context: UIViewControllerRepresentableContext<HomeViewContainer>) -> UIViewController {
@@ -67,6 +85,7 @@ struct HomeViewContainer: UIViewControllerRepresentable {
     }
 }
 
+@available(iOS 13.0.0, *)
 struct HomeController_Previews: PreviewProvider {
     static var previews: some View {
         HomeViewContainer().previewDevice(PreviewDevice(rawValue: "iPhone 8"))

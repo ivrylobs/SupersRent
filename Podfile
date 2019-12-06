@@ -8,4 +8,5 @@ target 'SupersRent' do
   # Pods for SupersRent
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'KDCalendar'
 end

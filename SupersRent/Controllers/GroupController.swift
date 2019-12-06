@@ -15,12 +15,14 @@ class GroupController: UIViewController {
     
     @IBOutlet weak var CategoryTable: UITableView!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.CategoryTable.dataSource = self
         self.CategoryTable.delegate = self
+    }
+    
+    @IBAction func BackToHome(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
 }
 
@@ -41,30 +43,10 @@ extension GroupController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print(indexPath.row)
-        
         if let presenter = presentingViewController as? HomeController {
-            presenter.CategoryButton.titleLabel?.text = self.CategoryTable.cellForRow(at: indexPath)?.textLabel?.text
+            presenter.CategoryButton.setTitle(self.CategoryTable.cellForRow(at: indexPath)?.textLabel?.text!, for: .normal)
         }
         
         dismiss(animated: true, completion: nil)
-    }
-}
-
-
-struct CategoryViewContainer: UIViewControllerRepresentable { 
-    
-    func makeUIViewController(context: UIViewControllerRepresentableContext<CategoryViewContainer>) -> UIViewController {
-        return UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(identifier: "Category")
-    }
-    
-    func updateUIViewController(_ uiViewController: UIViewController, context: UIViewControllerRepresentableContext<CategoryViewContainer>) {
-        
-    }
-}
-
-struct CategoryController_Previews: PreviewProvider {
-    static var previews: some View {
-        CategoryViewContainer().previewDevice(PreviewDevice(rawValue: "iPhone 8"))
     }
 }
