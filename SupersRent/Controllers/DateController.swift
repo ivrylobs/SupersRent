@@ -11,13 +11,31 @@ import KDCalendar
 
 class DateController: UIViewController {
     
+    var groupSelect: GroupModel?
+    var locationSelect: LocationModel?
+    var dateSelect: [DateModel]?
+    
     @IBOutlet weak var calendarView: CalendarView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let style = CalendarView.Style()
+        style.cellShape                = .bevel(8.0)
+        style.firstWeekday             = .sunday
+        style.locale                   = Locale(identifier: "th_TH")
+        style.weekdaysBackgroundColor  = UIColor.white
+        style.cellColorToday           = UIColor(red:1.00, green:0.84, blue:0.64, alpha:1.00)
+        style.cellSelectedBorderColor  = UIColor(red:1.00, green:0.63, blue:0.24, alpha:1.00)
+        style.cellTextColorToday       = UIColor.orange
+        style.cellSelectedBorderColor  = UIColor(red:1.00, green:0.63, blue:0.24, alpha:1.00)
+        style.cellTextColorDefault     = UIColor.black
+        
+        self.calendarView.style = style
         self.calendarView.dataSource = self
         self.calendarView.delegate = self
-        self.calendarView.style.locale = Locale(identifier: "th_TH")
+        
+        self.calendarView.marksWeekends = true
+        self.calendarView.direction = .horizontal
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -37,11 +55,11 @@ extension DateController: CalendarViewDataSource {
     
     func endDate() -> Date {
         var dateComponents = DateComponents()
-        dateComponents.month = 3
+        dateComponents.month = 12
         let today = Date()
-        let threeMonthAhead = self.calendarView.calendar.date(byAdding: dateComponents, to: today)
-        print(threeMonthAhead!)
-        if let dayEnd = threeMonthAhead {
+        let nextYear = self.calendarView.calendar.date(byAdding: dateComponents, to: today)
+        print(nextYear!)
+        if let dayEnd = nextYear {
             return dayEnd
         } else {
             return Date()
@@ -49,10 +67,11 @@ extension DateController: CalendarViewDataSource {
     }
     
     func headerString(_ date: Date) -> String? {
-        return "Some Header"
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "th_TH")
+        dateFormatter.dateFormat = "LLLL"
+        return dateFormatter.string(from: date)
     }
-    
-    
 }
 
 extension DateController: CalendarViewDelegate {
@@ -62,7 +81,15 @@ extension DateController: CalendarViewDelegate {
     
     func calendar(_ calendar: CalendarView, didSelectDate date: Date, withEvents events: [CalendarEvent]) {
         print("didSelectDate: \(date)")
-        print(calendar.selectedDates)
+        if calendar.selectedDates.count == 2 {
+            let presenter = self.presentingViewController as? HomeController
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "th_TH")
+            dateFormatter.dateFormat = "d LLLL yyyy"
+            let dateStringFormatted = "\(dateFormatter.string(from: self.calendarView.selectedDates[0])) - \(dateFormatter.string(from: self.calendarView.selectedDates[1]))"
+            presenter?.dateButton.setTitle(dateStringFormatted, for: .normal)
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     func calendar(_ calendar: CalendarView, canSelectDate date: Date) -> Bool {
@@ -76,6 +103,4 @@ extension DateController: CalendarViewDelegate {
     func calendar(_ calendar: CalendarView, didLongPressDate date: Date, withEvents events: [CalendarEvent]?) {
         print("didLongPressDate")
     }
-    
-    
 }

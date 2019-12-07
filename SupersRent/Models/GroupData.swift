@@ -1,11 +1,6 @@
 import Alamofire
 import SwiftyJSON
 
-struct GroupModel {
-    let groupId:Int
-    let groupName:String
-}
-
 protocol GetGroupDataDelegate {
     func didGetGroupData(groupData: [GroupModel])
 }

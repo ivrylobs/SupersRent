@@ -1,11 +1,6 @@
 import Alamofire
 import SwiftyJSON
 
-struct LocationModel {
-    let provinceName:String
-    let districtName:String
-}
-
 protocol GetLocationDataDelegate {
     func didGetLocationData(locationData: [LocationModel])
 }
