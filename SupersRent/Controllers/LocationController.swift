@@ -47,6 +47,7 @@ class LocationController: UIViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let presenter = presentingViewController as? HomeController {
             presenter.locationButton.setTitle(self.LocationTable.cellForRow(at: indexPath)?.textLabel?.text! , for: .normal)
+            presenter.searchLocation = self.filteredRowData![indexPath.row]
         }
         dismiss(animated: true, completion: nil)
     }

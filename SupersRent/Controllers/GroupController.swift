@@ -39,6 +39,7 @@ extension GroupController: UITableViewDelegate {
         
         if let presenter = presentingViewController as? HomeController {
             presenter.groupButton.setTitle(self.groupTable.cellForRow(at: indexPath)?.textLabel?.text!, for: .normal)
+            presenter.searchGroup = self.rowData![indexPath.row]
         }
         
         dismiss(animated: true, completion: nil)

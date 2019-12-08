@@ -91,6 +91,7 @@ extension DateController: CalendarViewDelegate {
             dateFormatter.dateFormat = "d LLLL yyyy"
             let dateStringFormatted = "\(dateFormatter.string(from: self.calendarView.selectedDates[0])) - \(dateFormatter.string(from: self.calendarView.selectedDates[1]))"
             presenter?.dateButton.setTitle(dateStringFormatted, for: .normal)
+            presenter?.searchDate = DateModel(firstDate: self.calendarView.selectedDates[0], finalDate: self.calendarView.selectedDates[1])
             self.dismiss(animated: true, completion: nil)
         }
     }
