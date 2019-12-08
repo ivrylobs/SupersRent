@@ -23,6 +23,10 @@ class SearchItemController: UIViewController {
         
     }
     
+    @IBAction func backToHome(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     func prepareCategoryData() {
         for items in self.productData! {
             if items.groupId == self.searchGroup?.groupId {

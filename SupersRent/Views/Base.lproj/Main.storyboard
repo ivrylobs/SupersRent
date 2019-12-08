@@ -93,7 +93,7 @@
                                 <rect key="frame" x="10" y="10" width="80" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="1If-Wc-KmP"/>
-                                    <constraint firstAttribute="width" constant="80" id="WOX-Yl-0wc"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="WOX-Yl-0wc"/>
                                 </constraints>
                                 <color key="tintColor" name="BlackGray"/>
                                 <state key="normal" title=" กลับ" image="arrow.left" catalog="system">
@@ -341,8 +341,9 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cf4-y7-S9P">
-                                <rect key="frame" x="8" y="430" width="304" height="50"/>
+                                <rect key="frame" x="85" y="430" width="150" height="50"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="Z7d-uk-e5u"/>
                                     <constraint firstAttribute="height" constant="50" id="bs8-3I-hLc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
@@ -356,7 +357,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="poF-uy-E64">
                                 <rect key="frame" x="8" y="10" width="80" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="bPM-5Z-sDP"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="80" id="bPM-5Z-sDP"/>
                                     <constraint firstAttribute="height" constant="30" id="rh4-cI-Ilh"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
@@ -365,18 +366,20 @@
                                     <color key="titleColor" name="BlackGray"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="black"/>
                                 </state>
+                                <connections>
+                                    <action selector="backToHome:" destination="P6E-Sh-NEc" eventType="touchUpInside" id="nxI-Iw-8CA"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="LogoYellow"/>
                         <constraints>
                             <constraint firstItem="UHE-ec-2L1" firstAttribute="bottom" secondItem="cf4-y7-S9P" secondAttribute="bottom" id="5cR-OF-hzZ"/>
                             <constraint firstItem="cf4-y7-S9P" firstAttribute="centerX" secondItem="kQM-6Z-J9s" secondAttribute="centerX" id="70F-sp-NFY"/>
-                            <constraint firstItem="cf4-y7-S9P" firstAttribute="leading" secondItem="UHE-ec-2L1" secondAttribute="leading" constant="8" id="9Rs-Tb-cIz"/>
                             <constraint firstItem="poF-uy-E64" firstAttribute="top" secondItem="UHE-ec-2L1" secondAttribute="top" constant="10" id="AgY-T1-Qv6"/>
                             <constraint firstItem="UHE-ec-2L1" firstAttribute="trailing" secondItem="Z72-cp-GIS" secondAttribute="trailing" id="Em7-iZ-V2F"/>
                             <constraint firstItem="poF-uy-E64" firstAttribute="leading" secondItem="UHE-ec-2L1" secondAttribute="leading" constant="8" id="Upw-dm-ZSE"/>
+                            <constraint firstItem="UHE-ec-2L1" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="poF-uy-E64" secondAttribute="trailing" symbolic="YES" id="aew-P4-vJe"/>
                             <constraint firstItem="Z72-cp-GIS" firstAttribute="leading" secondItem="UHE-ec-2L1" secondAttribute="leading" id="ck9-Fj-L2o"/>
-                            <constraint firstItem="UHE-ec-2L1" firstAttribute="trailing" secondItem="cf4-y7-S9P" secondAttribute="trailing" constant="8" id="huB-a9-xLE"/>
                             <constraint firstItem="cf4-y7-S9P" firstAttribute="top" secondItem="Z72-cp-GIS" secondAttribute="bottom" id="t5s-jI-7Rn"/>
                             <constraint firstItem="Z72-cp-GIS" firstAttribute="top" secondItem="UHE-ec-2L1" secondAttribute="top" constant="50" id="vNq-S9-Cza"/>
                         </constraints>
