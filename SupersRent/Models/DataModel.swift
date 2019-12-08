@@ -13,5 +13,4 @@ struct LocationModel {
 struct DateModel {
     let firstDate:Date
     let finalDate:Date
-    
 }

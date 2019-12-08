@@ -4,9 +4,11 @@ import KDCalendar
 
 class HomeController: UIViewController {
     
+    //Optional Variables for passing to other Controller.
     var groupData: [GroupModel]?
     var locationData: [LocationModel]?
     
+    //Create GetData Object.
     var getGroupData = GetGroupData()
     var getLocationData = GetLocationData()
     
@@ -34,6 +36,9 @@ class HomeController: UIViewController {
         case NameConstant.ButtonID.dateID :
             print(sender.accessibilityIdentifier!)
             self.performSegue(withIdentifier: NameConstant.SegueID.dateId, sender: self)
+        case NameConstant.ButtonID.searchID :
+            print(sender.accessibilityIdentifier!)
+            self.performSegue(withIdentifier: NameConstant.SegueID.searchID, sender: self)
         default:
             print("Not Match to any")
         }
@@ -53,6 +58,12 @@ class HomeController: UIViewController {
         
     }
     
+}
+
+extension HomeController {
+    func checkSearchParam() {
+        
+    }
 }
 
 extension HomeController: GetGroupDataDelegate {

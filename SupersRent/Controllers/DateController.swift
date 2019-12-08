@@ -19,21 +19,24 @@ class DateController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let style = CalendarView.Style()
+        
         style.cellShape                = .bevel(8.0)
-        style.firstWeekday             = .sunday
-        style.locale                   = Locale(identifier: "th_TH")
-        style.weekdaysBackgroundColor  = UIColor.white
         style.cellColorToday           = UIColor(red:1.00, green:0.84, blue:0.64, alpha:1.00)
         style.cellSelectedBorderColor  = UIColor(red:1.00, green:0.63, blue:0.24, alpha:1.00)
+        
+        style.weekdaysBackgroundColor  = UIColor.white
         style.cellTextColorToday       = UIColor.orange
-        style.cellSelectedBorderColor  = UIColor(red:1.00, green:0.63, blue:0.24, alpha:1.00)
         style.cellTextColorDefault     = UIColor.black
+        style.firstWeekday             = .sunday
+        style.locale                   = Locale(identifier: "th_TH")
         
         self.calendarView.style = style
         self.calendarView.dataSource = self
         self.calendarView.delegate = self
         
+        //Setup Calendar style after initialized.
         self.calendarView.marksWeekends = true
         self.calendarView.direction = .horizontal
     }
