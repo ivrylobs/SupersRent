@@ -1,10 +1,18 @@
 import UIKit
 
+protocol ProductItemCellDelegate {
+    func didChageAmount(product: ProductItem, itemLabel: String, itemAmount: Double)
+}
+
 class ProductItemCell: UITableViewCell {
+    
+    var productInfo: ProductItem?
 
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var itemLabel: UILabel!
     @IBOutlet weak var noteLabel: UILabel!
+    
+    var delegate: ProductItemCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,6 +33,7 @@ class ProductItemCell: UITableViewCell {
             amount -= 1
         }
         self.quantityLabel.text = String(amount)
+        self.delegate?.didChageAmount(product: self.productInfo!, itemLabel: self.itemLabel.text!, itemAmount: Double(self.quantityLabel.text!)!)
     }
     
     @IBAction func increaseQuantity(_ sender: UIButton) {
@@ -35,5 +44,6 @@ class ProductItemCell: UITableViewCell {
                    amount += 1
                }
                self.quantityLabel.text = String(amount)
+        self.delegate?.didChageAmount(product: self.productInfo!, itemLabel: self.itemLabel.text!, itemAmount: Double(self.quantityLabel.text!)!)
     }
 }

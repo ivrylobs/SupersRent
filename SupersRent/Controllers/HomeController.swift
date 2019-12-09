@@ -78,7 +78,7 @@ class HomeController: UIViewController {
     
     func showAlertFill() {
         // create the alert
-        let alert = UIAlertController(title: "My Title", message: "This is my message.", preferredStyle: UIAlertController.Style.alert)
+        let alert = UIAlertController(title: "Please Choose!", message: "This is my message.", preferredStyle: UIAlertController.Style.alert)
 
         // add an action (button)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))

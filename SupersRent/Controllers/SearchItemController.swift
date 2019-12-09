@@ -19,8 +19,7 @@ class SearchItemController: UIViewController {
         self.productTable.register(UINib(nibName: "ProductItemCell", bundle: nil), forCellReuseIdentifier: "ItemCell")
         self.productTable.dataSource = self
         self.productTable.delegate = self
-        
-        
+                
     }
     
     @IBAction func backToHome(_ sender: UIButton) {
@@ -35,6 +34,12 @@ class SearchItemController: UIViewController {
                 print("Not match")
             }
         }
+    }
+}
+
+extension SearchItemController: ProductItemCellDelegate {
+    func didChageAmount(product: ProductItem, itemLabel: String, itemAmount: Double) {
+        print("\(product) Amount: \(itemAmount)")
     }
 }
 
@@ -59,6 +64,8 @@ extension SearchItemController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.productTable.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ProductItemCell
+        cell.delegate = self
+        cell.productInfo = self.categoryData[indexPath.section].productItem[indexPath.row]
         cell.itemLabel.text = " \(self.categoryData[indexPath.section].productItem[indexPath.row].productId)  ขนาด: \(self.categoryData[indexPath.section].productItem[indexPath.row].productSize)"
         cell.noteLabel.text = " ราคาเช่า (บาท/วัน):  \(self.categoryData[indexPath.section].productItem[indexPath.row].productRentPrice)"
         return cell

@@ -22,7 +22,8 @@ struct ProductModel {
 }
 
 struct ProductItem {
-    let productName:String
+    let productCategory:String
+    let productGroup:String
     let productId:String
     let productSize:String
     let productRentPrice:Double

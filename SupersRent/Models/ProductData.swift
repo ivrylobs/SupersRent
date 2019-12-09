@@ -19,9 +19,16 @@ struct GetProductData {
                 for json in jsonData.arrayValue {
                     var productItem: [ProductItem] = []
                     for item in json["productHome"].arrayValue {
-                        productItem.append(ProductItem(productName: item["category"].stringValue, productId: item["productId"].stringValue, productSize: item["productSize"].stringValue, productRentPrice: item["productRentPrice"].doubleValue, productQuantity: item["productQuantity"].doubleValue))
+                        productItem.append(ProductItem(productCategory: item["category"].stringValue,
+                                                       productGroup: item["group"].stringValue,
+                                                       productId: item["productId"].stringValue,
+                                                       productSize: item["productSize"].stringValue,
+                                                       productRentPrice: item["productRentPrice"].doubleValue,
+                                                       productQuantity: item["productQuantity"].doubleValue))
                     }
-                    productData.append(ProductModel(categoryName: json["categoryName"].stringValue, groupId: json["group"].intValue, productItem: productItem))
+                    productData.append(ProductModel(categoryName: json["categoryName"].stringValue,
+                                                    groupId: json["group"].intValue,
+                                                    productItem: productItem))
                 }
                 self.delegate?.didGetProductData(productData: productData)
             case .failure(let error):
