@@ -1,12 +1,12 @@
 import UIKit
 
 protocol ProductItemCellDelegate {
-    func didChageAmount(product: ProductItem, itemLabel: String, itemAmount: Double)
+    func didChageAmount(product: ProductModel, itemLabel: String, itemAmount: Double)
 }
 
 class ProductItemCell: UITableViewCell {
     
-    var productInfo: ProductItem?
+    var productInfo: ProductModel?
 
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var itemLabel: UILabel!

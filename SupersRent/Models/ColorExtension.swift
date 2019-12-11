@@ -18,6 +18,20 @@ extension UIColor {
    }
 }
 
+extension Bool
+{
+    init(_ intValue: Int)
+    {
+        switch intValue
+        {
+        case 0:
+            self.init(false)
+        default:
+            self.init(true)
+        }
+    }
+}
+
 struct ColorString {
     static let White:Int = 0xFDFFFC
     static let BlackGrey:Int = 0x50514F

@@ -9,4 +9,5 @@ target 'SupersRent' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'KDCalendar'
+  pod 'Locksmith'
 end

@@ -1,26 +1,30 @@
 PODS:
   - Alamofire (4.9.1)
-  - KDCalendar (1.8.2):
-    - KDCalendar/EventManager (= 1.8.2)
-  - KDCalendar/EventManager (1.8.2)
+  - KDCalendar (1.8.3):
+    - KDCalendar/EventManager (= 1.8.3)
+  - KDCalendar/EventManager (1.8.3)
+  - Locksmith (4.0.0)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - Alamofire
   - KDCalendar
+  - Locksmith
   - SwiftyJSON
 
 SPEC REPOS:
   trunk:
     - Alamofire
     - KDCalendar
+    - Locksmith
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
-  KDCalendar: 114f8d2dd091608c2d8db7d5783c96a4c4a60398
+  KDCalendar: 9ecf74c9f631333891c66ce91e892d5fd31c9dd0
+  Locksmith: e9bebbaaa4cee3c511bc358a44f843c3fe00e21f
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: d03d612a40ec986a02ded8f46a2594a92d1d6ac0
+PODFILE CHECKSUM: b2889e1aa1e935a535eeb1dae19cc156e43987ad
 
 COCOAPODS: 1.8.4

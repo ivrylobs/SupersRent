@@ -7,7 +7,7 @@ class HomeController: UIViewController {
     //Optional Variables for passing to other Controller.
     var groupData: [GroupModel]?
     var locationData: [LocationModel]?
-    var searchProductData: [ProductModel]?
+    var searchProductData: [CategoryProduct]?
     
     //Create GetData Object.
     var getGroupData = GetGroupData()
@@ -36,16 +36,12 @@ class HomeController: UIViewController {
         
         switch sender.accessibilityIdentifier! {
         case NameConstant.ButtonID.groupID :
-            print(sender.accessibilityIdentifier!)
             self.getGroupData.getGroup()
         case NameConstant.ButtonID.locationID :
             self.getLocationData.getLocation()
-            print(sender.accessibilityIdentifier!)
         case NameConstant.ButtonID.dateID :
-            print(sender.accessibilityIdentifier!)
             self.performSegue(withIdentifier: NameConstant.SegueID.dateId, sender: self)
         case NameConstant.ButtonID.searchID :
-            print(sender.accessibilityIdentifier!)
             if self.searchGroup == nil || self.searchLocation == nil || self.searchDate == nil {
                 self.showAlertFill()
             } else {
@@ -97,7 +93,6 @@ extension HomeController {
 
 extension HomeController: GetGroupDataDelegate {
     func didGetGroupData(groupData: [GroupModel]) {
-        print("GetGroupData")
         DispatchQueue.main.async {
             self.groupData = groupData
             self.performSegue(withIdentifier: NameConstant.SegueID.groupID, sender: self)
@@ -107,7 +102,6 @@ extension HomeController: GetGroupDataDelegate {
 
 extension HomeController: GetLocationDataDelegate {
     func didGetLocationData(locationData: [LocationModel]) {
-        print("GetLocationData")
         DispatchQueue.main.async {
             self.locationData = locationData
             self.performSegue(withIdentifier: NameConstant.SegueID.locationID, sender: self)
@@ -116,8 +110,7 @@ extension HomeController: GetLocationDataDelegate {
 }
 
 extension HomeController: GetProductDataDelegate {
-    func didGetProductData(productData: [ProductModel]) {
-        print("GetProductData")
+    func didGetProductData(productData: [CategoryProduct]) {
         DispatchQueue.main.async {
             self.searchProductData = productData
             self.performSegue(withIdentifier: NameConstant.SegueID.searchID, sender: self)

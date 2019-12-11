@@ -79,12 +79,13 @@ extension DateController: CalendarViewDataSource {
 
 extension DateController: CalendarViewDelegate {
     func calendar(_ calendar: CalendarView, didScrollToMonth date: Date) {
-        print("didScrollToMonth")
+
     }
     
     func calendar(_ calendar: CalendarView, didSelectDate date: Date, withEvents events: [CalendarEvent]) {
-        print("didSelectDate: \(date)")
         if calendar.selectedDates.count == 2 {
+            
+
             let presenter = self.presentingViewController as? HomeController
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "th_TH")
@@ -101,10 +102,10 @@ extension DateController: CalendarViewDelegate {
     }
     
     func calendar(_ calendar: CalendarView, didDeselectDate date: Date) {
-        print("didDeselectDate")
+
     }
     
     func calendar(_ calendar: CalendarView, didLongPressDate date: Date, withEvents events: [CalendarEvent]?) {
-        print("didLongPressDate")
+
     }
 }

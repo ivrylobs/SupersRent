@@ -21,7 +21,7 @@ This is an easy to use, "just drag and drop it in your code" type of calendar fo
 #### CocoaPods
 
 ```
-pod 'KDCalendar', '~> 1.8.2'
+pod 'KDCalendar', '~> 1.8.3'
 ```
 
 #### Carthage
@@ -30,6 +30,22 @@ Add this to your Cartfile, and then run `carthage update`:
 ```
 github "mmick66/CalendarView" "master"
 ```
+
+#### Swift Package Manager
+
+Go to Project -> Swift Packages and add the repository:
+```
+https://github.com/mmick66/CalendarView.git
+```
+
+
+Add this to your Package.swift:
+```
+dependencies: [
+    .Package(url: "https://github.com/mmick66/CalendarView")
+]
+```
+
 
 #### Manual
 

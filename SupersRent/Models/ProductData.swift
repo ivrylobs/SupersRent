@@ -2,7 +2,7 @@ import Alamofire
 import SwiftyJSON
 
 protocol GetProductDataDelegate {
-    func didGetProductData(productData: [ProductModel])
+    func didGetProductData(productData: [CategoryProduct])
 }
 
 struct GetProductData {
@@ -15,19 +15,20 @@ struct GetProductData {
             switch response.result {
             case .success(let data):
                 let jsonData = JSON(data)
-                var productData: [ProductModel] = []
+                var productData: [CategoryProduct] = []
                 for json in jsonData.arrayValue {
-                    var productItem: [ProductItem] = []
+                    var productItem: [ProductModel] = []
                     for item in json["productHome"].arrayValue {
-                        productItem.append(ProductItem(productCategory: item["category"].stringValue,
-                                                       productGroup: item["group"].stringValue,
-                                                       productId: item["productId"].stringValue,
-                                                       productSize: item["productSize"].stringValue,
-                                                       productRentPrice: item["productRentPrice"].doubleValue,
-                                                       productQuantity: item["productQuantity"].doubleValue))
+                        productItem.append(ProductModel(id: item["id"].stringValue,
+                                                        productCategory: item["category"].stringValue,
+                                                        productGroup: item["group"].stringValue,
+                                                        productId: item["productId"].stringValue,
+                                                        productSize: item["productSize"].stringValue,
+                                                        productRentPrice: item["productRentPrice"].doubleValue,
+                                                        productQuantity: item["productQuantity"].doubleValue))
                     }
-                    productData.append(ProductModel(categoryName: json["categoryName"].stringValue,
-                                                    groupId: json["group"].intValue,
+                    productData.append(CategoryProduct(categoryName: json["categoryName"].stringValue,
+                                                    groupId: json["group"].stringValue,
                                                     productItem: productItem))
                 }
                 self.delegate?.didGetProductData(productData: productData)

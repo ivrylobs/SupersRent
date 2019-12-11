@@ -1,7 +1,7 @@
 import KDCalendar
 
 struct GroupModel {
-    let groupId:Int
+    let groupId:String
     let groupName:String
 }
 
@@ -15,17 +15,59 @@ struct DateModel {
     let finalDate:Date
 }
 
-struct ProductModel {
+struct CategoryProduct {
     let categoryName:String
-    let groupId:Int
-    let productItem:[ProductItem]
+    let groupId:String
+    let productItem:[ProductModel]
 }
 
-struct ProductItem {
+struct ProductModel {
+    let id:String
     let productCategory:String
     let productGroup:String
     let productId:String
     let productSize:String
     let productRentPrice:Double
     let productQuantity:Double
+}
+
+struct Customer {
+    let firstName:String
+    let lastName:String
+    let phoneNumber:String
+    let email:String
+}
+
+struct OrderModel {
+    let id:String
+    let productCategory:String
+    let productGroup:String
+    let productId:String
+    let productSize:String
+    let productRentPrice:Double
+    var productRent:Int
+    let productQuantity:Double
+    var productBalance:Int
+    var totalForItem:String
+}
+
+struct OrderSummary {
+    let orderAllItemBalance:Int
+    let orderAllTotalAndVAT:Double
+    let orderContractEndFormat:String
+    let orderContractStart:String
+    let orderContractStartFormat:String
+    let orderCustomer:Customer
+    let orderDate:String //Date that order created
+    let orderItemAllTotal:Double
+    let orderItemTotal:Double //Total Price
+    let orderItems:[OrderModel]
+    let orderLocationDistrict:String
+    let orderLocationProvince:String
+    let orderNumberOfItem:Int
+    let orderNumberOfItemOrder:Int
+    let orderStatus:Bool
+    let orderTimeRent:Int
+    let orderVAT:Double
+    
 }

@@ -17,7 +17,7 @@ struct GetGroupData {
                 let jsonData = JSON(data)
                 var groupData: [GroupModel] = []
                 for json in jsonData.arrayValue {
-                    groupData.append(GroupModel(groupId: json["groupID"].intValue,
+                    groupData.append(GroupModel(groupId: json["groupID"].stringValue,
                                                 groupName: json["groupName"].stringValue))
                 }
                 self.delegate?.didGetGroupData(groupData: groupData)
