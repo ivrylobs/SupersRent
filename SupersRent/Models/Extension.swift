@@ -18,6 +18,18 @@ extension UIColor {
    }
 }
 
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
 extension Bool
 {
     init(_ intValue: Int)
@@ -34,7 +46,7 @@ extension Bool
 
 struct ColorString {
     static let White:Int = 0xFDFFFC
-    static let BlackGrey:Int = 0x50514F
+    static let BlackGray:Int = 0x50514F
     static let RedCherry:Int = 0xF25F5C
     static let SupersRentYellow:Int = 0xFFE066
 }

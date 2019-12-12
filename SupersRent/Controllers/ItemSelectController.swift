@@ -1,7 +1,7 @@
 import UIKit
 import Locksmith
 
-class SearchItemController: UIViewController {
+class ItemSelectController: UIViewController {
     
     var productData: [CategoryProduct]? //Get item from home
     var categoryData: [CategoryProduct] = [] //Filter items by group
@@ -14,30 +14,34 @@ class SearchItemController: UIViewController {
     
     @IBOutlet weak var productTable: UITableView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Prepare Items Data.
         self.prepareCategoryData()
+        
+        //Register Custom Cell.
         self.productTable.register(UINib(nibName: "ProductItemCell", bundle: nil), forCellReuseIdentifier: "ItemCell")
+        
+        //Make DataSource and Protocal Deledate
         self.productTable.dataSource = self
+        self.productTable.delegate = self
+        
+        //
+//        do {
+//            try Locksmith.updateData(data: ["isLogin": false], forUserAccount: "admin")
+//        } catch {
+//            print(error)
+//        }
+        
     }
     
     @IBAction func gotoSummary(_ sender: UIButton) {
         let loadedData = Locksmith.loadDataForUserAccount(userAccount: "admin")!
         if Bool((loadedData["isLogin"] as? Int)!) {
-            print("It's true")
-            do {
-                try Locksmith.updateData(data: ["isLogin": false], forUserAccount: "admin")
-            } catch {
-                print(error)
-            }
+            self.performSegue(withIdentifier: "OrderToSummary", sender: self)
         } else {
-            do {
-                try Locksmith.updateData(data: ["isLogin": true], forUserAccount: "admin")
-            } catch {
-                print(error)
-            }
-            print("It's not true")
+            self.performSegue(withIdentifier: "OrderToLogin", sender: self)
         }
         
     }
@@ -51,13 +55,13 @@ class SearchItemController: UIViewController {
             if items.groupId == self.searchGroup?.groupId {
                 self.categoryData.append(items)
             } else {
-                print("Not match")
+                print("Not Found")
             }
         }
     }
 }
 
-extension SearchItemController: ProductItemCellDelegate {
+extension ItemSelectController: ItemCellControllerDelegate {
     func didChageAmount(product: ProductModel, itemLabel: String, itemAmount: Double) {
         let totalPrice = product.productRentPrice * itemAmount
         if self.orderItems.count == 0 {
@@ -109,13 +113,18 @@ extension SearchItemController: ProductItemCellDelegate {
     }
 }
 
-extension SearchItemController: UITableViewDataSource {
+extension ItemSelectController: UITableViewDataSource {
     
-    private func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        //Create Section Header
         let header = UILabel()
+        
+        //Set Header properties.
         header.text = "    \(self.categoryData[section].categoryName)"
-        header.backgroundColor = UIColor(rgb: ColorString.BlackGrey)
+        header.backgroundColor = UIColor(rgb: ColorString.BlackGray)
         header.textColor = UIColor(rgb: ColorString.White)
+        
         return header
     }
     
@@ -123,16 +132,38 @@ extension SearchItemController: UITableViewDataSource {
         return self.categoryData.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(60)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.categoryData[section].productItem.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.productTable.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ProductItemCell
+        
+        //Create UITableViewCell.
+        let cell = self.productTable.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCellController
+        
+        //Make Cell Delegate to this Controller
         cell.delegate = self
+        
+        //Make Cell
         cell.productInfo = self.categoryData[indexPath.section].productItem[indexPath.row]
-        cell.itemLabel.text = " \(self.categoryData[indexPath.section].productItem[indexPath.row].productId)  ขนาด: \(self.categoryData[indexPath.section].productItem[indexPath.row].productSize)"
-        cell.noteLabel.text = " ราคาเช่า (บาท/วัน):  \(self.categoryData[indexPath.section].productItem[indexPath.row].productRentPrice)"
+        
+        //Setup Cell Component
+        let category = self.categoryData[indexPath.section].productItem[indexPath.row].productId
+        let size = self.categoryData[indexPath.section].productItem[indexPath.row].productSize
+        let price = self.categoryData[indexPath.section].productItem[indexPath.row].productRentPrice
+        cell.itemLabel.text = " \(category)  ขนาด: \(size)"
+        cell.noteLabel.text = " ราคาเช่า (บาท/วัน):  \(price)"
+        
         return cell
+    }
+}
+
+extension ItemSelectController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("here")
     }
 }

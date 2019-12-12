@@ -1,7 +1,7 @@
 import UIKit
 import SwiftUI
 
-class LocationController: UIViewController {
+class LocationSelectController: UIViewController {
     
     var rowData: [LocationModel]?
     var filteredRowData: [LocationModel]?
@@ -54,7 +54,7 @@ class LocationController: UIViewController {
     
 }
 
-extension LocationController: UITableViewDelegate, UITableViewDataSource {
+extension LocationSelectController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filteredRowData?.count ?? 1
@@ -71,7 +71,7 @@ extension LocationController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension LocationController: UITextFieldDelegate {
+extension LocationSelectController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchTextField.endEditing(true)
         return true

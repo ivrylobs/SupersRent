@@ -1,7 +1,7 @@
 import UIKit
 import SwiftUI
 
-class GroupController: UIViewController {
+class GroupSelectController: UIViewController {
     
     var rowData: [GroupModel]?
     
@@ -20,7 +20,7 @@ class GroupController: UIViewController {
     }
 }
 
-extension GroupController: UITableViewDataSource {
+extension GroupSelectController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return rowData?.count ?? 1
     }
@@ -33,15 +33,15 @@ extension GroupController: UITableViewDataSource {
     }
 }
 
-extension GroupController: UITableViewDelegate {
-    
+extension GroupSelectController: UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+
         if let presenter = presentingViewController as? HomeController {
             presenter.groupButton.setTitle(self.groupTable.cellForRow(at: indexPath)?.textLabel?.text!, for: .normal)
             presenter.searchGroup = self.rowData![indexPath.row]
         }
-        
+
         dismiss(animated: true, completion: nil)
     }
 }

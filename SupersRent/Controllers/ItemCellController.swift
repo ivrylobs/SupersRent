@@ -1,10 +1,10 @@
 import UIKit
 
-protocol ProductItemCellDelegate {
+protocol ItemCellControllerDelegate {
     func didChageAmount(product: ProductModel, itemLabel: String, itemAmount: Double)
 }
 
-class ProductItemCell: UITableViewCell {
+class ItemCellController: UITableViewCell {
     
     var productInfo: ProductModel?
 
@@ -12,7 +12,7 @@ class ProductItemCell: UITableViewCell {
     @IBOutlet weak var itemLabel: UILabel!
     @IBOutlet weak var noteLabel: UILabel!
     
-    var delegate: ProductItemCellDelegate?
+    var delegate: ItemCellControllerDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()

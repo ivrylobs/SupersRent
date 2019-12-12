@@ -1,7 +1,7 @@
 import UIKit
 import OmiseSDK
 
-class OrderSummaryController: UIViewController {
+class OrderPaymentController: UIViewController {
     
     
     
@@ -23,7 +23,7 @@ class OrderSummaryController: UIViewController {
     
 }
 
-extension OrderSummaryController: CreditCardFormViewControllerDelegate {
+extension OrderPaymentController: CreditCardFormViewControllerDelegate {
     func creditCardFormViewController(_ controller: CreditCardFormViewController, didSucceedWithToken token: Token) {
         print("Token_ID: \(token.id)")
         controller.dismiss(animated: true, completion: nil)

@@ -9,7 +9,7 @@
 import UIKit
 import KDCalendar
 
-class DateController: UIViewController {
+class DateSelectController: UIViewController {
     
     var groupSelect: GroupModel?
     var locationSelect: LocationModel?
@@ -51,7 +51,7 @@ class DateController: UIViewController {
     }
 }
 
-extension DateController: CalendarViewDataSource {
+extension DateSelectController: CalendarViewDataSource {
     func startDate() -> Date {
         return Date()
     }
@@ -77,23 +77,27 @@ extension DateController: CalendarViewDataSource {
     }
 }
 
-extension DateController: CalendarViewDelegate {
+extension DateSelectController: CalendarViewDelegate {
     func calendar(_ calendar: CalendarView, didScrollToMonth date: Date) {
 
     }
     
     func calendar(_ calendar: CalendarView, didSelectDate date: Date, withEvents events: [CalendarEvent]) {
         if calendar.selectedDates.count == 2 {
-            
-
-            let presenter = self.presentingViewController as? HomeController
-            let dateFormatter = DateFormatter()
-            dateFormatter.locale = Locale(identifier: "th_TH")
-            dateFormatter.dateFormat = "d LLLL yyyy"
-            let dateStringFormatted = "\(dateFormatter.string(from: self.calendarView.selectedDates[0])) - \(dateFormatter.string(from: self.calendarView.selectedDates[1]))"
-            presenter?.dateButton.setTitle(dateStringFormatted, for: .normal)
-            presenter?.searchDate = DateModel(firstDate: self.calendarView.selectedDates[0], finalDate: self.calendarView.selectedDates[1])
-            self.dismiss(animated: true, completion: nil)
+        
+            if self.calendarView.selectedDates[0] > self.calendarView.selectedDates[1] {
+                self.calendarView.deselectDate(self.calendarView.selectedDates[0])
+            } else {
+                let dateFormatter = DateFormatter()
+                let presenter = self.presentingViewController as? HomeController
+                
+                dateFormatter.locale = Locale(identifier: "th_TH")
+                dateFormatter.dateFormat = "d LLLL yyyy"
+                let dateStringFormatted = "\(dateFormatter.string(from: self.calendarView.selectedDates[0])) - \(dateFormatter.string(from: self.calendarView.selectedDates[1]))"
+                presenter?.dateButton.setTitle(dateStringFormatted, for: .normal)
+                presenter?.searchDate = DateModel(firstDate: self.calendarView.selectedDates[0], finalDate: self.calendarView.selectedDates[1])
+                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
     
