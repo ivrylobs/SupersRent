@@ -22,13 +22,17 @@ class DateSelectController: UIViewController {
         
         let style = CalendarView.Style()
         
-        style.cellShape                = .bevel(8.0)
+        style.cellShape                = .bevel(20.0)
         style.cellColorToday           = UIColor(red:1.00, green:0.84, blue:0.64, alpha:1.00)
         style.cellSelectedBorderColor  = UIColor(red:1.00, green:0.63, blue:0.24, alpha:1.00)
-        
-        style.weekdaysBackgroundColor  = UIColor.white
+        style.headerTextColor = UIColor.black
+        style.weekdaysTextColor = UIColor.black
+        style.cellSelectedTextColor = UIColor.yellow
+        style.weekdaysBackgroundColor  = UIColor(rgb: 0xFECA1E)
+        style.headerBackgroundColor = UIColor(rgb: 0xFECA1E)
+        style.cellColorDefault          = UIColor(rgb: 0x393E46)
         style.cellTextColorToday       = UIColor.orange
-        style.cellTextColorDefault     = UIColor.black
+        style.cellTextColorDefault     = UIColor.white
         style.firstWeekday             = .sunday
         style.locale                   = Locale(identifier: "th_TH")
         
@@ -79,12 +83,12 @@ extension DateSelectController: CalendarViewDataSource {
 
 extension DateSelectController: CalendarViewDelegate {
     func calendar(_ calendar: CalendarView, didScrollToMonth date: Date) {
-
+        
     }
     
     func calendar(_ calendar: CalendarView, didSelectDate date: Date, withEvents events: [CalendarEvent]) {
         if calendar.selectedDates.count == 2 {
-        
+            
             if self.calendarView.selectedDates[0] > self.calendarView.selectedDates[1] {
                 self.calendarView.deselectDate(self.calendarView.selectedDates[0])
             } else {
@@ -106,10 +110,10 @@ extension DateSelectController: CalendarViewDelegate {
     }
     
     func calendar(_ calendar: CalendarView, didDeselectDate date: Date) {
-
+        
     }
     
     func calendar(_ calendar: CalendarView, didLongPressDate date: Date, withEvents events: [CalendarEvent]?) {
-
+        
     }
 }

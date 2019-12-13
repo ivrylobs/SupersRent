@@ -10,6 +10,7 @@ class HomeController: UIViewController {
     var groupData: [GroupModel]?
     var locationData: [LocationModel]?
     var itemData: [CategoryProduct]?
+    var userData: JSON?
     
     //Create GetData Object.
     var getGroupData = GetGroupData()
@@ -21,20 +22,26 @@ class HomeController: UIViewController {
     var searchLocation: LocationModel?
     var searchDate: DateModel?
     
+    
+    
     //Button object.
     @IBOutlet weak var groupButton: UIButton!
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var profileLabel: UILabel!
+    @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
-        //        do {
-        //            try Locksmith.updateData(data: ["isLogin": true, "tokenAccess": "", "email": "", "userData": ""], forUserAccount: "admin")
-        //        } catch {
-        //            print(error)
-        //        }
+        if Locksmith.loadDataForUserAccount(userAccount: "admin") == nil {
+            print("nil ....")
+            do {
+                try Locksmith.saveData(data: ["isLogin": false, "tokenAccess": "", "email": "", "userData": ""], forUserAccount: "admin")
+            } catch {
+                print(error)
+            }
+        }
+        super.viewDidLoad()
         
         //Protocal Delegate.
         self.getGroupData.delegate = self
@@ -43,22 +50,28 @@ class HomeController: UIViewController {
         
         //Prepare Data for get UserInfo
         let userData = Locksmith.loadDataForUserAccount(userAccount: "admin")
-        let jsonData = JSON(userData!)
-        print(jsonData)
-        let url = "https://api.supersrent.com/app-user/api/customer/getProfile/\(jsonData["email"].stringValue)"
-        let header = ["Accept":"application/json","AuthorizationHome": jsonData["tokenAccess"].stringValue]
+        let returnUserData = JSON(userData!)
+        self.userData = returnUserData
+        print(returnUserData)
+        let url = "https://api.supersrent.com/app-user/api/customer/getProfile/\(returnUserData["email"].stringValue)"
+        let header = ["Accept":"application/json","AuthorizationHome": returnUserData["tokenAccess"].stringValue]
         
-        if let isLogin = jsonData["isLogin"].bool {
+        if let isLogin = returnUserData["isLogin"].bool {
             if isLogin {
-                print("LoggedIn")
                 Alamofire.request(url, method: .get, headers: header).responseJSON { response in
                     switch response.result {
                     case .success(let data):
                         DispatchQueue.main.async {
                             let userData = JSON(data)
-                            print(userData)
                             if let firstName = userData["firstName"].string {
+                                print("LoggedIn")
                                 self.profileLabel.text = firstName
+                                self.userData!["userData"] = JSON(userData)
+                                do {
+                                    try Locksmith.updateData(data: self.userData!.dictionaryObject!, forUserAccount: "admin")
+                                } catch {
+                                    print(error)
+                                }
                             } else {
                                 do {
                                     try Locksmith.updateData(data: ["isLogin": false, "tokenAccess": "", "email": "", "userData": ""], forUserAccount: "admin")
@@ -91,6 +104,11 @@ class HomeController: UIViewController {
     }
     
     @IBAction func gotoLogin(_ sender: UIButton) {
+        let loadedData = Locksmith.loadDataForUserAccount(userAccount: "admin")
+        let userData = JSON(loadedData!)
+        if userData["isLogin"].boolValue {
+            print("Now are Login")
+        }
         self.performSegue(withIdentifier: NameConstant.SegueID.homeToLoginID, sender: self)
     }
     

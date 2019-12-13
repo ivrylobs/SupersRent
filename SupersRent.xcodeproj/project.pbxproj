@@ -14,6 +14,14 @@
 		036C40802394C6C700534D1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 036C407E2394C6C700534D1C /* LaunchScreen.storyboard */; };
 		9E18BE0D23A007A800E85188 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E18BE0C23A007A800E85188 /* LoginController.swift */; };
 		9E3476F0239BA09100C94CFE /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3476EF239BA09100C94CFE /* DataModel.swift */; };
+		9E60671423A3AC59007AD5B9 /* SummaryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60671223A3AC59007AD5B9 /* SummaryItemCell.swift */; };
+		9E60671523A3AC59007AD5B9 /* SummaryItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E60671323A3AC59007AD5B9 /* SummaryItemCell.xib */; };
+		9E60671823A3B2F7007AD5B9 /* PriceSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60671623A3B2F7007AD5B9 /* PriceSummaryCell.swift */; };
+		9E60671923A3B2F7007AD5B9 /* PriceSummaryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E60671723A3B2F7007AD5B9 /* PriceSummaryCell.xib */; };
+		9E60671C23A3C1D4007AD5B9 /* UserInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60671A23A3C1D4007AD5B9 /* UserInfoCell.swift */; };
+		9E60671D23A3C1D5007AD5B9 /* UserInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E60671B23A3C1D4007AD5B9 /* UserInfoCell.xib */; };
+		9E60672023A41DB9007AD5B9 /* RentTimeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60671E23A41DB8007AD5B9 /* RentTimeCell.swift */; };
+		9E60672123A41DB9007AD5B9 /* RentTimeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E60671F23A41DB9007AD5B9 /* RentTimeCell.xib */; };
 		9E8643782396ECE700AC3D50 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8643772396ECE700AC3D50 /* HomeController.swift */; };
 		9E92C3D9239A6D9200691E96 /* DateSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E92C3D8239A6D9200691E96 /* DateSelectController.swift */; };
 		9E92C3DB239ABB1A00691E96 /* NameConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E92C3DA239ABB1A00691E96 /* NameConstant.swift */; };
@@ -46,6 +54,14 @@
 		851CAF6944D1CDB38FA06206 /* Pods-SupersRent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRent.release.xcconfig"; path = "Target Support Files/Pods-SupersRent/Pods-SupersRent.release.xcconfig"; sourceTree = "<group>"; };
 		9E18BE0C23A007A800E85188 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		9E3476EF239BA09100C94CFE /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		9E60671223A3AC59007AD5B9 /* SummaryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryItemCell.swift; sourceTree = "<group>"; };
+		9E60671323A3AC59007AD5B9 /* SummaryItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SummaryItemCell.xib; sourceTree = "<group>"; };
+		9E60671623A3B2F7007AD5B9 /* PriceSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceSummaryCell.swift; sourceTree = "<group>"; };
+		9E60671723A3B2F7007AD5B9 /* PriceSummaryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceSummaryCell.xib; sourceTree = "<group>"; };
+		9E60671A23A3C1D4007AD5B9 /* UserInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoCell.swift; sourceTree = "<group>"; };
+		9E60671B23A3C1D4007AD5B9 /* UserInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserInfoCell.xib; sourceTree = "<group>"; };
+		9E60671E23A41DB8007AD5B9 /* RentTimeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RentTimeCell.swift; sourceTree = "<group>"; };
+		9E60671F23A41DB9007AD5B9 /* RentTimeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RentTimeCell.xib; sourceTree = "<group>"; };
 		9E8643772396ECE700AC3D50 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		9E92C3D8239A6D9200691E96 /* DateSelectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateSelectController.swift; sourceTree = "<group>"; };
 		9E92C3DA239ABB1A00691E96 /* NameConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameConstant.swift; sourceTree = "<group>"; };
@@ -116,8 +132,12 @@
 				9EC1570A239BE5580013F3E9 /* ItemSelectController.swift */,
 				9EB63A8623A101B800C2233A /* OrderSummay.swift */,
 				9EC1570C239BE5910013F3E9 /* OrderPayment.swift */,
-				9EC1570E239CFFC10013F3E9 /* ItemCellController.swift */,
 				9E18BE0C23A007A800E85188 /* LoginController.swift */,
+				9EC1570E239CFFC10013F3E9 /* ItemCellController.swift */,
+				9E60671223A3AC59007AD5B9 /* SummaryItemCell.swift */,
+				9E60671623A3B2F7007AD5B9 /* PriceSummaryCell.swift */,
+				9E60671A23A3C1D4007AD5B9 /* UserInfoCell.swift */,
+				9E60671E23A41DB8007AD5B9 /* RentTimeCell.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -128,6 +148,10 @@
 				036C407E2394C6C700534D1C /* LaunchScreen.storyboard */,
 				036C40792394C6C300534D1C /* Main.storyboard */,
 				9EC1570F239CFFC10013F3E9 /* ProductItemCell.xib */,
+				9E60671323A3AC59007AD5B9 /* SummaryItemCell.xib */,
+				9E60671723A3B2F7007AD5B9 /* PriceSummaryCell.xib */,
+				9E60671B23A3C1D4007AD5B9 /* UserInfoCell.xib */,
+				9E60671F23A41DB9007AD5B9 /* RentTimeCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,9 +249,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E60671523A3AC59007AD5B9 /* SummaryItemCell.xib in Resources */,
+				9E60672123A41DB9007AD5B9 /* RentTimeCell.xib in Resources */,
 				9EC15711239CFFC10013F3E9 /* ProductItemCell.xib in Resources */,
 				036C40802394C6C700534D1C /* LaunchScreen.storyboard in Resources */,
+				9E60671D23A3C1D5007AD5B9 /* UserInfoCell.xib in Resources */,
 				036C407D2394C6C700534D1C /* Assets.xcassets in Resources */,
+				9E60671923A3B2F7007AD5B9 /* PriceSummaryCell.xib in Resources */,
 				036C407B2394C6C300534D1C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,13 +329,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E60672023A41DB9007AD5B9 /* RentTimeCell.swift in Sources */,
 				9EB63A8723A101B800C2233A /* OrderSummay.swift in Sources */,
 				9E8643782396ECE700AC3D50 /* HomeController.swift in Sources */,
 				9E92C3DB239ABB1A00691E96 /* NameConstant.swift in Sources */,
 				9EA05A0923992E800056CEF3 /* ProductData.swift in Sources */,
+				9E60671823A3B2F7007AD5B9 /* PriceSummaryCell.swift in Sources */,
 				9EC1570B239BE5580013F3E9 /* ItemSelectController.swift in Sources */,
 				036C40742394C6C300534D1C /* AppDelegate.swift in Sources */,
 				9EC1570D239BE5910013F3E9 /* OrderPayment.swift in Sources */,
+				9E60671C23A3C1D4007AD5B9 /* UserInfoCell.swift in Sources */,
 				9EA05A0B23992E8B0056CEF3 /* LocationData.swift in Sources */,
 				9E3476F0239BA09100C94CFE /* DataModel.swift in Sources */,
 				9EC15710239CFFC10013F3E9 /* ItemCellController.swift in Sources */,
@@ -318,6 +349,7 @@
 				9E18BE0D23A007A800E85188 /* LoginController.swift in Sources */,
 				9E92C3D9239A6D9200691E96 /* DateSelectController.swift in Sources */,
 				9EA05A052398D1D70056CEF3 /* LocationSelectController.swift in Sources */,
+				9E60671423A3AC59007AD5B9 /* SummaryItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

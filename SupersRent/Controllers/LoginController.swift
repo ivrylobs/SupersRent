@@ -46,12 +46,13 @@ class LoginController: UIViewController {
                         print(tokenType)
                         print(tokenAccess)
                         do {
-                            try Locksmith.updateData(data: ["isLogin": true, "tokenAccess": "\(tokenType) \(tokenAccess)", "email": "\(self.usernameField.text!)", "userData": jsonData.arrayValue], forUserAccount: "admin")
+                            try Locksmith.updateData(data: ["isLogin": true, "tokenAccess": "\(tokenType) \(tokenAccess)", "email": "\(self.usernameField.text!)", "userData": ""], forUserAccount: "admin")
                             let presenter = self.presentingViewController
                             if presenter?.restorationIdentifier! == NameConstant.StoryBoardID.homeID {
                                 presenter?.viewDidLoad()
                                 self.dismiss(animated: true, completion: nil)
                             } else {
+                                self.doUpdateIfLoginFromOrder()
                                 self.dismiss(animated: true) {
                                     presenter?.performSegue(withIdentifier: NameConstant.SegueID.itemToSummayID, sender: presenter)
                                 }
@@ -73,6 +74,28 @@ class LoginController: UIViewController {
                 DispatchQueue.main.async {
                     print(error)
                 }
+            }
+        }
+    }
+    
+    func doUpdateIfLoginFromOrder() {
+        let userData = Locksmith.loadDataForUserAccount(userAccount: "admin")
+        var returnUserData = JSON(userData!)
+        let url = "https://api.supersrent.com/app-user/api/customer/getProfile/\(returnUserData["email"].stringValue)"
+        let header = ["Accept":"application/json","AuthorizationHome": returnUserData["tokenAccess"].stringValue]
+        
+        Alamofire.request(url, method: .get, headers: header).responseJSON { response in
+            switch response.result {
+            case .success(let data):
+                let jsonData = JSON(data)
+                returnUserData["userData"] = JSON(jsonData)
+                do {
+                    try Locksmith.updateData(data: returnUserData.dictionaryObject!, forUserAccount: "admin")
+                } catch {
+                    print(error)
+                }
+            case .failure(let error):
+                print(error)
             }
         }
     }

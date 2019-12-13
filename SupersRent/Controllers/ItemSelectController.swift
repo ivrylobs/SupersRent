@@ -24,32 +24,34 @@ class ItemSelectController: UIViewController {
         //Register Custom Cell.
         self.productTable.register(UINib(nibName: "ProductItemCell", bundle: nil), forCellReuseIdentifier: "ItemCell")
         
-        //Make DataSource and Protocal Deledate
+        //Make DataSource and Protocal Delegate
         self.productTable.dataSource = self
         self.productTable.delegate = self
         
         self.productTable.tableFooterView = UIView()
         
-        //
-//        do {
-//            try Locksmith.updateData(data: ["isLogin": false], forUserAccount: "admin")
-//        } catch {
-//            print(error)
-//        }
-        
     }
     
     @IBAction func gotoSummary(_ sender: UIButton) {
-        let loadedData = Locksmith.loadDataForUserAccount(userAccount: "admin")!
-        let userData = JSON(loadedData)
         
-        if userData["isLogin"].boolValue {
-            self.performSegue(withIdentifier: NameConstant.SegueID.itemToSummayID, sender: self)
+        if self.orderItems.count == 0 {
+            showAlertFill()
         } else {
-            self.performSegue(withIdentifier: NameConstant.SegueID.itemToLoginID, sender: self)
+            let loadedData = Locksmith.loadDataForUserAccount(userAccount: "admin")!
+            let userData = JSON(loadedData)
+            if userData["isLogin"].boolValue {
+                self.performSegue(withIdentifier: NameConstant.SegueID.itemToSummayID, sender: self)
+            } else {
+                self.performSegue(withIdentifier: NameConstant.SegueID.itemToLoginID, sender: self)
+            }
         }
-        
-        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier! == NameConstant.SegueID.itemToSummayID {
+            let destinationVC = segue.destination as? OrderSummayController
+            destinationVC?.orderItems = self.orderItems
+        }
     }
     
     @IBAction func backToHome(_ sender: UIButton) {
@@ -64,6 +66,17 @@ class ItemSelectController: UIViewController {
                 print("Not Found")
             }
         }
+    }
+    
+    func showAlertFill() {
+        // create the alert
+        let alert = UIAlertController(title: "ผิดพลาด", message: "กรุณาเลือกสินค้า", preferredStyle: UIAlertController.Style.alert)
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -115,7 +128,7 @@ extension ItemSelectController: ItemCellControllerDelegate {
                 }
             }
         }
-        print(self.orderItems)
+        //print(self.orderItems)
     }
 }
 
@@ -127,8 +140,8 @@ extension ItemSelectController: UITableViewDataSource {
         let header = UILabel()
         
         //Set Header properties.
-        header.text = "    \(self.categoryData[section].categoryName)"
-        header.backgroundColor = UIColor(rgb: ColorString.BlackGray)
+        header.text = "  \(self.categoryData[section].categoryName)"
+        header.backgroundColor = UIColor(rgb: 0x222831)
         header.textColor = UIColor(rgb: ColorString.White)
         
         return header
@@ -139,7 +152,7 @@ extension ItemSelectController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(60)
+        return CGFloat(80)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -161,8 +174,9 @@ extension ItemSelectController: UITableViewDataSource {
         let category = self.categoryData[indexPath.section].productItem[indexPath.row].productId
         let size = self.categoryData[indexPath.section].productItem[indexPath.row].productSize
         let price = self.categoryData[indexPath.section].productItem[indexPath.row].productRentPrice
-        cell.itemLabel.text = " \(category)  ขนาด: \(size)"
-        cell.noteLabel.text = " ราคาเช่า (บาท/วัน):  \(price)"
+        cell.itemLabel.text = " รหัส: \(category)"
+        cell.sizeLabel.text = " ขนาด: \(size)"
+        cell.priceLabel.text = " ราคาเช่า(บาท/วัน):  \(price)"
         
         return cell
     }
