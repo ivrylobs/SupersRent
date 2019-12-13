@@ -52,7 +52,9 @@ class LoginController: UIViewController {
                                 presenter?.viewDidLoad()
                                 self.dismiss(animated: true, completion: nil)
                             } else {
-                                self.dismiss(animated: true, completion: nil)
+                                self.dismiss(animated: true) {
+                                    presenter?.performSegue(withIdentifier: NameConstant.SegueID.itemToSummayID, sender: presenter)
+                                }
                             }
                         } catch {
                             print(error)

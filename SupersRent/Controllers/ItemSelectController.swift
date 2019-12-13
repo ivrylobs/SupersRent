@@ -1,5 +1,6 @@
 import UIKit
 import Locksmith
+import SwiftyJSON
 
 class ItemSelectController: UIViewController {
     
@@ -27,6 +28,8 @@ class ItemSelectController: UIViewController {
         self.productTable.dataSource = self
         self.productTable.delegate = self
         
+        self.productTable.tableFooterView = UIView()
+        
         //
 //        do {
 //            try Locksmith.updateData(data: ["isLogin": false], forUserAccount: "admin")
@@ -38,11 +41,14 @@ class ItemSelectController: UIViewController {
     
     @IBAction func gotoSummary(_ sender: UIButton) {
         let loadedData = Locksmith.loadDataForUserAccount(userAccount: "admin")!
-        if Bool((loadedData["isLogin"] as? Int)!) {
-            self.performSegue(withIdentifier: "OrderToSummary", sender: self)
+        let userData = JSON(loadedData)
+        
+        if userData["isLogin"].boolValue {
+            self.performSegue(withIdentifier: NameConstant.SegueID.itemToSummayID, sender: self)
         } else {
-            self.performSegue(withIdentifier: "OrderToLogin", sender: self)
+            self.performSegue(withIdentifier: NameConstant.SegueID.itemToLoginID, sender: self)
         }
+        
         
     }
     

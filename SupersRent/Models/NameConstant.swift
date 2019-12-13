@@ -17,9 +17,9 @@ struct NameConstant {
         static let groupID = "GotoGroup"
         static let locationID = "GotoLocation"
         static let dateID = "GotoDate"
-        static let searchID = "GotoSearch"
-        static let searchToLoginID = "OrderToLogin"
-        static let searchToSummayID = "OrderToSummary"
+        static let itemID = "GotoItem"
+        static let itemToLoginID = "OrderToLogin"
+        static let itemToSummayID = "OrderToSummary"
         static let summaryToPaymentID = "SummaryToPayment"
         static let homeToLoginID = "HomeToLogin"
     }

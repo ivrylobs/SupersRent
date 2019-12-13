@@ -30,11 +30,11 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        do {
-//            try Locksmith.updateData(data: ["isLogin": true, "tokenAccess": "", "email": "", "userData": ""], forUserAccount: "admin")
-//        } catch {
-//            print(error)
-//        }
+        //        do {
+        //            try Locksmith.updateData(data: ["isLogin": true, "tokenAccess": "", "email": "", "userData": ""], forUserAccount: "admin")
+        //        } catch {
+        //            print(error)
+        //        }
         
         //Protocal Delegate.
         self.getGroupData.delegate = self
@@ -44,11 +44,12 @@ class HomeController: UIViewController {
         //Prepare Data for get UserInfo
         let userData = Locksmith.loadDataForUserAccount(userAccount: "admin")
         let jsonData = JSON(userData!)
+        print(jsonData)
         let url = "https://api.supersrent.com/app-user/api/customer/getProfile/\(jsonData["email"].stringValue)"
         let header = ["Accept":"application/json","AuthorizationHome": jsonData["tokenAccess"].stringValue]
         
-        if let isLogin = userData!["isLogin"] {
-            if Bool(isLogin as! Int) == true {
+        if let isLogin = jsonData["isLogin"].bool {
+            if isLogin {
                 print("LoggedIn")
                 Alamofire.request(url, method: .get, headers: header).responseJSON { response in
                     switch response.result {
@@ -73,11 +74,20 @@ class HomeController: UIViewController {
                     }
                 }
             } else {
-                print("Not login yet")
+                print("please login again!")
                 self.profileLabel.text = "Not login"
             }
+        } else {
+            print("Not login yet")
+            self.profileLabel.text = "Not login"
+            
+            do {
+                try Locksmith.updateData(data: ["isLogin": false, "tokenAccess": "", "email": "", "userData": ""], forUserAccount: "admin")
+                self.profileLabel.text = "Not login"
+            } catch {
+                print(error)
+            }
         }
-        
     }
     
     @IBAction func gotoLogin(_ sender: UIButton) {
@@ -113,7 +123,7 @@ class HomeController: UIViewController {
             destinationVC?.rowData = self.locationData
         } else if segue.identifier == NameConstant.SegueID.dateID {
             print("There is no data for passing to DateSelectController!")
-        } else if segue.identifier == NameConstant.SegueID.searchID {
+        } else if segue.identifier == NameConstant.SegueID.itemID {
             let destinationVC = segue.destination as? ItemSelectController
             destinationVC?.productData = self.itemData
             destinationVC?.searchGroup = self.searchGroup
@@ -158,7 +168,7 @@ extension HomeController: GetProductDataDelegate {
     func didGetProductData(productData: [CategoryProduct]) {
         DispatchQueue.main.async {
             self.itemData = productData
-            self.performSegue(withIdentifier: NameConstant.SegueID.searchID, sender: self)
+            self.performSegue(withIdentifier: NameConstant.SegueID.itemID, sender: self)
         }
     }
 }
