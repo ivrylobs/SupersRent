@@ -21,6 +21,8 @@ class OrderSummayController: UIViewController {
         self.itemSummaryTable.register(UINib(nibName: "SummaryItemCell", bundle: nil), forCellReuseIdentifier: "SummaryItemCell")
         self.itemSummaryTable.register(UINib(nibName: "PriceSummaryCell", bundle: nil), forCellReuseIdentifier: "PriceSummaryCell")
         self.itemSummaryTable.register(UINib(nibName: "UserInfoCell", bundle: nil), forCellReuseIdentifier: "UserInfoCell")
+        self.itemSummaryTable.register(UINib(nibName: "RentTimeCell", bundle: nil), forCellReuseIdentifier: "RentTimeCell")
+        self.itemSummaryTable.register(UINib(nibName: "SummaryCell", bundle: nil), forCellReuseIdentifier: "SummaryCell")
         
         //Make DataSource and Protocal Delegate
         self.itemSummaryTable.dataSource = self
@@ -38,9 +40,23 @@ class OrderSummayController: UIViewController {
 extension OrderSummayController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Test Section"
+        var header = ""
+        
+        if section == 0 {
+            header = "ข้อมูลติดต่อ"
+        } else if section == 1 {
+            header = "สรุปรายการสินค้า"
+        } else if section == 2 {
+            header = "รายละเอียดการเช่า"
+        } else {
+            header = "สรุป"
+        }
+        return header
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat(50)
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
@@ -51,9 +67,9 @@ extension OrderSummayController: UITableViewDataSource {
         } else if indexPath.section == 1 {
             size = CGFloat(90)
         } else if indexPath.section == 2 {
-            size = CGFloat(100)
+            size = CGFloat(200)
         } else {
-            size = CGFloat(100)
+            size = CGFloat(250)
         }
         return size!
     }
@@ -82,21 +98,27 @@ extension OrderSummayController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell: UITableViewCell?
         if indexPath.section == 0 {
+            
             let loadedData = Locksmith.loadDataForUserAccount(userAccount: "admin")
             let jsonData = JSON(loadedData!)
             let userData = jsonData["userData"]
-            print(userData)
+            
+            //print(userData)
+            
             let infoCell = self.itemSummaryTable.dequeueReusableCell(withIdentifier: "UserInfoCell", for: indexPath) as! UserInfoCell
             infoCell.firstName.text = userData["firstName"].stringValue
             infoCell.sirName.text = userData["lastName"].stringValue
             infoCell.phoneNumber.text = userData["phone"].stringValue
             infoCell.userEmail.text = userData["email"].stringValue
+            
             cell = infoCell
         } else if indexPath.section == 1 {
             if indexPath.row == self.orderItems!.count {
+                
                 let priceCell = self.itemSummaryTable.dequeueReusableCell(withIdentifier: "PriceSummaryCell", for: indexPath) as! PriceSummaryCell
                 priceCell.amountLabel.text = String(self.totalAmount)
                 priceCell.summaryPriceLabel.text = String(format: "%.2f", self.totalPrice)
+                
                 cell = priceCell
             } else {
                 let summaryCell = self.itemSummaryTable.dequeueReusableCell(withIdentifier: "SummaryItemCell", for: indexPath) as! SummaryItemCell
@@ -108,15 +130,17 @@ extension OrderSummayController: UITableViewDataSource {
                 summaryCell.itemTotal.text = self.orderItems![indexPath.row].totalForItem
                 
                 self.totalPrice += Double(self.orderItems![indexPath.row].totalForItem)!
-                print(self.totalPrice)
-                print("update")
+                
+                //print(self.totalPrice)
+                //print("update")
+                
                 self.totalAmount += self.orderItems![indexPath.row].productRent
                 cell = summaryCell
             }
         } else if indexPath.section == 2 {
-            cell = self.itemSummaryTable.dequeueReusableCell(withIdentifier: "PriceSummaryCell", for: indexPath)
+            cell = self.itemSummaryTable.dequeueReusableCell(withIdentifier: "RentTimeCell", for: indexPath)
         } else {
-            cell = self.itemSummaryTable.dequeueReusableCell(withIdentifier: "PriceSummaryCell", for: indexPath)
+            cell = self.itemSummaryTable.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath)
         }
         return cell!
     }

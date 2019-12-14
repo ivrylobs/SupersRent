@@ -1,5 +1,5 @@
 //
-//  RentTimeCell.swift
+//  SummaryCell.swift
 //  SupersRent
 //
 //  Created by ivrylobs on 14/12/2562 BE.
@@ -8,13 +8,12 @@
 
 import UIKit
 
-class RentTimeCell: UITableViewCell {
+class SummaryCell: UITableViewCell {
 
-    @IBOutlet weak var dateTimeStart: UILabel!
-    @IBOutlet weak var dateTimeEnd: UILabel!
-    @IBOutlet weak var rentDuration: UILabel!
-    @IBOutlet weak var itemAmount: UILabel!
-    @IBOutlet weak var totalAmount: UILabel!
+    @IBOutlet weak var totalPricePerDay: UILabel!
+    @IBOutlet weak var totalPriceAll: UILabel!
+    @IBOutlet weak var taxPrice: UILabel!
+    @IBOutlet weak var almostTotalPrice: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

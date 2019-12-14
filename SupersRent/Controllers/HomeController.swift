@@ -52,7 +52,6 @@ class HomeController: UIViewController {
         let userData = Locksmith.loadDataForUserAccount(userAccount: "admin")
         let returnUserData = JSON(userData!)
         self.userData = returnUserData
-        print(returnUserData)
         let url = "https://api.supersrent.com/app-user/api/customer/getProfile/\(returnUserData["email"].stringValue)"
         let header = ["Accept":"application/json","AuthorizationHome": returnUserData["tokenAccess"].stringValue]
         
@@ -64,7 +63,7 @@ class HomeController: UIViewController {
                         DispatchQueue.main.async {
                             let userData = JSON(data)
                             if let firstName = userData["firstName"].string {
-                                print("LoggedIn")
+                                print("Logged")
                                 self.profileLabel.text = firstName
                                 self.userData!["userData"] = JSON(userData)
                                 do {
@@ -82,16 +81,16 @@ class HomeController: UIViewController {
                             }
                         }
                     case .failure(let error):
-                        print("\(error)please login again!")
+                        print("\(error)please login!")
                         self.profileLabel.text = "Not login"
                     }
                 }
             } else {
-                print("please login again!")
+                print("please login!")
                 self.profileLabel.text = "Not login"
             }
         } else {
-            print("Not login yet")
+            print("Please login!")
             self.profileLabel.text = "Not login"
             
             do {

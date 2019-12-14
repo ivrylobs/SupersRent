@@ -87,15 +87,20 @@ class LoginController: UIViewController {
         Alamofire.request(url, method: .get, headers: header).responseJSON { response in
             switch response.result {
             case .success(let data):
-                let jsonData = JSON(data)
-                returnUserData["userData"] = JSON(jsonData)
-                do {
-                    try Locksmith.updateData(data: returnUserData.dictionaryObject!, forUserAccount: "admin")
-                } catch {
-                    print(error)
+                
+                DispatchQueue.main.async {
+                    let jsonData = JSON(data)
+                    returnUserData["userData"] = JSON(jsonData)
+                    do {
+                        try Locksmith.updateData(data: returnUserData.dictionaryObject!, forUserAccount: "admin")
+                    } catch {
+                        print(error)
+                    }
                 }
             case .failure(let error):
-                print(error)
+                DispatchQueue.main.async {
+                    print(error)
+                }
             }
         }
     }

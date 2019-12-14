@@ -8,6 +8,7 @@ class ItemSelectController: UIViewController {
     var categoryData: [CategoryProduct] = [] //Filter items by group
     var orderItems: [OrderModel] = [] //Store items
     
+    
     //Create SearchParam.
     var searchGroup: GroupModel?
     var searchLocation: LocationModel?
@@ -27,6 +28,7 @@ class ItemSelectController: UIViewController {
         //Make DataSource and Protocal Delegate
         self.productTable.dataSource = self
         self.productTable.delegate = self
+        self.productTable.allowsSelection = false
         
         self.productTable.tableFooterView = UIView()
         
@@ -63,7 +65,7 @@ class ItemSelectController: UIViewController {
             if items.groupId == self.searchGroup?.groupId {
                 self.categoryData.append(items)
             } else {
-                print("Not Found")
+                print("Not Match")
             }
         }
     }
@@ -81,7 +83,7 @@ class ItemSelectController: UIViewController {
 }
 
 extension ItemSelectController: ItemCellControllerDelegate {
-    func didChageAmount(product: ProductModel, itemLabel: String, itemAmount: Double) {
+    func didChageAmount(product: ProductModel, itemAmount: Double) {
         let totalPrice = product.productRentPrice * itemAmount
         if self.orderItems.count == 0 {
             let order = OrderModel(id: product.id,
@@ -128,14 +130,26 @@ extension ItemSelectController: ItemCellControllerDelegate {
                 }
             }
         }
-        //print(self.orderItems)
+        //print(self.orderItems.count)
     }
 }
 
 extension ItemSelectController: UITableViewDataSource {
     
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return self.categoryData.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.categoryData[section].productItem.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(80)
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
         //Create Section Header
         let header = UILabel()
         
@@ -147,22 +161,11 @@ extension ItemSelectController: UITableViewDataSource {
         return header
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return self.categoryData.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(80)
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.categoryData[section].productItem.count
-    }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
         //Create UITableViewCell.
-        let cell = self.productTable.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCellController
+        let cell = self.productTable.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath) as! ItemCell
         
         //Make Cell Delegate to this Controller
         cell.delegate = self
@@ -178,12 +181,14 @@ extension ItemSelectController: UITableViewDataSource {
         cell.sizeLabel.text = " ขนาด: \(size)"
         cell.priceLabel.text = " ราคาเช่า(บาท/วัน):  \(price)"
         
+        //print("\(indexPath.section): \(indexPath.row)")
         return cell
     }
 }
 
 extension ItemSelectController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("here")
+        self.productTable.deselectRow(at: indexPath, animated: false)
+        //print("here")
     }
 }
