@@ -6,6 +6,8 @@ class OrderSummayController: UIViewController {
     
     var orderItems: [OrderModel]?
     
+    var orderDates: DateModel?
+    
     var totalPrice: Double = 0.00
     var totalAmount: Int = 0
     
@@ -138,9 +140,35 @@ extension OrderSummayController: UITableViewDataSource {
                 cell = summaryCell
             }
         } else if indexPath.section == 2 {
-            cell = self.itemSummaryTable.dequeueReusableCell(withIdentifier: "RentTimeCell", for: indexPath)
+            let rentTimeCell = self.itemSummaryTable.dequeueReusableCell(withIdentifier: "RentTimeCell", for: indexPath) as! RentTimeCell
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "th_TH")
+            dateFormatter.dateFormat = "d LLLL yyyy"
+            
+            let diffInDays = Calendar.current.dateComponents([.day], from: self.orderDates!.firstDate, to: self.orderDates!.finalDate).day
+            
+            rentTimeCell.dateTimeStart.text = dateFormatter.string(from: self.orderDates!.firstDate)
+            rentTimeCell.dateTimeEnd.text = dateFormatter.string(from: self.orderDates!.finalDate)
+            rentTimeCell.rentDuration.text = "\(String(diffInDays!)) วัน"
+            rentTimeCell.itemAmount.text = "\(String(self.orderItems!.count)) รายการ"
+            rentTimeCell.totalAmount.text = String(self.totalAmount)
+            cell = rentTimeCell
         } else {
-            cell = self.itemSummaryTable.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath)
+           let summaryPriceCell = self.itemSummaryTable.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath) as! SummaryCell
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.locale = Locale(identifier: "th_TH")
+            dateFormatter.dateFormat = "d LLLL yyyy"
+            
+            let diffInDays = Calendar.current.dateComponents([.day], from: self.orderDates!.firstDate, to: self.orderDates!.finalDate).day
+            
+            summaryPriceCell.totalPricePerDay.text = String(format: "%.2f", self.totalPrice)
+            summaryPriceCell.totalPriceAll.text = String(format: "%.2f", self.totalPrice * Double(diffInDays!))
+            summaryPriceCell.taxPrice.text = String(format: "%.2f", self.totalPrice * Double(diffInDays!) * 0.07)
+            summaryPriceCell.almostTotalPrice.text = String(format: "%.2f", self.totalPrice * Double(diffInDays!) + self.totalPrice * Double(diffInDays!) * 0.07)
+            
+            cell = summaryPriceCell
         }
         return cell!
     }

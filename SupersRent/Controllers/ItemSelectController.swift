@@ -53,6 +53,7 @@ class ItemSelectController: UIViewController {
         if segue.identifier! == NameConstant.SegueID.itemToSummayID {
             let destinationVC = segue.destination as? OrderSummayController
             destinationVC?.orderItems = self.orderItems
+            destinationVC?.orderDates = self.searchDate
         }
     }
     
