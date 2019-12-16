@@ -5,11 +5,10 @@ import SwiftyJSON
 class OrderSummayController: UIViewController {
     
     var orderItems: [OrderModel]?
-    
     var orderDates: DateModel?
     
-    var totalPrice: Double = 0.00
-    var totalAmount: Int = 0
+    var totalPrice: Double?
+    var totalAmount: Int?
     
     @IBOutlet weak var itemSummaryTable: UITableView!
     
@@ -31,7 +30,6 @@ class OrderSummayController: UIViewController {
         self.itemSummaryTable.delegate = self
         
         self.itemSummaryTable.tableFooterView = UIView()
-        
     }
     
     @IBAction func backToViewController(_ sender: UIButton) {
@@ -117,9 +115,18 @@ extension OrderSummayController: UITableViewDataSource {
         } else if indexPath.section == 1 {
             if indexPath.row == self.orderItems!.count {
                 
+                var itemCount = 0
+                var totalPrice = 0.0
+                
+                for data in self.orderItems! {
+                    itemCount += data.productRent
+                    totalPrice += Double(data.totalForItem)!
+                }
                 let priceCell = self.itemSummaryTable.dequeueReusableCell(withIdentifier: "PriceSummaryCell", for: indexPath) as! PriceSummaryCell
-                priceCell.amountLabel.text = String(self.totalAmount)
-                priceCell.summaryPriceLabel.text = String(format: "%.2f", self.totalPrice)
+                let amount = String(itemCount)
+                let summaryPrice = String(format: "%.2f", totalPrice)
+                priceCell.amountLabel.text = amount
+                priceCell.summaryPriceLabel.text = summaryPrice
                 
                 cell = priceCell
             } else {
@@ -131,12 +138,12 @@ extension OrderSummayController: UITableViewDataSource {
                 summaryCell.itemAmount.text = String(self.orderItems![indexPath.row].productRent)
                 summaryCell.itemTotal.text = self.orderItems![indexPath.row].totalForItem
                 
-                self.totalPrice += Double(self.orderItems![indexPath.row].totalForItem)!
+                self.totalPrice! += Double(self.orderItems![indexPath.row].totalForItem)!
                 
                 //print(self.totalPrice)
                 //print("update")
                 
-                self.totalAmount += self.orderItems![indexPath.row].productRent
+                self.totalAmount! += self.orderItems![indexPath.row].productRent
                 cell = summaryCell
             }
         } else if indexPath.section == 2 {
@@ -146,16 +153,32 @@ extension OrderSummayController: UITableViewDataSource {
             dateFormatter.locale = Locale(identifier: "th_TH")
             dateFormatter.dateFormat = "d LLLL yyyy"
             
+            var itemCount = 0
+            var totalPrice = 0.0
+            
+            for data in self.orderItems! {
+                itemCount += data.productRent
+                totalPrice += Double(data.totalForItem)!
+            }
+            
             let diffInDays = Calendar.current.dateComponents([.day], from: self.orderDates!.firstDate, to: self.orderDates!.finalDate).day
             
             rentTimeCell.dateTimeStart.text = dateFormatter.string(from: self.orderDates!.firstDate)
             rentTimeCell.dateTimeEnd.text = dateFormatter.string(from: self.orderDates!.finalDate)
             rentTimeCell.rentDuration.text = "\(String(diffInDays!)) วัน"
             rentTimeCell.itemAmount.text = "\(String(self.orderItems!.count)) รายการ"
-            rentTimeCell.totalAmount.text = String(self.totalAmount)
+            rentTimeCell.totalAmount.text = String(itemCount)
             cell = rentTimeCell
         } else {
            let summaryPriceCell = self.itemSummaryTable.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath) as! SummaryCell
+            
+            var itemCount = 0
+            var totalPrice = 0.0
+            
+            for data in self.orderItems! {
+                itemCount += data.productRent
+                totalPrice += Double(data.totalForItem)!
+            }
             
             let dateFormatter = DateFormatter()
             dateFormatter.locale = Locale(identifier: "th_TH")
@@ -163,10 +186,10 @@ extension OrderSummayController: UITableViewDataSource {
             
             let diffInDays = Calendar.current.dateComponents([.day], from: self.orderDates!.firstDate, to: self.orderDates!.finalDate).day
             
-            summaryPriceCell.totalPricePerDay.text = String(format: "%.2f", self.totalPrice)
-            summaryPriceCell.totalPriceAll.text = String(format: "%.2f", self.totalPrice * Double(diffInDays!))
-            summaryPriceCell.taxPrice.text = String(format: "%.2f", self.totalPrice * Double(diffInDays!) * 0.07)
-            summaryPriceCell.almostTotalPrice.text = String(format: "%.2f", self.totalPrice * Double(diffInDays!) + self.totalPrice * Double(diffInDays!) * 0.07)
+            summaryPriceCell.totalPricePerDay.text = String(format: "%.2f", totalPrice)
+            summaryPriceCell.totalPriceAll.text = String(format: "%.2f", totalPrice * Double(diffInDays!))
+            summaryPriceCell.taxPrice.text = String(format: "%.2f", totalPrice * Double(diffInDays!) * 0.07)
+            summaryPriceCell.almostTotalPrice.text = String(format: "%.2f", totalPrice * Double(diffInDays!) + totalPrice * Double(diffInDays!) * 0.07)
             
             cell = summaryPriceCell
         }

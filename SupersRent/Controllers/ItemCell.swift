@@ -7,7 +7,7 @@ protocol ItemCellControllerDelegate {
 class ItemCell: UITableViewCell {
     
     var productInfo: ProductModel?
-    var productAmount: Int = 0
+    var productAmount: Int?
     
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var itemLabel: UILabel!
@@ -20,7 +20,9 @@ class ItemCell: UITableViewCell {
         super.awakeFromNib()
         
         // Initialization code
-        self.quantityLabel.text = String(self.productAmount)
+        self.productAmount = 0
+        self.quantityLabel.text = String(self.productAmount!)
+        
         
     }
     
@@ -34,21 +36,21 @@ class ItemCell: UITableViewCell {
         if self.productAmount == 0 {
             self.productAmount = 0
         } else {
-            self.productAmount -= 1
+            self.productAmount! -= 1
         }
         //print("Decrease: \(self.productAmount)")
-        self.quantityLabel.text = String(self.productAmount)
-        self.delegate?.didChageAmount(product: self.productInfo!, itemAmount: Double(self.productAmount))
+        self.quantityLabel.text = String(self.productAmount!)
+        self.delegate?.didChageAmount(product: self.productInfo!, itemAmount: Double(self.productAmount!))
     }
     
     @IBAction func increaseQuantity(_ sender: UIButton) {
        if self.productAmount == 99 {
             self.productAmount = 99
         } else {
-            self.productAmount += 1
+            self.productAmount! += 1
         }
         //print("Increase: \(self.productAmount)")
-        self.quantityLabel.text = String(self.productAmount)
-        self.delegate?.didChageAmount(product: self.productInfo!, itemAmount: Double(self.productAmount))
+        self.quantityLabel.text = String(self.productAmount!)
+        self.delegate?.didChageAmount(product: self.productInfo!, itemAmount: Double(self.productAmount!))
     }
 }
