@@ -1,22 +1,20 @@
 import UIKit
 import Locksmith
 import SwiftyJSON
+import Alamofire
 
 class OrderSummayController: UIViewController {
     
     var orderItems: [OrderModel]?
     var orderDates: DateModel?
+    var orderLocation: LocationModel?
     
-    var totalPrice: Double?
-    var totalAmount: Int?
+    var orderID: String?
     
     @IBOutlet weak var itemSummaryTable: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.totalPrice = 0.00
-        self.totalAmount = 0
         
         //Register Custom Cell
         self.itemSummaryTable.register(UINib(nibName: "SummaryItemCell", bundle: nil), forCellReuseIdentifier: "SummaryItemCell")
@@ -30,6 +28,96 @@ class OrderSummayController: UIViewController {
         self.itemSummaryTable.delegate = self
         
         self.itemSummaryTable.tableFooterView = UIView()
+    }
+    
+    @IBAction func orderCheckOut(_ sender: UIButton) {
+        var itemCount = 0
+        var totalPrice = 0.0
+        
+        let diffInDays = Calendar.current.dateComponents([.day], from: self.orderDates!.firstDate, to: self.orderDates!.finalDate).day
+        
+        for data in self.orderItems! {
+            itemCount += data.productRent
+            totalPrice += Double(data.totalForItem)!
+        }
+        
+        let loadedData = JSON(Locksmith.loadDataForUserAccount(userAccount: "admin")!)
+        let userData = loadedData["userData"].dictionaryValue
+        let urlOrder = "https://api.supersrent.com/app-user/api/order/addCustomerOrderDetail/"
+        let header = ["Accept":"application/json","AuthorizationHome": loadedData["tokenAccess"].stringValue]
+        
+        let orderCustomer: [String : Any] = [
+            "firstName": userData["firstName"]!.stringValue,
+            "lastName": userData["lastName"]!.stringValue,
+            "phone": userData["phone"]!.stringValue,
+            "email": userData["email"]!.stringValue,
+            "roles": []
+            ]
+        var orderItems: [[String : Any]] = []
+        
+        for item in self.orderItems! {
+            let itemAppend: [String : Any] = [
+                "id": item.id,
+                "category": item.productCategory,
+                "group": item.productGroup,
+                "productId": item.productId,
+                "productSize": item.productSize,
+                "productRentPrice": item.productRentPrice,
+                "productRent": item.productRent,
+                "productQuantity": item.productQuantity,
+                "productBalance": item.productBalance,
+                "totalForItem": item.totalForItem
+                ]
+            orderItems.append(itemAppend)
+        }
+        let postOrder: [String : Any] = [
+            "orderAllItemBalance": itemCount,
+            "orderAllTotalAndVAT": totalPrice * Double(diffInDays!) + totalPrice * Double(diffInDays!) * 0.07,
+            "orderContractEndFormat": self.orderDates!.finalDate.description(with: Locale(identifier: "th_TH")),
+            "orderContractStart": self.orderDates!.firstDate.description,
+            "orderContractStartFormat": self.orderDates!.firstDate.description(with: Locale(identifier: "th_TH")),
+            "orderCustomer": orderCustomer,
+            "orderDate": Date().description,
+            "orderItemAllTotal": totalPrice * Double(diffInDays!),
+            "orderItemTotal": totalPrice,
+            "orderItems": orderItems,
+            "orderLocationDistrict": self.orderLocation!.districtName,
+            "orderLocationProvince": self.orderLocation!.provinceName,
+            "orderNumberOfItem": itemCount,
+            "orderNumberOfItemOrder": self.orderItems!.count,
+            "orderStatus": false,
+            "orderTimeRent": diffInDays!,
+            "orderVAT": totalPrice * Double(diffInDays!) * 0.07
+        ]
+        print(postOrder)
+        Alamofire.request(urlOrder, method: .post, parameters: postOrder, encoding: JSONEncoding.default, headers: header).responseJSON { response in
+            switch response.result {
+            case .success(let data):
+                let jsonData = JSON(data)
+                print(jsonData)
+                self.orderID = jsonData["orderId"].stringValue
+                self.performSegue(withIdentifier: NameConstant.SegueID.summaryToPaymentID, sender: self)
+            case .failure(let error):
+                print("error: \(error)")
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        var itemCount = 0
+        var totalPrice = 0.0
+        
+        let diffInDays = Calendar.current.dateComponents([.day], from: self.orderDates!.firstDate, to: self.orderDates!.finalDate).day
+        
+        for data in self.orderItems! {
+            itemCount += data.productRent
+            totalPrice += Double(data.totalForItem)!
+        }
+        let payPrice = totalPrice * Double(diffInDays!) + totalPrice * Double(diffInDays!) * 0.07
+        let destinationVC = segue.destination as! OrderPaymentController
+        destinationVC.orderID = self.orderID!
+        destinationVC.payPrice = payPrice
     }
     
     @IBAction func backToViewController(_ sender: UIButton) {
@@ -63,13 +151,13 @@ extension OrderSummayController: UITableViewDataSource {
         var size:CGFloat?
         
         if indexPath.section == 0 {
-            size = CGFloat(220)
+            size = CGFloat(250)
         } else if indexPath.section == 1 {
-            size = CGFloat(90)
+            size = CGFloat(80)
         } else if indexPath.section == 2 {
             size = CGFloat(200)
         } else {
-            size = CGFloat(250)
+            size = CGFloat(220)
         }
         return size!
     }
@@ -138,12 +226,9 @@ extension OrderSummayController: UITableViewDataSource {
                 summaryCell.itemAmount.text = String(self.orderItems![indexPath.row].productRent)
                 summaryCell.itemTotal.text = self.orderItems![indexPath.row].totalForItem
                 
-                self.totalPrice! += Double(self.orderItems![indexPath.row].totalForItem)!
-                
                 //print(self.totalPrice)
                 //print("update")
                 
-                self.totalAmount! += self.orderItems![indexPath.row].productRent
                 cell = summaryCell
             }
         } else if indexPath.section == 2 {
@@ -171,7 +256,14 @@ extension OrderSummayController: UITableViewDataSource {
             cell = rentTimeCell
         } else {
            let summaryPriceCell = self.itemSummaryTable.dequeueReusableCell(withIdentifier: "SummaryCell", for: indexPath) as! SummaryCell
-            
+            let currencyFormatter = NumberFormatter()
+            currencyFormatter.usesGroupingSeparator = true
+            currencyFormatter.numberStyle = .currency
+            // localize to your grouping and decimal separator
+            currencyFormatter.locale = Locale(identifier: "th_TH")
+
+            // We'll force unwrap with the !, if you've got defined data you may need more error checking
+
             var itemCount = 0
             var totalPrice = 0.0
             
@@ -186,10 +278,10 @@ extension OrderSummayController: UITableViewDataSource {
             
             let diffInDays = Calendar.current.dateComponents([.day], from: self.orderDates!.firstDate, to: self.orderDates!.finalDate).day
             
-            summaryPriceCell.totalPricePerDay.text = String(format: "%.2f", totalPrice)
-            summaryPriceCell.totalPriceAll.text = String(format: "%.2f", totalPrice * Double(diffInDays!))
-            summaryPriceCell.taxPrice.text = String(format: "%.2f", totalPrice * Double(diffInDays!) * 0.07)
-            summaryPriceCell.almostTotalPrice.text = String(format: "%.2f", totalPrice * Double(diffInDays!) + totalPrice * Double(diffInDays!) * 0.07)
+            summaryPriceCell.totalPricePerDay.text = currencyFormatter.string(from: NSNumber(value: totalPrice))!
+            summaryPriceCell.totalPriceAll.text = currencyFormatter.string(from: NSNumber(value: totalPrice * Double(diffInDays!)))!
+            summaryPriceCell.taxPrice.text = currencyFormatter.string(from: NSNumber(value: totalPrice * Double(diffInDays!) * 0.07))!
+            summaryPriceCell.almostTotalPrice.text = currencyFormatter.string(from: NSNumber(value: totalPrice * Double(diffInDays!) + totalPrice * Double(diffInDays!) * 0.07))!
             
             cell = summaryPriceCell
         }

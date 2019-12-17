@@ -54,6 +54,7 @@ class ItemSelectController: UIViewController {
             let destinationVC = segue.destination as? OrderSummayController
             destinationVC?.orderItems = self.orderItems
             destinationVC?.orderDates = self.searchDate
+            destinationVC?.orderLocation = self.searchLocation
         }
     }
     

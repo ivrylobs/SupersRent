@@ -197,7 +197,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="206.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="5zn-DO-Wcf">
-                                        <rect key="frame" x="-24.5" y="15" width="424" height="176.5"/>
+                                        <rect key="frame" x="81.5" y="15" width="212" height="176.5"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
@@ -534,38 +534,219 @@
             <objects>
                 <viewController restorationIdentifier="PaymentScene" id="Ndf-tH-Iea" customClass="OrderPaymentController" customModule="SupersRent" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dUr-gQ-iws">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dv9-mL-kb1">
-                                <rect key="frame" x="164.5" y="308.5" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="backToHome:" destination="Ndf-tH-Iea" eventType="touchUpInside" id="9a9-jG-xC7"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gE-kB-pfV">
-                                <rect key="frame" x="164.5" y="397.5" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="paymentButton:" destination="Ndf-tH-Iea" eventType="touchUpInside" id="MXJ-zB-Aj5"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NFe-TZ-xmG">
+                                <rect key="frame" x="20" y="50.5" width="335" height="250"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="2WW-yg-LFl">
+                                        <rect key="frame" x="10" y="84" width="223" height="82"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="48C-Ge-nmo">
+                                                <rect key="frame" x="0.0" y="0.0" width="203" height="20.5"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sum" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="NH7-rt-2Qc">
+                                                        <rect key="frame" x="0.0" y="-0.5" width="20" height="21"/>
+                                                        <color key="tintColor" name="LogoYellow"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="NWb-6f-nNT"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ยอดรวมราคา ต่อ วัน" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JQ-oT-2td">
+                                                        <rect key="frame" x="30" y="0.0" width="173" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" name="BlackGray"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="E9a-aT-q4n">
+                                                <rect key="frame" x="0.0" y="20.5" width="203" height="20.5"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="fqC-s0-rKn">
+                                                        <rect key="frame" x="0.0" y="1" width="20" height="18"/>
+                                                        <color key="tintColor" name="LogoYellow"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="eg9-hK-P8w"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ระยะเวลาเช่าทั้งหมด" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TI1-vn-DPJ">
+                                                        <rect key="frame" x="30" y="0.0" width="173" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" name="BlackGray"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Klw-O4-K52">
+                                                <rect key="frame" x="0.0" y="41" width="203" height="20.5"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="percent" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="tTI-VQ-1EW">
+                                                        <rect key="frame" x="0.0" y="1" width="20" height="18.5"/>
+                                                        <color key="tintColor" name="LogoYellow"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="eih-tS-ZBF"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ภาษีมูลค่าเพิ่ม (VAT) 7%" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IiU-N2-t99">
+                                                        <rect key="frame" x="30" y="0.0" width="173" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" name="BlackGray"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="VfD-6l-6ye">
+                                                <rect key="frame" x="0.0" y="61.5" width="203" height="20.5"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dollarsign.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="e6i-t5-cs9">
+                                                        <rect key="frame" x="0.0" y="0.5" width="20" height="19.5"/>
+                                                        <color key="tintColor" name="LogoYellow"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="20" id="MGl-bU-aVu"/>
+                                                        </constraints>
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium"/>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="รวมทั้งหมด" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zkc-eO-emY">
+                                                        <rect key="frame" x="30" y="0.0" width="173" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <color key="textColor" name="BlackGray"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Klw-O4-K52" secondAttribute="trailing" constant="20" symbolic="YES" id="2al-1N-VCi"/>
+                                            <constraint firstAttribute="trailing" secondItem="48C-Ge-nmo" secondAttribute="trailing" constant="20" symbolic="YES" id="AiM-Al-hc7"/>
+                                            <constraint firstAttribute="trailing" secondItem="VfD-6l-6ye" secondAttribute="trailing" constant="20" symbolic="YES" id="YHs-y0-bum"/>
+                                            <constraint firstAttribute="trailing" secondItem="E9a-aT-q4n" secondAttribute="trailing" constant="20" symbolic="YES" id="caS-f5-lo2"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="lUV-4n-pT9">
+                                        <rect key="frame" x="205" y="84" width="110" height="82"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mG9-Bi-OAl">
+                                                <rect key="frame" x="68" y="0.0" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" name="BlackGray"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Lh-Ye-yXn">
+                                                <rect key="frame" x="68" y="20.5" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" name="BlackGray"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bP8-RE-yUS">
+                                                <rect key="frame" x="68" y="41" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" name="BlackGray"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xow-cQ-4U8">
+                                                <rect key="frame" x="68" y="61.5" width="42" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" name="BlackGray"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="110" id="3kA-wA-B6B"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="lUV-4n-pT9" secondAttribute="trailing" constant="20" symbolic="YES" id="03J-MC-FE7"/>
+                                    <constraint firstItem="lUV-4n-pT9" firstAttribute="centerY" secondItem="NFe-TZ-xmG" secondAttribute="centerY" id="DqB-mq-G86"/>
+                                    <constraint firstItem="2WW-yg-LFl" firstAttribute="leading" secondItem="NFe-TZ-xmG" secondAttribute="leading" constant="10" id="Nc7-KK-Bi6"/>
+                                    <constraint firstItem="lUV-4n-pT9" firstAttribute="centerY" secondItem="NFe-TZ-xmG" secondAttribute="centerY" id="OR2-Wd-Bsn"/>
+                                    <constraint firstItem="2WW-yg-LFl" firstAttribute="centerY" secondItem="NFe-TZ-xmG" secondAttribute="centerY" id="Q8e-lQ-0Ei"/>
+                                    <constraint firstAttribute="height" constant="250" id="igc-VH-B2i"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="30"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="วิธีการชำระเงิน" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDl-SQ-5id">
+                                <rect key="frame" x="120.5" y="320.5" width="134" height="26.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <color key="textColor" name="BlackGrey"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="33" translatesAutoresizingMaskIntoConstraints="NO" id="kFb-Vd-P67">
+                                <rect key="frame" x="51" y="417" width="273" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dv9-mL-kb1">
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="50"/>
+                                        <color key="backgroundColor" name="LogoYellow"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="Sw3-zI-WWP"/>
+                                            <constraint firstAttribute="height" constant="50" id="xn5-HW-Sc5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="ชำระภายหลัง">
+                                            <color key="titleColor" name="BlackGray"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="backToHome:" destination="Ndf-tH-Iea" eventType="touchUpInside" id="9a9-jG-xC7"/>
+                                            <action selector="payAfter:" destination="Ndf-tH-Iea" eventType="touchUpInside" id="2uF-aV-gKF"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gE-kB-pfV">
+                                        <rect key="frame" x="153" y="0.0" width="120" height="50"/>
+                                        <color key="backgroundColor" name="LogoYellow"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="SqI-wS-giK"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" id="VxU-EW-OVN"/>
+                                        </constraints>
+                                        <state key="normal" title="ชำระเดี๋ยวนี้">
+                                            <color key="titleColor" name="BlackGray"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="25"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="paymentButton:" destination="Ndf-tH-Iea" eventType="touchUpInside" id="MXJ-zB-Aj5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="BlackGray"/>
                         <constraints>
-                            <constraint firstItem="OxK-dd-7OC" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0gE-kB-pfV" secondAttribute="trailing" symbolic="YES" id="Btd-If-ufE"/>
-                            <constraint firstItem="Dv9-mL-kb1" firstAttribute="centerY" secondItem="dUr-gQ-iws" secondAttribute="centerY" id="KpN-c5-ahJ"/>
-                            <constraint firstItem="0gE-kB-pfV" firstAttribute="top" secondItem="Dv9-mL-kb1" secondAttribute="bottom" constant="59" id="aXS-dT-MA0"/>
-                            <constraint firstItem="0gE-kB-pfV" firstAttribute="leading" secondItem="Dv9-mL-kb1" secondAttribute="leading" id="mXH-bg-F29"/>
-                            <constraint firstItem="Dv9-mL-kb1" firstAttribute="centerX" secondItem="dUr-gQ-iws" secondAttribute="centerX" id="ydP-np-lLq"/>
+                            <constraint firstItem="OxK-dd-7OC" firstAttribute="trailing" secondItem="NFe-TZ-xmG" secondAttribute="trailing" constant="20" id="1bb-4Y-yn3"/>
+                            <constraint firstItem="NFe-TZ-xmG" firstAttribute="leading" secondItem="OxK-dd-7OC" secondAttribute="leading" constant="20" id="29o-as-if6"/>
+                            <constraint firstItem="MDl-SQ-5id" firstAttribute="top" secondItem="NFe-TZ-xmG" secondAttribute="bottom" constant="20" id="2CP-oT-t9F"/>
+                            <constraint firstItem="kFb-Vd-P67" firstAttribute="centerX" secondItem="dUr-gQ-iws" secondAttribute="centerX" id="2z5-gt-6Sf"/>
+                            <constraint firstItem="kFb-Vd-P67" firstAttribute="top" secondItem="MDl-SQ-5id" secondAttribute="bottom" constant="70" id="4DY-H3-rvD"/>
+                            <constraint firstItem="NFe-TZ-xmG" firstAttribute="centerX" secondItem="dUr-gQ-iws" secondAttribute="centerX" id="Ebn-2e-PQv"/>
+                            <constraint firstItem="MDl-SQ-5id" firstAttribute="centerX" secondItem="dUr-gQ-iws" secondAttribute="centerX" id="c7N-DI-qxi"/>
+                            <constraint firstItem="MDl-SQ-5id" firstAttribute="centerY" secondItem="dUr-gQ-iws" secondAttribute="centerY" id="sgd-df-4jC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OxK-dd-7OC"/>
                     </view>
+                    <connections>
+                        <outlet property="pricePerDay" destination="NFe-TZ-xmG" id="yvm-u4-aZU"/>
+                        <outlet property="rentDuration" destination="NFe-TZ-xmG" id="jku-HV-wOk"/>
+                        <outlet property="taxPrice" destination="NFe-TZ-xmG" id="W7C-Pc-dxk"/>
+                        <outlet property="totalPrice" destination="NFe-TZ-xmG" id="yiJ-IA-0zG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ba-8E-SyW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-330" y="672"/>
+            <point key="canvasLocation" x="-330.39999999999998" y="671.51424287856082"/>
         </scene>
         <!--Order Summay Controller-->
         <scene sceneID="VQl-DX-EZs">
@@ -611,6 +792,9 @@
                                 <state key="normal" title="ยืนยันข้อมูล">
                                     <color key="titleColor" name="BlackGray"/>
                                 </state>
+                                <connections>
+                                    <action selector="orderCheckOut:" destination="PgB-jV-W6e" eventType="touchUpInside" id="gcr-mD-9ud"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="LogoYellow"/>
@@ -630,7 +814,7 @@
                     </view>
                     <connections>
                         <outlet property="itemSummaryTable" destination="CG2-h5-85J" id="5tw-mr-6u8"/>
-                        <segue destination="Ndf-tH-Iea" kind="presentation" identifier="SummaryToPayment" id="hNo-QY-Bg5"/>
+                        <segue destination="Ndf-tH-Iea" kind="presentation" identifier="SummaryToPayment" modalPresentationStyle="fullScreen" id="hNo-QY-Bg5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jqn-E6-mUr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -735,13 +919,19 @@
         <image name="arrow.left" catalog="system" width="64" height="48"/>
         <image name="calendar" catalog="system" width="64" height="52"/>
         <image name="chevron.left" catalog="system" width="48" height="64"/>
+        <image name="dollarsign.circle.fill" catalog="system" width="64" height="60"/>
         <image name="list.bullet" catalog="system" width="64" height="44"/>
         <image name="location.fill" catalog="system" width="64" height="56"/>
         <image name="logo" width="212" height="212"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
+        <image name="percent" catalog="system" width="64" height="58"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
+        <image name="sum" catalog="system" width="42" height="64"/>
         <namedColor name="BlackGray">
             <color red="0.22352941176470589" green="0.24313725490196078" blue="0.27450980392156865" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BlackGrey">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="LogoYellow">
             <color red="0.99607843137254903" green="0.792156862745098" blue="0.11764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
