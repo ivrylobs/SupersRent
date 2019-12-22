@@ -21,28 +21,12 @@ class DateSelectController: UIViewController {
         super.viewDidLoad()
         
         let style = CalendarView.Style()
-        
-        style.cellShape                 = .bevel(20.0)
-        
-        style.cellColorToday            = UIColor(red:1.00, green:0.84, blue:0.64, alpha:1.00)
-        style.cellColorDefault          = UIColor(rgb: 0x393E46)
-        
-        style.cellTextColorToday        = UIColor.orange
-        style.cellTextColorDefault      = UIColor.white
-        
-        style.cellSelectedTextColor     = UIColor.yellow
-        style.cellSelectedBorderColor = UIColor(red:1.00, green:0.63, blue:0.24, alpha:1.00)
-        
-        style.headerTextColor           = UIColor.black
-        style.headerBackgroundColor     = UIColor(rgb: 0xFECA1E)
-        
-        style.weekdaysTextColor         = UIColor.black
-        style.weekdaysBackgroundColor  = UIColor(rgb: 0xFECA1E)
-        
+
         style.firstWeekday              = .sunday
         style.locale                    = Locale(identifier: "th_TH")
-        
+
         self.calendarView.style = style
+		
         self.calendarView.dataSource = self
         self.calendarView.delegate = self
         
@@ -62,6 +46,7 @@ class DateSelectController: UIViewController {
 }
 
 extension DateSelectController: CalendarViewDataSource {
+	
     func startDate() -> Date {
         return Date()
     }
@@ -93,11 +78,18 @@ extension DateSelectController: CalendarViewDelegate {
     }
     
     func calendar(_ calendar: CalendarView, didSelectDate date: Date, withEvents events: [CalendarEvent]) {
+		
+		let today = Date()
+		
+		if calendar.selectedDates[0] < today {
+			calendar.deselectDate(calendarView.selectedDates[0])
+		}
+		
         if calendar.selectedDates.count == 2 {
-            
-            if self.calendarView.selectedDates[0] > self.calendarView.selectedDates[1] {
+			
+			if self.calendarView.selectedDates[0] > self.calendarView.selectedDates[1] {
                 self.calendarView.deselectDate(self.calendarView.selectedDates[0])
-            } else {
+			} else {
                 let dateFormatter = DateFormatter()
                 let presenter = self.presentingViewController as? HomeController
                 

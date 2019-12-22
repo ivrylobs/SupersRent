@@ -15,7 +15,8 @@ class ItemSelectController: UIViewController {
     var searchDate: DateModel?
     
     @IBOutlet weak var productTable: UITableView!
-    
+	@IBOutlet weak var totalPrice: UILabel!
+	
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,22 +32,39 @@ class ItemSelectController: UIViewController {
         self.productTable.allowsSelection = false
         
         self.productTable.tableFooterView = UIView()
+		
+		let currencyFormatter = NumberFormatter()
+		currencyFormatter.usesGroupingSeparator = true
+		currencyFormatter.numberStyle = .currency
+		// localize to your grouping and decimal separator
+		currencyFormatter.locale = Locale(identifier: "th_TH")
+		
+		self.totalPrice.text = currencyFormatter.string(from: NSNumber(value: 0.00))!
         
     }
     
     @IBAction func gotoSummary(_ sender: UIButton) {
-        
-        if self.orderItems.count == 0 {
-            showAlertFill()
-        } else {
-            let loadedData = Locksmith.loadDataForUserAccount(userAccount: "admin")!
-            let userData = JSON(loadedData)
-            if userData["isLogin"].boolValue {
-                self.performSegue(withIdentifier: NameConstant.SegueID.itemToSummayID, sender: self)
-            } else {
-                self.performSegue(withIdentifier: NameConstant.SegueID.itemToLoginID, sender: self)
-            }
-        }
+		
+		var priceSummary = 0.0
+		for item in self.orderItems {
+			priceSummary += Double(item.totalForItem)!
+		}
+		
+		if priceSummary < 20.0 {
+			self.showAlertForMinimiumPrice()
+		} else {
+			if self.orderItems.count == 0 {
+				showAlertFill()
+			} else {
+				let loadedData = Locksmith.loadDataForUserAccount(userAccount: "admin")!
+				let userData = JSON(loadedData)
+				if userData["isLogin"].boolValue {
+					self.performSegue(withIdentifier: NameConstant.SegueID.itemToSummayID, sender: self)
+				} else {
+					self.performSegue(withIdentifier: NameConstant.SegueID.itemToLoginID, sender: self)
+				}
+			}
+		}
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -82,6 +100,17 @@ class ItemSelectController: UIViewController {
         // show the alert
         self.present(alert, animated: true, completion: nil)
     }
+	
+	func showAlertForMinimiumPrice() {
+		// create the alert
+		let alert = UIAlertController(title: "ผิดพลาด", message: "ยอดขั้น 20 บาท, กรุณาเลือกสินค้าเพิ่ม", preferredStyle: UIAlertController.Style.alert)
+		
+		// add an action (button)
+		alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+		
+		// show the alert
+		self.present(alert, animated: true, completion: nil)
+	}
 }
 
 extension ItemSelectController: ItemCellControllerDelegate {
@@ -133,6 +162,18 @@ extension ItemSelectController: ItemCellControllerDelegate {
             }
         }
         //print(self.orderItems.count)
+		let currencyFormatter = NumberFormatter()
+		currencyFormatter.usesGroupingSeparator = true
+		currencyFormatter.numberStyle = .currency
+		// localize to your grouping and decimal separator
+		currencyFormatter.locale = Locale(identifier: "th_TH")
+		
+		var priceSummary = 0.0
+		for item in self.orderItems {
+			priceSummary += Double(item.totalForItem)!
+		}
+		
+		self.totalPrice.text = currencyFormatter.string(from: NSNumber(value: priceSummary))!
     }
 }
 

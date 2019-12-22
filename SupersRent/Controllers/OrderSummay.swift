@@ -116,7 +116,11 @@ class OrderSummayController: UIViewController {
         }
         let payPrice = totalPrice * Double(diffInDays!) + totalPrice * Double(diffInDays!) * 0.07
         let destinationVC = segue.destination as! OrderPaymentController
+		
         destinationVC.orderID = self.orderID!
+		destinationVC.rentPricePerDay = totalPrice
+		destinationVC.priceDurationRent = totalPrice * Double(diffInDays!)
+		destinationVC.dayRent = diffInDays
         destinationVC.payPrice = payPrice
     }
     
@@ -153,7 +157,7 @@ extension OrderSummayController: UITableViewDataSource {
         if indexPath.section == 0 {
             size = CGFloat(250)
         } else if indexPath.section == 1 {
-            size = CGFloat(80)
+            size = CGFloat(90)
         } else if indexPath.section == 2 {
             size = CGFloat(200)
         } else {

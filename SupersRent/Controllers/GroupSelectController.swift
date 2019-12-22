@@ -8,10 +8,13 @@ class GroupSelectController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+		
+		//Setup Data protocal delegates.
         self.groupTable.dataSource = self
         self.groupTable.delegate = self
-        
+		
+		//Set table Footer As Empty View.
+		self.groupTable.tableFooterView = UIView()
     }
     
     @IBAction func BackToHome(_ sender: UIButton) {
@@ -21,13 +24,14 @@ class GroupSelectController: UIViewController {
 
 extension GroupSelectController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rowData?.count ?? 1
+		return self.rowData!.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.groupTable.dequeueReusableCell(withIdentifier: "GroupCell", for: indexPath)
-        let rowLabel = rowData!
+		let rowLabel = self.rowData!
         cell.textLabel?.text = "\(rowLabel[indexPath.row].groupName)"
+		cell.textLabel?.textColor = UIColor(named: "BlackGray")
         return cell
     }
 }
