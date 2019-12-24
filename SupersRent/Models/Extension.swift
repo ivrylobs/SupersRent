@@ -1,5 +1,7 @@
 import UIKit
+import SwiftUI
 
+//MARK: Hex RGB Extension
 extension UIColor {
    convenience init(red: Int, green: Int, blue: Int) {
        assert(red >= 0 && red <= 255, "Invalid red component")
@@ -18,6 +20,7 @@ extension UIColor {
    }
 }
 
+//MARK: UIKit Keyboard Gesture Dismiss
 extension UIViewController {
     func hideKeyboardWhenTappedAround() {
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
@@ -30,6 +33,7 @@ extension UIViewController {
     }
 }
 
+//MARK: Boolean Converter Extension
 extension Bool
 {
     init(_ intValue: Int)

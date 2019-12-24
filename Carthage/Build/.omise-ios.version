@@ -3,8 +3,8 @@
   "iOS" : [
     {
       "name" : "OmiseSDK",
-      "hash" : "5eb9e11c7fe18a894196411b78b7d6f1e4a5cdb1214636d9aa835375a1759015",
-      "swiftToolchainVersion" : "5.1.2 (swiftlang-1100.0.278 clang-1100.0.33.9)"
+      "hash" : "5333f49e4823e43f9b0fe252bd691203f9e8f980f87cb3450ac9660c93466cb7",
+      "swiftToolchainVersion" : "5.1.3 (swiftlang-1100.0.282.1 clang-1100.0.33.15)"
     }
   ]
 }
