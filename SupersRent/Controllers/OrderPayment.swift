@@ -50,11 +50,11 @@ class OrderPaymentController: UIViewController {
 	
 	@IBAction func payAfter(_ sender: UIButton) {
 		
-		let urlOrder = "https://api.supersrent.com/app-user/api/order/addCustomerOrderDetail/finish/\(self.orderID!)"
+		let urlOrder = "https://api.supersrent.com/app-user/api/order/addCustomerOrderDetail/\(self.orderID!)"
 		let loadedData = JSON(Locksmith.loadDataForUserAccount(userAccount: "admin")!)
 		let header = ["Accept":"application/json","AuthorizationHome": loadedData["tokenAccess"].stringValue]
 		let parameters: [String: Any] = [
-			"orderStatus": true
+			"orderPaymentType": "paymentLater"
 		]
 		
 		Alamofire.request(urlOrder, method: .put, parameters: parameters, encoding: JSONEncoding.default, headers: header).responseJSON { response in
@@ -62,8 +62,23 @@ class OrderPaymentController: UIViewController {
 				case .success(let data):
 					DispatchQueue.main.async {
 						let json = JSON(data)
+						print(json)
 						if json["message"].stringValue == "Successfully" {
-							self.showAlertForOrderCompleted()
+							let urlPDF = "https://api.supersrent.com/app-user/api/order/ganaratePdfOrderDetail/\(self.orderID!)"
+							Alamofire.request(urlPDF, method: .post, headers: header).responseJSON { response in
+								DispatchQueue.main.async {
+									switch response.result {
+										case .success(let pdfData):
+											let pdfJson = JSON(pdfData)
+											print(pdfJson)
+											if pdfJson["message"].stringValue == "GanaratePdfSuccessfully" {
+												self.showAlertForOrderCompleted()
+											}
+										case .failure(let pdfError):
+											print(pdfError)
+									}
+								}
+							}
 						}
 					}
 				case .failure(let error):
@@ -118,7 +133,7 @@ extension OrderPaymentController: CreditCardFormViewControllerDelegate {
 								// show the alert
 								self.present(alert, animated: true, completion: nil)
 							}
-						}
+					}
 					case .failure(let error):
 						print(error)
 				}
