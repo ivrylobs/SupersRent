@@ -721,8 +721,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="backToHome:" destination="Ndf-tH-Iea" eventType="touchUpInside" id="9a9-jG-xC7"/>
-                                            <action selector="payAfter:" destination="Ndf-tH-Iea" eventType="touchUpInside" id="2uF-aV-gKF"/>
+                                            <action selector="payAfterButton:" destination="Ndf-tH-Iea" eventType="touchUpInside" id="wvp-Vl-mi7"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0gE-kB-pfV">
@@ -741,7 +740,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="paymentButton:" destination="Ndf-tH-Iea" eventType="touchUpInside" id="MXJ-zB-Aj5"/>
+                                            <action selector="paymentNowButton:" destination="Ndf-tH-Iea" eventType="touchUpInside" id="Dgd-7N-mpH"/>
                                         </connections>
                                     </button>
                                 </subviews>
