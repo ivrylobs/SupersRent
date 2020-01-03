@@ -6,7 +6,7 @@ class ItemSelectController: UIViewController {
     
     var productData: [CategoryProduct]? //Get item from home
     var categoryData: [CategoryProduct] = [] //Filter items by group
-    var orderItems: [OrderModel] = [] //Store items
+    static var orderItems: [OrderModel] = [] //Store items
     
     
     //Create SearchParam.
@@ -24,11 +24,12 @@ class ItemSelectController: UIViewController {
         self.prepareCategoryData()
         
         //Register Custom Cell.
-        self.productTable.register(UINib(nibName: "ProductItemCell", bundle: nil), forCellReuseIdentifier: "ItemCell")
+		let cellNib = UINib(nibName: "ProductItemCell", bundle: nil)
+        self.productTable.register(cellNib, forCellReuseIdentifier: "ItemCell")
         
         //Make DataSource and Protocal Delegate
         self.productTable.dataSource = self
-        self.productTable.delegate = self
+		self.productTable.delegate = self
         self.productTable.allowsSelection = false
         
         self.productTable.tableFooterView = UIView()
@@ -36,6 +37,7 @@ class ItemSelectController: UIViewController {
 		let currencyFormatter = NumberFormatter()
 		currencyFormatter.usesGroupingSeparator = true
 		currencyFormatter.numberStyle = .currency
+		
 		// localize to your grouping and decimal separator
 		currencyFormatter.locale = Locale(identifier: "th_TH")
 		
@@ -46,14 +48,14 @@ class ItemSelectController: UIViewController {
     @IBAction func gotoSummary(_ sender: UIButton) {
 		
 		var priceSummary = 0.0
-		for item in self.orderItems {
+		for item in ItemSelectController.orderItems {
 			priceSummary += Double(item.totalForItem)!
 		}
 		
 		if priceSummary < 20.0 {
 			self.showAlertForMinimiumPrice()
 		} else {
-			if self.orderItems.count == 0 {
+			if ItemSelectController.self.orderItems.count == 0 {
 				showAlertFill()
 			} else {
 				let loadedData = Locksmith.loadDataForUserAccount(userAccount: "admin")!
@@ -66,26 +68,24 @@ class ItemSelectController: UIViewController {
 			}
 		}
     }
+	
+	@IBAction func backToHome(_ sender: UIButton) {
+		self.dismiss(animated: true, completion: nil)
+	}
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier! == NameConstant.SegueID.itemToSummayID {
             let destinationVC = segue.destination as? OrderSummayController
-            destinationVC?.orderItems = self.orderItems
+			destinationVC?.orderItems = ItemSelectController.self.orderItems
             destinationVC?.orderDates = self.searchDate
             destinationVC?.orderLocation = self.searchLocation
         }
-    }
-    
-    @IBAction func backToHome(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
     }
     
     func prepareCategoryData() {
         for items in self.productData! {
             if items.groupId == self.searchGroup?.groupId {
                 self.categoryData.append(items)
-            } else {
-                print("Not Match")
             }
         }
     }
@@ -113,78 +113,81 @@ class ItemSelectController: UIViewController {
 	}
 }
 
+extension ItemSelectController: UITableViewDelegate {
+	
+}
+
 extension ItemSelectController: ItemCellControllerDelegate {
-    func didChageAmount(product: ProductModel, itemAmount: Double) {
-        let totalPrice = product.productRentPrice * itemAmount
-        if self.orderItems.count == 0 {
-            let order = OrderModel(id: product.id,
-                                   productCategory: product.productCategory,
-                                   productGroup: product.productGroup, productId: product.productId,
-                                   productSize: product.productSize,
-                                   productRentPrice: product.productRentPrice,
-                                   productRent: Int(itemAmount),
-                                   productQuantity: product.productQuantity,
-                                   productBalance: Int(itemAmount),
-                                   totalForItem: String(totalPrice))
-            self.orderItems.append(order)
-        } else {
-            if itemAmount == 0.0 {
-                for i in 0..<self.orderItems.count {
-                    if product.id == self.orderItems[i].id {
-                        self.orderItems.remove(at: i)
-                        break
-                    }
-                }
-            } else {
-                var searchCheck = false
-                for i in 0..<self.orderItems.count {
-                    if product.id == self.orderItems[i].id {
-                        self.orderItems[i].productRent = Int(itemAmount)
-                        self.orderItems[i].productBalance = Int(itemAmount)
-                        self.orderItems[i].totalForItem = String(totalPrice)
-                        searchCheck = true
-                        break
-                    }
-                }
-                if !searchCheck {
-                    let order = OrderModel(id: product.id,
-                                           productCategory: product.productCategory,
-                                           productGroup: product.productGroup,
-                                           productId: product.productId,
-                                           productSize: product.productSize,
-                                           productRentPrice: product.productRentPrice,
-                                           productRent: Int(itemAmount),
-                                           productQuantity: product.productQuantity,
-                                           productBalance: Int(itemAmount),
-                                           totalForItem: String(totalPrice))
-                    self.orderItems.append(order)
-                }
-            }
-        }
-        //print(self.orderItems.count)
-		let currencyFormatter = NumberFormatter()
-		currencyFormatter.usesGroupingSeparator = true
-		currencyFormatter.numberStyle = .currency
-		// localize to your grouping and decimal separator
-		currencyFormatter.locale = Locale(identifier: "th_TH")
+	func didChageAmount(tableCellItem: ItemCell, product: ProductModel, inputType: String) {
 		
-		var priceSummary = 0.0
-		for item in self.orderItems {
-			priceSummary += Double(item.totalForItem)!
+		var isItemInList = false
+		
+		for i in 0..<ItemSelectController.orderItems.count {
+			if tableCellItem.productInfo?.id == ItemSelectController.orderItems[i].id {
+				isItemInList = true
+				
+				if inputType == "increase" {
+					ItemSelectController.orderItems[i].changeAmount(itemAmount: ItemSelectController.orderItems[i].productRent + 1)
+					tableCellItem.changeAmountLabel(amount: ItemSelectController.orderItems[i].productRent)
+				} else {
+					if ItemSelectController.orderItems[i].productRent > 1 {
+						ItemSelectController.orderItems[i].changeAmount(itemAmount: ItemSelectController.orderItems[i].productRent - 1)
+						tableCellItem.changeAmountLabel(amount: ItemSelectController.orderItems[i].productRent)
+					} else {
+						ItemSelectController.orderItems.remove(at: i)
+						tableCellItem.changeAmountLabel(amount: 0)
+					}
+				}
+			}
 		}
 		
+		if !isItemInList {
+			if inputType == "increase" {
+				let order = OrderModel(id: product.id,
+									   productCategory: product.productCategory,
+									   productGroup: product.productGroup,
+									   productId: product.productId,
+									   productSize: product.productSize,
+									   productRentPrice: product.productRentPrice,
+									   productRent: 1,
+									   productQuantity: product.productQuantity,
+									   productBalance: 1,
+									   totalForItem: String(format: "%.2f", product.productRentPrice * 1))
+				ItemSelectController.orderItems.append(order)
+				tableCellItem.changeAmountLabel(amount: 1)
+			}
+		}
+		
+
+		print(ItemSelectController.orderItems.count)
+		
+		let currencyFormatter = NumberFormatter()
+		
+		currencyFormatter.usesGroupingSeparator = true
+		currencyFormatter.numberStyle = .currency
+		
+		// localize to your grouping and decimal separator
+		currencyFormatter.locale = Locale(identifier: "th_TH")
+
+		var priceSummary = 0.0
+		for item in ItemSelectController.self.orderItems {
+			priceSummary += Double(item.totalForItem)!
+		}
+
 		self.totalPrice.text = currencyFormatter.string(from: NSNumber(value: priceSummary))!
-    }
+	}
 }
 
 extension ItemSelectController: UITableViewDataSource {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
+		print("Section: \(self.categoryData.count)")
         return self.categoryData.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		print("Row in section \(section) : \(self.categoryData[section].productItem.count)")
         return self.categoryData[section].productItem.count
     }
     
@@ -192,7 +195,7 @@ extension ItemSelectController: UITableViewDataSource {
         return CGFloat(80)
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         //Create Section Header
         let header = UILabel()
         
@@ -201,6 +204,7 @@ extension ItemSelectController: UITableViewDataSource {
         header.backgroundColor = UIColor(rgb: 0x222831)
         header.textColor = UIColor(rgb: ColorString.White)
         
+		print("return header for section name: \(self.categoryData[section].categoryName)")
         return header
     }
     
@@ -223,15 +227,7 @@ extension ItemSelectController: UITableViewDataSource {
         cell.itemLabel.text = " รหัส: \(category)"
         cell.sizeLabel.text = " ขนาด: \(size)"
         cell.priceLabel.text = " ราคาเช่า(บาท/วัน):  \(price)"
-        
-        //print("\(indexPath.section): \(indexPath.row)")
-        return cell
-    }
-}
 
-extension ItemSelectController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.productTable.deselectRow(at: indexPath, animated: false)
-        //print("here")
+        return cell
     }
 }

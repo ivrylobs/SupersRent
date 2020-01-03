@@ -49,6 +49,12 @@ struct OrderModel {
     let productQuantity:Double
     var productBalance:Int
     var totalForItem:String
+	
+	mutating func changeAmount(itemAmount: Int) {
+		self.productRent = itemAmount
+		self.productBalance = itemAmount
+		self.totalForItem = String(format: "%.2f", self.productRentPrice * Double(itemAmount))
+	}
 }
 
 struct OrderSummary {

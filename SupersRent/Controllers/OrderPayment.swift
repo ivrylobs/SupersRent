@@ -58,7 +58,7 @@ class OrderPaymentController: UIViewController {
 		creditCardView.handleErrors = true
 		
 		//Prepare before presenting.
-		creditCardView.modalPresentationStyle = .automatic
+		creditCardView.modalPresentationStyle = .popover
 		
 		//Present.
 		self.present(creditCardView, animated: true, completion: nil)

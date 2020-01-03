@@ -1,13 +1,13 @@
 import UIKit
 
 protocol ItemCellControllerDelegate {
-    func didChageAmount(product: ProductModel, itemAmount: Double)
+	func didChageAmount(tableCellItem: ItemCell, product: ProductModel, inputType: String)
 }
 
 class ItemCell: UITableViewCell {
     
     var productInfo: ProductModel?
-    var productAmount: Int?
+	var productAmount: Int = 0
     
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var itemLabel: UILabel!
@@ -19,12 +19,26 @@ class ItemCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        // Initialization code
-        self.productAmount = 0
-        self.quantityLabel.text = String(self.productAmount!)
-        
-        
     }
+	
+	func changeAmountLabel(amount: Int) {
+		self.productAmount = amount
+		self.quantityLabel.text = String(self.productAmount)
+	}
+	
+	override func prepareForReuse() {
+		if ItemSelectController.orderItems.count == 0 {
+			changeAmountLabel(amount: 0)
+		} else {
+			for item in ItemSelectController.orderItems {
+				if item.id == self.productInfo?.id {
+					changeAmountLabel(amount: item.productRent)
+				} else {
+					changeAmountLabel(amount: 0)
+				}
+			}
+		}
+	}
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -33,24 +47,10 @@ class ItemCell: UITableViewCell {
     }
     
     @IBAction func decreaseQuantity(_ sender: UIButton) {
-        if self.productAmount == 0 {
-            self.productAmount = 0
-        } else {
-            self.productAmount! -= 1
-        }
-        //print("Decrease: \(self.productAmount)")
-        self.quantityLabel.text = String(self.productAmount!)
-        self.delegate?.didChageAmount(product: self.productInfo!, itemAmount: Double(self.productAmount!))
+		self.delegate?.didChageAmount(tableCellItem: self, product: self.productInfo!, inputType: "decrease")
     }
     
     @IBAction func increaseQuantity(_ sender: UIButton) {
-       if self.productAmount == 99 {
-            self.productAmount = 99
-        } else {
-            self.productAmount! += 1
-        }
-        //print("Increase: \(self.productAmount)")
-        self.quantityLabel.text = String(self.productAmount!)
-        self.delegate?.didChageAmount(product: self.productInfo!, itemAmount: Double(self.productAmount!))
+		self.delegate?.didChageAmount(tableCellItem: self, product: self.productInfo!, inputType: "increase")
     }
 }

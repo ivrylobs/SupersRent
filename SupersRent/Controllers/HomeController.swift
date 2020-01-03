@@ -71,7 +71,7 @@ class HomeController: UIViewController {
 									
 									//Set profile label to user's firstname.
 									self.profileLabel.text = firstName
-									self.loginButton.setImage(UIImage(systemName: "person.crop.circle.badge.xmark"), for: .normal)
+									self.loginButton.setImage(UIImage(named: "person.crop.circle.badge.xmark"), for: .normal)
 									
 									//Set new data from retrieved to storeUserDataForUpdate.
 									self.storeUserDataForUpdate!["userData"] = JSON(userRetrievedData)
@@ -114,7 +114,7 @@ class HomeController: UIViewController {
 			
 			//Going to logout.
 			self.updateUserData(userData: ["isLogin": false, "tokenAccess": "", "email": "", "userData": ""])
-			self.loginButton.setImage(UIImage(systemName: "person.fill"), for: .normal)
+			self.loginButton.setImage(UIImage(named: "person.fill"), for: .normal)
 			self.profileLabel.text = "Not login"
 			
 			super.viewDidLoad()
