@@ -26,11 +26,13 @@ class HomeController: UIViewController {
 	@IBOutlet weak var groupButton: UIButton!
 	@IBOutlet weak var locationButton: UIButton!
 	@IBOutlet weak var dateButton: UIButton!
-	@IBOutlet weak var profileLabel: UILabel!
-	@IBOutlet weak var loginButton: UIButton!
+	@IBOutlet weak var searchButton: UIButton!
+	
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		//Initialize View design property
 		
 		//Initialize userData After Installed.
 		self.appInitializerAfterInstalled()
@@ -64,14 +66,10 @@ class HomeController: UIViewController {
 								let userRetrievedData = JSON(data)
 								
 								//Check if retrieved data is correct.
-								if let firstName = userRetrievedData["firstName"].string {
+								if userRetrievedData["firstName"].string != nil {
 									
 									//If Login process success show output to consoleใ
 									print("Logged")
-									
-									//Set profile label to user's firstname.
-									self.profileLabel.text = firstName
-									self.loginButton.setImage(UIImage(named: "person.crop.circle.badge.xmark"), for: .normal)
 									
 									//Set new data from retrieved to storeUserDataForUpdate.
 									self.storeUserDataForUpdate!["userData"] = JSON(userRetrievedData)
@@ -81,50 +79,30 @@ class HomeController: UIViewController {
 									
 									//If login not success update userData JSON to default state.
 									self.updateUserData(userData: ["isLogin": false, "tokenAccess": "", "email": "", "userData": ""])
-									self.profileLabel.text = "Not login"
+									print("Did not login before, please login again!")
 								}
 						}
 						case .failure(let error):
 							
 							//If HTTP Task fail need to check backend.
 							print("\(error) HTTP Task fail! Please Contact staff")
-							self.profileLabel.text = "Not login"
 					}
 				}
 			} else {
 				
 				//If isLogin is false set default state immediately
 				print("Did not login before, please login!")
-				self.profileLabel.text = "Not login"
 			}
 		} else {
 			
 			//If Initializer not working do initialize userData again.
+			self.updateUserData(userData: ["isLogin": false, "tokenAccess": "", "email": "", "userData": ""])
 			print("Please login!")
-			self.profileLabel.text = "Not login"
-			self.updateUserData(userData: ["isLogin": false, "tokenAccess": "", "email": "", "userData": ""])
-			self.profileLabel.text = "Not login"
-		}
-	}
-	
-	@IBAction func gotoLogin(_ sender: UIButton) {
-		let loadedData = Locksmith.loadDataForUserAccount(userAccount: "admin")
-		let userData = JSON(loadedData!)
-		if userData["isLogin"].boolValue {
-			
-			//Going to logout.
-			self.updateUserData(userData: ["isLogin": false, "tokenAccess": "", "email": "", "userData": ""])
-			self.loginButton.setImage(UIImage(named: "person.fill"), for: .normal)
-			self.profileLabel.text = "Not login"
-			
-			super.viewDidLoad()
-			self.showAlertForLogout()
-		} else {
-			self.performSegue(withIdentifier: NameConstant.SegueID.homeToLoginID, sender: self)
 		}
 	}
 	
 	@IBAction func presentViewAction(_ sender: UIButton) {
+		
 		switch sender.accessibilityIdentifier! {
 			case NameConstant.ButtonID.groupID :
 				self.getGroupData.getGroup()
@@ -201,6 +179,15 @@ class HomeController: UIViewController {
 		
 		// show the alert
 		self.present(alert, animated: true, completion: nil)
+	}
+	
+	func setShadowForView(viewShadow: UIView, opacity: Float, offset: CGSize, radius: CGFloat) {
+		viewShadow.layer.shadowColor = UIColor.gray.cgColor
+		viewShadow.layer.shadowOpacity = opacity
+		viewShadow.layer.shadowOffset = offset
+		viewShadow.layer.shadowRadius = radius
+		viewShadow.layer.masksToBounds = false
+		viewShadow.layer.shadowPath = UIBezierPath(rect: viewShadow.bounds).cgPath
 	}
 	
 }

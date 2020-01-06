@@ -80,7 +80,9 @@
 		9EC1570C239BE5910013F3E9 /* OrderPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPayment.swift; sourceTree = "<group>"; };
 		9EC1570E239CFFC10013F3E9 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		9EC1570F239CFFC10013F3E9 /* ProductItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductItemCell.xib; sourceTree = "<group>"; };
+		A178E0529E6361C49C91BA07 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		BC0CB11E9544D75E477C6AA5 /* Pods-SupersRent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRent.release.xcconfig"; path = "Target Support Files/Pods-SupersRent/Pods-SupersRent.release.xcconfig"; sourceTree = "<group>"; };
+		CBACE5835FE1D536A63223F0 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		FF11613C093705D7D7F45F1F /* Pods-SupersRent.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRent.debug.xcconfig"; path = "Target Support Files/Pods-SupersRent/Pods-SupersRent.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -125,6 +127,7 @@
 				03872A2B2394D23E00441D88 /* Views */,
 				036C407C2394C6C700534D1C /* Assets.xcassets */,
 				036C40812394C6C700534D1C /* Info.plist */,
+				ED2A6860AAD04D9F8BF73A6C /* Resources */,
 			);
 			path = SupersRent;
 			sourceTree = "<group>";
@@ -158,6 +161,15 @@
 				9E60672323A4C47D007AD5B9 /* SummaryCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		136F0E2A39F5553CB296AFD8 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				A178E0529E6361C49C91BA07 /* logo.png */,
+				CBACE5835FE1D536A63223F0 /* logo.png */,
+			);
+			path = LaunchScreen;
 			sourceTree = "<group>";
 		};
 		9E8B97EC23B4A89F0026D275 /* CellControllers */ = {
@@ -204,6 +216,14 @@
 				193D79657883CBB6FD68AE95 /* Pods_SupersRent.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED2A6860AAD04D9F8BF73A6C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				136F0E2A39F5553CB296AFD8 /* LaunchScreen */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,9 +310,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SupersRent/Pods-SupersRent-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SupersRent/Pods-SupersRent-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -516,7 +540,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = P82J993H56;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -528,7 +552,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.banraomaibab.supersrentapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -544,7 +568,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.3;
+				CURRENT_PROJECT_VERSION = 1.0;
 				DEVELOPMENT_TEAM = P82J993H56;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -556,7 +580,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.banraomaibab.supersrentapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -91,12 +91,12 @@ extension DateSelectController: CalendarViewDelegate {
                 self.calendarView.deselectDate(self.calendarView.selectedDates[0])
 			} else {
                 let dateFormatter = DateFormatter()
-                let presenter = self.presentingViewController as? HomeController
+                let presenter = (presentingViewController as? UITabBarController)?.viewControllers![0] as? HomeController
                 
                 dateFormatter.locale = Locale(identifier: "th_TH")
                 dateFormatter.dateFormat = "d LLLL yyyy"
                 let dateStringFormatted = "\(dateFormatter.string(from: self.calendarView.selectedDates[0])) - \(dateFormatter.string(from: self.calendarView.selectedDates[1]))"
-                presenter?.dateButton.setTitle(dateStringFormatted, for: .normal)
+                presenter?.dateButton.setTitle("    \(dateStringFormatted)", for: .normal)
                 presenter?.searchDate = DateModel(firstDate: self.calendarView.selectedDates[0], finalDate: self.calendarView.selectedDates[1])
                 self.dismiss(animated: true, completion: nil)
             }

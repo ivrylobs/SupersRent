@@ -39,11 +39,14 @@ extension GroupSelectController: UITableViewDataSource {
 extension GroupSelectController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-        if let presenter = presentingViewController as? HomeController {
-            presenter.groupButton.setTitle(self.groupTable.cellForRow(at: indexPath)?.textLabel?.text!, for: .normal)
+		
+		if let presenter = (presentingViewController as? UITabBarController)?.viewControllers![0] as? HomeController {
+			print("here")
+			presenter.groupButton.setTitle("    \(self.rowData![indexPath.row].groupName)", for: .normal)
             presenter.searchGroup = self.rowData![indexPath.row]
-        }
+		} else {
+			print("Failed to access presentingViewController")
+		}
 
         dismiss(animated: true, completion: nil)
     }

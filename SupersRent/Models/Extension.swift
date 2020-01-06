@@ -1,5 +1,4 @@
 import UIKit
-import SwiftUI
 
 //MARK: Hex RGB Extension
 extension UIColor {

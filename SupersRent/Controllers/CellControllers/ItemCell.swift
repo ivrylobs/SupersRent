@@ -26,6 +26,11 @@ class ItemCell: UITableViewCell {
 		self.quantityLabel.text = String(self.productAmount)
 	}
 	
+	override func layoutSubviews() {
+		super.layoutSubviews()
+		contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
+	}
+	
 	override func prepareForReuse() {
 		if ItemSelectController.orderItems.count == 0 {
 			changeAmountLabel(amount: 0)

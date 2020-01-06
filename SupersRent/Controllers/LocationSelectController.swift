@@ -58,8 +58,8 @@ class LocationSelectController: UIViewController {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let presenter = presentingViewController as? HomeController {
-            presenter.locationButton.setTitle(self.LocationTable.cellForRow(at: indexPath)?.textLabel?.text! , for: .normal)
+        if let presenter = (presentingViewController as? UITabBarController)?.viewControllers![0] as? HomeController {
+			presenter.locationButton.setTitle( "    \(self.filteredRowData![indexPath.row].provinceName), \(self.filteredRowData![indexPath.row].districtName)" , for: .normal)
             presenter.searchLocation = self.filteredRowData![indexPath.row]
         }
         dismiss(animated: true, completion: nil)
