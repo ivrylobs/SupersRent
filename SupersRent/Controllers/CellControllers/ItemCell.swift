@@ -22,23 +22,23 @@ class ItemCell: UITableViewCell {
     }
 	
 	func changeAmountLabel(amount: Int) {
+		print("Change Amount")
 		self.productAmount = amount
 		self.quantityLabel.text = String(self.productAmount)
 	}
 	
-	override func layoutSubviews() {
-		super.layoutSubviews()
-		contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8))
-	}
-	
 	override func prepareForReuse() {
+		print(ItemSelectController.orderItems)
 		if ItemSelectController.orderItems.count == 0 {
 			changeAmountLabel(amount: 0)
 		} else {
 			for item in ItemSelectController.orderItems {
 				if item.id == self.productInfo?.id {
+					print("Match Product Order")
+					print(item.productRent)
 					changeAmountLabel(amount: item.productRent)
 				} else {
+					print("Not Match Product Order")
 					changeAmountLabel(amount: 0)
 				}
 			}

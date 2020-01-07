@@ -181,6 +181,7 @@ class HomeController: UIViewController {
 		self.present(alert, animated: true, completion: nil)
 	}
 	
+	//Making shadow for UIView.
 	func setShadowForView(viewShadow: UIView, opacity: Float, offset: CGSize, radius: CGFloat) {
 		viewShadow.layer.shadowColor = UIColor.gray.cgColor
 		viewShadow.layer.shadowOpacity = opacity

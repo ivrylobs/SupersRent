@@ -182,12 +182,10 @@ extension ItemSelectController: UITableViewDataSource {
     
     
     func numberOfSections(in tableView: UITableView) -> Int {
-		print("Section: \(self.categoryData.count)")
         return self.categoryData.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		print("Row in section \(section) : \(self.categoryData[section].productItem.count)")
         return self.categoryData[section].productItem.count
     }
     
@@ -204,7 +202,6 @@ extension ItemSelectController: UITableViewDataSource {
         header.backgroundColor = UIColor(rgb: 0x222831)
         header.textColor = UIColor(rgb: ColorString.White)
         
-		print("return header for section name: \(self.categoryData[section].categoryName)")
         return header
     }
     
