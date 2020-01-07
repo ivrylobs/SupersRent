@@ -22,6 +22,7 @@ class ItemSelectController: UIViewController {
         
         //Prepare Items Data.
         self.prepareCategoryData()
+		ItemSelectController.orderItems = []
         
         //Register Custom Cell.
 		let cellNib = UINib(nibName: "ProductItemCell", bundle: nil)
@@ -128,14 +129,14 @@ extension ItemSelectController: ItemCellControllerDelegate {
 				
 				if inputType == "increase" {
 					ItemSelectController.orderItems[i].changeAmount(itemAmount: ItemSelectController.orderItems[i].productRent + 1)
-					tableCellItem.changeAmountLabel(amount: ItemSelectController.orderItems[i].productRent)
+					tableCellItem.changeAmountLabel(amount: ItemSelectController.orderItems[i].productRent, product: product)
 				} else {
 					if ItemSelectController.orderItems[i].productRent > 1 {
 						ItemSelectController.orderItems[i].changeAmount(itemAmount: ItemSelectController.orderItems[i].productRent - 1)
-						tableCellItem.changeAmountLabel(amount: ItemSelectController.orderItems[i].productRent)
+						tableCellItem.changeAmountLabel(amount: ItemSelectController.orderItems[i].productRent, product: product)
 					} else {
 						ItemSelectController.orderItems.remove(at: i)
-						tableCellItem.changeAmountLabel(amount: 0)
+						tableCellItem.changeAmountLabel(amount: 0,product: product)
 					}
 				}
 			}
@@ -154,12 +155,14 @@ extension ItemSelectController: ItemCellControllerDelegate {
 									   productBalance: 1,
 									   totalForItem: String(format: "%.2f", product.productRentPrice * 1))
 				ItemSelectController.orderItems.append(order)
-				tableCellItem.changeAmountLabel(amount: 1)
+				tableCellItem.changeAmountLabel(amount: 1, product: product)
 			}
 		}
 		
 
 		print(ItemSelectController.orderItems.count)
+		print(product.id, product.productId)
+		print(ItemSelectController.orderItems)
 		
 		let currencyFormatter = NumberFormatter()
 		
@@ -224,7 +227,19 @@ extension ItemSelectController: UITableViewDataSource {
         cell.itemLabel.text = " รหัส: \(category)"
         cell.sizeLabel.text = " ขนาด: \(size)"
         cell.priceLabel.text = " ราคาเช่า(บาท/วัน):  \(price)"
-
+		
+		for item in ItemSelectController.orderItems {
+			if item.productId == cell.productInfo?.productId {
+				print("Have in list")
+				cell.quantityLabel.text = "\(item.productRent)"
+				print(cell.productInfo?.productId, item.productRent)
+				break
+			} else {
+				cell.quantityLabel.text = "0"
+			}
+		}
+		
+		print("Confirm value: \(cell.quantityLabel.text)")
         return cell
     }
 }

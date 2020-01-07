@@ -41,7 +41,6 @@ extension GroupSelectController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		
 		if let presenter = (presentingViewController as? UITabBarController)?.viewControllers![0] as? HomeController {
-			print("here")
 			presenter.groupButton.setTitle("    \(self.rowData![indexPath.row].groupName)", for: .normal)
             presenter.searchGroup = self.rowData![indexPath.row]
 		} else {

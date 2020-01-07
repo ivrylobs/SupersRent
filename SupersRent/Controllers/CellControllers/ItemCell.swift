@@ -7,7 +7,6 @@ protocol ItemCellControllerDelegate {
 class ItemCell: UITableViewCell {
     
     var productInfo: ProductModel?
-	var productAmount: Int = 0
     
     @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var itemLabel: UILabel!
@@ -21,29 +20,54 @@ class ItemCell: UITableViewCell {
         
     }
 	
-	func changeAmountLabel(amount: Int) {
-		print("Change Amount")
-		self.productAmount = amount
-		self.quantityLabel.text = String(self.productAmount)
+	func changeAmountLabel(amount: Int, product: ProductModel) {
+		if self.productInfo?.productId == product.productId {
+			print("Change Amount")
+			self.quantityLabel.text = String(amount)
+		}
+		
 	}
 	
-	override func prepareForReuse() {
-		print(ItemSelectController.orderItems)
-		if ItemSelectController.orderItems.count == 0 {
-			changeAmountLabel(amount: 0)
-		} else {
-			for item in ItemSelectController.orderItems {
-				if item.id == self.productInfo?.id {
-					print("Match Product Order")
-					print(item.productRent)
-					changeAmountLabel(amount: item.productRent)
-				} else {
-					print("Not Match Product Order")
-					changeAmountLabel(amount: 0)
-				}
-			}
-		}
-	}
+//	override func prepareForReuse() {
+//		print("Do reset")
+//		if ItemSelectController.orderItems.count == 0 {
+//			self.quantityLabel.text = "0"
+//		} else {
+//			for item in ItemSelectController.orderItems {
+//				if item.productId == self.productInfo?.productId {
+//					self.quantityLabel.text = "\(item.productRent)"
+//				} else {
+//					self.quantityLabel.text = "0"
+//				}
+//			}
+//		}
+//		print(self.productInfo?.id)
+//		print(self.productInfo?.productId)
+//		print(self.productAmount, self.quantityLabel.text)
+//		if String(self.productAmount) == self.quantityLabel.text {
+//			print("Match")
+//		} else {
+//			print("Not match")
+//		}
+//		print("refresh")
+//
+//		//print(ItemSelectController.orderItems)
+//		if ItemSelectController.orderItems.count == 0 {
+//			changeAmountLabel(amount: 0)
+//		} else {
+//			for item in ItemSelectController.orderItems {
+//				if item.id == self.productInfo?.id {
+//					//print("Match Product Order")
+//					//print(item.productRent)
+//					changeAmountLabel(amount: item.productRent)
+//				} else {
+//					//print("Not Match Product Order")
+//					changeAmountLabel(amount: 0)
+//				}
+//			}
+//		}
+//		self.quantityLabel.text = "Non"
+//	}
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
