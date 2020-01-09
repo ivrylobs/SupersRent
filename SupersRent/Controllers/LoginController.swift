@@ -7,6 +7,7 @@ class LoginController: UIViewController {
 	
 	@IBOutlet weak var usernameField: UITextField!
 	@IBOutlet weak var passwordField: UITextField!
+	@IBOutlet weak var registerText: UITextView!
 	
 	let loginUrl = "https://api.supersrent.com/app-user/api/home/auth/login"
 	
@@ -22,22 +23,21 @@ class LoginController: UIViewController {
 		//Data protocal delegate.
 		self.usernameField.delegate = self
 		self.passwordField.delegate = self
+		
+		let path = "https://supersrent.com/home/register"
+		
+		let text = self.registerText.text
+		let font = self.registerText.font
+		let attributedString = NSAttributedString.makeHyperLink(for: path, in: text!, as: "Register")
+		self.registerText.attributedText = attributedString
+		self.registerText.font = font
+		
 	}
 	
 	@IBAction func loginToServer(_ sender: Any) {
 		doLogin()
 	}
 	
-	
-	@IBAction func backToOrder(_ sender: UIButton) {
-		let presenter = self.presentingViewController
-		if presenter?.restorationIdentifier! == NameConstant.StoryBoardID.homeID {
-			presenter?.viewDidLoad()
-			self.dismiss(animated: true, completion: nil)
-		} else {
-			self.dismiss(animated: true, completion: nil)
-		}
-	}
 	
 	func doLogin() {
 		
@@ -64,9 +64,17 @@ class LoginController: UIViewController {
 							
 							//Check if presenter not home, do another presenter instead.
 							let presenter = self.presentingViewController
-							if presenter?.restorationIdentifier! == NameConstant.StoryBoardID.homeID {
-								presenter?.viewDidLoad()
-								self.dismiss(animated: true, completion: nil)
+							
+							if presenter?.restorationIdentifier == nil {
+								
+								let parent = self.parent as? UITabBarController
+								
+								let vc = self.storyboard?.instantiateViewController(withIdentifier: "logoutView")
+								
+								var viewControllers = parent?.viewControllers
+								viewControllers![3] = vc!
+								parent?.setViewControllers(viewControllers, animated: true)
+						
 							} else {
 								self.updateUserDataForKeyToken()
 								self.dismiss(animated: true) {

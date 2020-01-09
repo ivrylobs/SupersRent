@@ -40,6 +40,7 @@
 		9EC15710239CFFC10013F3E9 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC1570E239CFFC10013F3E9 /* ItemCell.swift */; };
 		9EC15711239CFFC10013F3E9 /* ProductItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EC1570F239CFFC10013F3E9 /* ProductItemCell.xib */; };
 		9EC15712239D84580013F3E9 /* OmiseSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03872A1B2394CBF000441D88 /* OmiseSDK.framework */; };
+		9EC85CE523C7080700B505BB /* LogoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC85CE423C7080700B505BB /* LogoutController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		9EC1570C239BE5910013F3E9 /* OrderPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPayment.swift; sourceTree = "<group>"; };
 		9EC1570E239CFFC10013F3E9 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		9EC1570F239CFFC10013F3E9 /* ProductItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductItemCell.xib; sourceTree = "<group>"; };
+		9EC85CE423C7080700B505BB /* LogoutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutController.swift; sourceTree = "<group>"; };
 		A178E0529E6361C49C91BA07 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		BC0CB11E9544D75E477C6AA5 /* Pods-SupersRent.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SupersRent.release.xcconfig"; path = "Target Support Files/Pods-SupersRent/Pods-SupersRent.release.xcconfig"; sourceTree = "<group>"; };
 		CBACE5835FE1D536A63223F0 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			children = (
 				9E8643772396ECE700AC3D50 /* HomeController.swift */,
 				9E18BE0C23A007A800E85188 /* LoginController.swift */,
+				9EC85CE423C7080700B505BB /* LogoutController.swift */,
 				9EA05A022398D1B70056CEF3 /* GroupSelectController.swift */,
 				9EA05A042398D1D70056CEF3 /* LocationSelectController.swift */,
 				9E92C3D8239A6D9200691E96 /* DateSelectController.swift */,
@@ -380,6 +383,7 @@
 				9EC1570D239BE5910013F3E9 /* OrderPayment.swift in Sources */,
 				9E60671C23A3C1D4007AD5B9 /* UserInfoCell.swift in Sources */,
 				9EA05A0B23992E8B0056CEF3 /* LocationData.swift in Sources */,
+				9EC85CE523C7080700B505BB /* LogoutController.swift in Sources */,
 				9E3476F0239BA09100C94CFE /* DataModel.swift in Sources */,
 				9EC15710239CFFC10013F3E9 /* ItemCell.swift in Sources */,
 				036C40762394C6C300534D1C /* SceneDelegate.swift in Sources */,

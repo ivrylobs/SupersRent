@@ -224,22 +224,26 @@ extension ItemSelectController: UITableViewDataSource {
         let category = self.categoryData[indexPath.section].productItem[indexPath.row].productId
         let size = self.categoryData[indexPath.section].productItem[indexPath.row].productSize
         let price = self.categoryData[indexPath.section].productItem[indexPath.row].productRentPrice
+		
         cell.itemLabel.text = " รหัส: \(category)"
         cell.sizeLabel.text = " ขนาด: \(size)"
         cell.priceLabel.text = " ราคาเช่า(บาท/วัน):  \(price)"
 		
+		//Set default states for reusing each cells.
 		for item in ItemSelectController.orderItems {
 			if item.productId == cell.productInfo?.productId {
-				print("Have in list")
+				
+				//Break the loop when found the cell to retain values.
+				print("UITableViewCell: This cell has used. \(cell.productInfo!.productId) : \(item.productRent)")
 				cell.quantityLabel.text = "\(item.productRent)"
-				print(cell.productInfo?.productId, item.productRent)
 				break
 			} else {
+				
+				//Each cell should be retain for one time.
 				cell.quantityLabel.text = "0"
 			}
 		}
 		
-		print("Confirm value: \(cell.quantityLabel.text)")
         return cell
     }
 }
