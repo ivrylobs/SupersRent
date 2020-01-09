@@ -48,7 +48,7 @@ class OrderPaymentController: UIViewController {
 		print("Press PayNow")
 		
 		//Set public key for Omise.
-		let publicKey = "pkey_test_5i8idrim1dwxe878yr2"
+		let publicKey = "pkey_5i9w3mje8w6u6aunuqa"
 		
 		//Create CreditCardView.
 		let creditCardView = CreditCardFormViewController.makeCreditCardFormViewController(withPublicKey: publicKey)
@@ -110,7 +110,7 @@ extension OrderPaymentController: CreditCardFormViewControllerDelegate {
 			
 			print("Token_ID: \(token.id)")
 			
-			let omiseUrl = "https://api.supersrent.com/app-user/api/order/payment"
+			let omiseUrl = "https://api.supersrent.com/app-user/api/order/payment/web"
 			let saveOmiseUrl = "https://api.supersrent.com/app-user/api/order/orderPeyment"
 			let saveOrderDetailUrl = "https://api.supersrent.com/app-user/api/order/addCustomerOrderDetail/\(self.orderID!)"
 			

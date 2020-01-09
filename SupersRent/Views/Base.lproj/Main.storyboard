@@ -488,7 +488,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="44"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list.bullet" translatesAutoresizingMaskIntoConstraints="NO" id="ORg-RR-4fX">
-                                                <rect key="frame" x="8" y="7" width="23" height="30"/>
+                                                <rect key="frame" x="8" y="14.5" width="23" height="15"/>
                                                 <color key="tintColor" name="BlackGray"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="23" id="UYU-5X-ZFC"/>
@@ -526,7 +526,7 @@
                                         <rect key="frame" x="0.0" y="59" width="355" height="44"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.fill" translatesAutoresizingMaskIntoConstraints="NO" id="5lP-XY-YcQ">
-                                                <rect key="frame" x="8" y="-3" width="23" height="50"/>
+                                                <rect key="frame" x="8" y="9.5" width="23" height="25"/>
                                                 <color key="tintColor" name="BlackGray"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="23" id="gPy-v6-bVf"/>
@@ -564,7 +564,7 @@
                                         <rect key="frame" x="0.0" y="118" width="355" height="44"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="cKC-DR-saT">
-                                                <rect key="frame" x="8" y="0.0" width="23" height="44"/>
+                                                <rect key="frame" x="8" y="11" width="23" height="22"/>
                                                 <color key="tintColor" name="BlackGray"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="23" id="5Gb-j4-Bu2"/>
@@ -801,7 +801,7 @@
                                                 <rect key="frame" x="0.0" y="105" width="219.5" height="52.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="percent" translatesAutoresizingMaskIntoConstraints="NO" id="tTI-VQ-1EW">
-                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="52.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="52.500000000000007"/>
                                                         <color key="tintColor" name="LogoYellow"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="20" id="eih-tS-ZBF"/>
@@ -979,7 +979,7 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qOf-jN-ZK5">
-                                <rect key="frame" x="10" y="10" width="25" height="30"/>
+                                <rect key="frame" x="10" y="10" width="12.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="kP1-4a-mii"/>
                                 </constraints>
