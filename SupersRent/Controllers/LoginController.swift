@@ -2,6 +2,7 @@ import UIKit
 import Locksmith
 import Alamofire
 import SwiftyJSON
+import SafariServices
 
 class LoginController: UIViewController {
 	
@@ -28,10 +29,13 @@ class LoginController: UIViewController {
 		
 		let text = self.registerText.text
 		let font = self.registerText.font
+		
 		let attributedString = NSAttributedString.makeHyperLink(for: path, in: text!, as: "Register")
+		
 		self.registerText.attributedText = attributedString
 		self.registerText.font = font
 		
+		self.registerText.delegate = self
 	}
 	
 	@IBAction func loginToServer(_ sender: Any) {
@@ -135,6 +139,16 @@ class LoginController: UIViewController {
 		
 		// show the alert
 		self.present(alert, animated: true, completion: nil)
+	}
+}
+
+extension LoginController: UITextViewDelegate {
+	func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+		print("pressed URL")
+		
+		let svc = SFSafariViewController(url: URL)
+		self.present(svc, animated: true, completion: nil)
+		return false
 	}
 }
 
