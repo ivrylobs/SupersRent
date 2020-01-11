@@ -71,6 +71,8 @@ class LoginController: UIViewController {
 							
 							if presenter?.restorationIdentifier == nil {
 								
+								self.updateUserDataForKeyToken()
+								
 								let parent = self.parent as? UITabBarController
 								
 								let vc = self.storyboard?.instantiateViewController(withIdentifier: "logoutView")
