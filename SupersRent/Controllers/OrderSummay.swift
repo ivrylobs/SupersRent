@@ -70,14 +70,24 @@ class OrderSummayController: UIViewController {
                 ]
             orderItems.append(itemAppend)
         }
+		
+		let dateFormatter = DateFormatter()
+		dateFormatter.locale = Locale(identifier: "th_TH")
+		dateFormatter.dateFormat = "dd-MM-yyy HH:mm:ss"
+		let orderCreatedDate = dateFormatter.string(from: Date())
+		
+		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+		let contractStartDateISO = dateFormatter.string(from: self.orderDates!.firstDate)
+		dateFormatter.dateFormat = "dd MMM yyyy"
+		
         let postOrder: [String : Any] = [
             "orderAllItemBalance": itemCount,
             "orderAllTotalAndVAT": totalPrice * Double(diffInDays!) + totalPrice * Double(diffInDays!) * 0.07,
-            "orderContractEndFormat": self.orderDates!.finalDate.description(with: Locale(identifier: "th_TH")),
-            "orderContractStart": self.orderDates!.firstDate.description,
-            "orderContractStartFormat": self.orderDates!.firstDate.description(with: Locale(identifier: "th_TH")),
+			"orderContractEndFormat": dateFormatter.string(from: self.orderDates!.finalDate),
+            "orderContractStart": contractStartDateISO,
+            "orderContractStartFormat": dateFormatter.string(from: self.orderDates!.firstDate),
             "orderCustomer": orderCustomer,
-            "orderDate": Date().description,
+            "orderDate": orderCreatedDate,
             "orderItemAllTotal": totalPrice * Double(diffInDays!),
             "orderItemTotal": totalPrice,
             "orderItems": orderItems,
