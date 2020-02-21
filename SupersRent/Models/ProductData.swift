@@ -11,7 +11,7 @@ struct GetProductData {
     var delegate: GetProductDataDelegate?
     
     func getProduct() {
-        Alamofire.request(productUrl).responseJSON { (response) in
+        AF.request(productUrl).responseJSON { (response) in
             switch response.result {
             case .success(let data):
                 let jsonData = JSON(data)

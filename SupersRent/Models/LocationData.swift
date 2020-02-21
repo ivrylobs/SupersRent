@@ -11,7 +11,7 @@ struct GetLocationData {
     var delegate: GetLocationDataDelegate?
     
     func getLocation() {
-        Alamofire.request(locationUrl).responseJSON { (response) in
+        AF.request(locationUrl).responseJSON { (response) in
             switch response.result {
             case .success(let data):
                 let jsonData = JSON(data)

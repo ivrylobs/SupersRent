@@ -12,7 +12,6 @@
 		036C407B2394C6C300534D1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 036C40792394C6C300534D1C /* Main.storyboard */; };
 		036C407D2394C6C700534D1C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 036C407C2394C6C700534D1C /* Assets.xcassets */; };
 		036C40802394C6C700534D1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 036C407E2394C6C700534D1C /* LaunchScreen.storyboard */; };
-		217EEE14515B82C3AA6A7D8D /* Pods_SupersRent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 193D79657883CBB6FD68AE95 /* Pods_SupersRent.framework */; };
 		9E18BE0D23A007A800E85188 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E18BE0C23A007A800E85188 /* LoginController.swift */; };
 		9E3476F0239BA09100C94CFE /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E3476EF239BA09100C94CFE /* DataModel.swift */; };
 		9E60671423A3AC59007AD5B9 /* SummaryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E60671223A3AC59007AD5B9 /* SummaryItemCell.swift */; };
@@ -35,13 +34,29 @@
 		9EA05A0923992E800056CEF3 /* ProductData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA05A0823992E800056CEF3 /* ProductData.swift */; };
 		9EA05A0B23992E8B0056CEF3 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA05A0A23992E8B0056CEF3 /* LocationData.swift */; };
 		9EB63A8723A101B800C2233A /* OrderSummay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB63A8623A101B800C2233A /* OrderSummay.swift */; };
+		9EBDC9AA23FFE17E007E21C9 /* OmiseSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBDC9A923FFE17E007E21C9 /* OmiseSDK.framework */; };
+		9EBDC9AB23FFE17E007E21C9 /* OmiseSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBDC9A923FFE17E007E21C9 /* OmiseSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9EC1570B239BE5580013F3E9 /* ItemSelectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC1570A239BE5580013F3E9 /* ItemSelectController.swift */; };
 		9EC1570D239BE5910013F3E9 /* OrderPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC1570C239BE5910013F3E9 /* OrderPayment.swift */; };
 		9EC15710239CFFC10013F3E9 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC1570E239CFFC10013F3E9 /* ItemCell.swift */; };
 		9EC15711239CFFC10013F3E9 /* ProductItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9EC1570F239CFFC10013F3E9 /* ProductItemCell.xib */; };
-		9EC15712239D84580013F3E9 /* OmiseSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03872A1B2394CBF000441D88 /* OmiseSDK.framework */; };
 		9EC85CE523C7080700B505BB /* LogoutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EC85CE423C7080700B505BB /* LogoutController.swift */; };
+		EC8713C17A41626BDCFAA47F /* Pods_SupersRent.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2DFEAEB6DFC5B4172507A5 /* Pods_SupersRent.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9E9A399023FFDFB700C610CF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				9EBDC9AB23FFE17E007E21C9 /* OmiseSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		036C40702394C6C300534D1C /* SupersRent.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SupersRent.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,10 +66,7 @@
 		036C407C2394C6C700534D1C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		036C407F2394C6C700534D1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		036C40812394C6C700534D1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		03872A1B2394CBF000441D88 /* OmiseSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OmiseSDK.framework; path = Carthage/Build/iOS/OmiseSDK.framework; sourceTree = "<group>"; };
-		03872A1C2394CBF000441D88 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
-		03872A1D2394CBF000441D88 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		193D79657883CBB6FD68AE95 /* Pods_SupersRent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SupersRent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1A2DFEAEB6DFC5B4172507A5 /* Pods_SupersRent.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SupersRent.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E18BE0C23A007A800E85188 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		9E3476EF239BA09100C94CFE /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		9E60671223A3AC59007AD5B9 /* SummaryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryItemCell.swift; sourceTree = "<group>"; };
@@ -77,6 +89,7 @@
 		9EA05A0823992E800056CEF3 /* ProductData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductData.swift; sourceTree = "<group>"; };
 		9EA05A0A23992E8B0056CEF3 /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
 		9EB63A8623A101B800C2233A /* OrderSummay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderSummay.swift; sourceTree = "<group>"; };
+		9EBDC9A923FFE17E007E21C9 /* OmiseSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OmiseSDK.framework; path = Carthage/Build/iOS/OmiseSDK.framework; sourceTree = "<group>"; };
 		9EC1570A239BE5580013F3E9 /* ItemSelectController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSelectController.swift; sourceTree = "<group>"; };
 		9EC1570C239BE5910013F3E9 /* OrderPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPayment.swift; sourceTree = "<group>"; };
 		9EC1570E239CFFC10013F3E9 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
@@ -93,8 +106,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9EC15712239D84580013F3E9 /* OmiseSDK.framework in Frameworks */,
-				217EEE14515B82C3AA6A7D8D /* Pods_SupersRent.framework in Frameworks */,
+				9EBDC9AA23FFE17E007E21C9 /* OmiseSDK.framework in Frameworks */,
+				EC8713C17A41626BDCFAA47F /* Pods_SupersRent.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,10 +226,8 @@
 		DD68A53C16A0B60644228ADD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				03872A1D2394CBF000441D88 /* Alamofire.framework */,
-				03872A1B2394CBF000441D88 /* OmiseSDK.framework */,
-				03872A1C2394CBF000441D88 /* SwiftyJSON.framework */,
-				193D79657883CBB6FD68AE95 /* Pods_SupersRent.framework */,
+				9EBDC9A923FFE17E007E21C9 /* OmiseSDK.framework */,
+				1A2DFEAEB6DFC5B4172507A5 /* Pods_SupersRent.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -240,8 +251,9 @@
 				036C406C2394C6C300534D1C /* Sources */,
 				036C406D2394C6C300534D1C /* Frameworks */,
 				036C406E2394C6C300534D1C /* Resources */,
-				9E8643762395138700AC3D50 /* Carthage Frameworks */,
 				0DFA9B014A6303DB49946C76 /* [CP] Embed Pods Frameworks */,
+				9E9A399123FFDFCE00C610CF /* Carthage Frameworks */,
+				9E9A399023FFDFB700C610CF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -344,9 +356,9 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9E8643762395138700AC3D50 /* Carthage Frameworks */ = {
+		9E9A399123FFDFCE00C610CF /* Carthage Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -358,11 +370,10 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/OmiseSDK.framework",
 			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

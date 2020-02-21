@@ -1,0 +1,8 @@
+excluded:
+    - Pods
+    - Carthage
+
+included:
+    - SupersRent
+
+

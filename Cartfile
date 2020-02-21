@@ -1,2 +1,2 @@
-github "omise/omise-ios"
+github "omise/omise-ios" ~> 3.3.0
 

@@ -44,7 +44,7 @@ class OrderSummayController: UIViewController {
         let loadedData = JSON(Locksmith.loadDataForUserAccount(userAccount: "admin")!)
         let userData = loadedData["userData"].dictionaryValue
         let urlOrder = "https://api.supersrent.com/app-user/api/order/addCustomerOrderDetail/"
-        let header = ["Accept":"application/json","AuthorizationHome": loadedData["tokenAccess"].stringValue]
+        let header:HTTPHeaders = ["Accept":"application/json","AuthorizationHome": loadedData["tokenAccess"].stringValue]
         
         let orderCustomer: [String : Any] = [
             "firstName": userData["firstName"]!.stringValue,
@@ -100,7 +100,7 @@ class OrderSummayController: UIViewController {
             "orderVAT": totalPrice * Double(diffInDays!) * 0.07
         ]
         print(postOrder)
-        Alamofire.request(urlOrder, method: .post, parameters: postOrder, encoding: JSONEncoding.default, headers: header).responseJSON { response in
+        AF.request(urlOrder, method: .post, parameters: postOrder, encoding: JSONEncoding.default, headers: header).responseJSON { response in
             switch response.result {
             case .success(let data):
                 let jsonData = JSON(data)

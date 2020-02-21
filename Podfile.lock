@@ -1,30 +1,54 @@
 PODS:
-  - Alamofire (4.9.1)
+  - Alamofire (5.0.0)
+  - DropDown (2.3.13)
+  - DynamicBlurView (4.0.0)
   - KDCalendar (1.8.9):
     - KDCalendar/EventManager (= 1.8.9)
   - KDCalendar/EventManager (1.8.9)
+  - KeyboardAvoidingView (5.0.0):
+    - ViewState (>= 1.0.0)
   - Locksmith (4.0.0)
+  - PopupDialog (1.1.1):
+    - DynamicBlurView (~> 4.0)
+  - StepView (1.0.5)
   - SwiftyJSON (5.0.0)
+  - ViewState (1.0.0)
 
 DEPENDENCIES:
   - Alamofire
+  - DropDown
   - KDCalendar
+  - KeyboardAvoidingView
   - Locksmith
+  - PopupDialog
+  - StepView
   - SwiftyJSON
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - DropDown
+    - DynamicBlurView
     - KDCalendar
+    - KeyboardAvoidingView
     - Locksmith
+    - PopupDialog
+    - StepView
     - SwiftyJSON
+    - ViewState
 
 SPEC CHECKSUMS:
-  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Alamofire: 58ff2bfb8daaacaa233d5c36e37b10a5248f59b1
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  DynamicBlurView: ccf9acd2b20c883cc2c72e3524a04d8d3ee20533
   KDCalendar: a587bc486b992d82ef94bd04001fce9baf45e518
+  KeyboardAvoidingView: 93c4f709386c998b7b7f6b405a05c5c3585410a7
   Locksmith: e9bebbaaa4cee3c511bc358a44f843c3fe00e21f
+  PopupDialog: 720c92befd8bc23c13442254945213db5612f149
+  StepView: e69413ca377b42c5777d446854bb036ff8e988fd
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  ViewState: 78aa77483e74e592c22e841619b853bc686843be
 
-PODFILE CHECKSUM: a43163ce09974611d669208ec798872bb74c3639
+PODFILE CHECKSUM: 3aebdef6e06b3efab2efa126e49c8c668949dd42
 
 COCOAPODS: 1.8.4

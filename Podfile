@@ -6,8 +6,17 @@ target 'SupersRent' do
   use_frameworks!
 
   # Pods for SupersRent
+  # HTTPRequest Libraries and JSON Utilities
   pod 'Alamofire'
   pod 'SwiftyJSON'
+
+  # UI Libraries
   pod 'KDCalendar'
+  pod 'StepView'
+  pod 'DropDown'
+  pod 'PopupDialog'
+  pod 'KeyboardAvoidingView'
+
+  # UserData Utilities.
   pod 'Locksmith'
 end

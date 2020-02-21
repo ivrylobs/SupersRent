@@ -48,7 +48,7 @@ class LoginController: UIViewController {
 		//Set login Parameters.
 		let param: [String:String] = ["email": usernameField.text!, "password": passwordField.text!]
 		
-		Alamofire.request(self.loginUrl, method: .post, parameters: param, encoding: JSONEncoding.default).responseJSON { response in
+		AF.request(self.loginUrl, method: .post, parameters: param, encoding: JSONEncoding.default).responseJSON { response in
 			switch response.result {
 				case .success(let data):
 					
@@ -115,9 +115,9 @@ class LoginController: UIViewController {
 		let loadedData = Locksmith.loadDataForUserAccount(userAccount: "admin")
 		var userData = JSON(loadedData!)
 		let url = "https://api.supersrent.com/app-user/api/customer/getProfile/\(userData["email"].stringValue)"
-		let header = ["Accept":"application/json","AuthorizationHome": userData["tokenAccess"].stringValue]
+        let header:HTTPHeaders = ["Accept":"application/json","AuthorizationHome": userData["tokenAccess"].stringValue]
 		
-		Alamofire.request(url, method: .get, headers: header).responseJSON { response in
+		AF.request(url, method: .get, headers: header).responseJSON { response in
 			switch response.result {
 				case .success(let data):
 					

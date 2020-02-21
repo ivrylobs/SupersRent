@@ -240,7 +240,7 @@ extension OrderPaymentController: AuthorizingPaymentViewControllerDelegate {
 
 extension OrderPaymentController {
 	func requestAPIWithBody(apiURL: URLConvertible, httpMethod: HTTPMethod, httpBody: Parameters, httpHeader: HTTPHeaders, handler: @escaping (JSON) -> Void) {
-		Alamofire.request(apiURL, method: httpMethod, parameters: httpBody, encoding: JSONEncoding.default, headers: httpHeader).responseJSON { response in
+		AF.request(apiURL, method: httpMethod, parameters: httpBody, encoding: JSONEncoding.default, headers: httpHeader).responseJSON { response in
 			DispatchQueue.main.async {
 				switch response.result {
 					case .success(let data):
@@ -255,7 +255,7 @@ extension OrderPaymentController {
 	}
 	
 	func requestAPI(apiURL: URLConvertible, httpMethod: HTTPMethod, httpHeader: HTTPHeaders, handler: @escaping (JSON) -> Void) {
-		Alamofire.request(apiURL, method: httpMethod, headers: httpHeader).responseJSON { response in
+		AF.request(apiURL, method: httpMethod, headers: httpHeader).responseJSON { response in
 			DispatchQueue.main.async {
 				switch response.result {
 					case .success(let data):

@@ -11,7 +11,7 @@ struct GetGroupData {
     var delegate: GetGroupDataDelegate?
     
     func getGroup() {
-        Alamofire.request(groupUrl).responseJSON { response in
+        AF.request(groupUrl).responseJSON { response in
             switch response.result {
             case .success(let data):
                 let jsonData = JSON(data)

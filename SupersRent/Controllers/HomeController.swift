@@ -51,11 +51,11 @@ class HomeController: UIViewController {
 		
 		//Set HTTP Header.
 		let url = "https://api.supersrent.com/app-user/api/customer/getProfile/\(userData["email"].stringValue)"
-		let header = ["Accept":"application/json","AuthorizationHome": userData["tokenAccess"].stringValue]
+        let header:HTTPHeaders = ["Accept":"application/json","AuthorizationHome": userData["tokenAccess"].stringValue]
 		
 		if let isLogin = userData["isLogin"].bool {
 			if isLogin {
-				Alamofire.request(url, method: .get, headers: header).responseJSON { response in
+				AF.request(url, method: .get, headers: header).responseJSON { response in
 					switch response.result {
 						case .success(let data):
 							
